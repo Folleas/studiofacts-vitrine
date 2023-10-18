@@ -4,6 +4,7 @@ const colors = require("tailwindcss/colors")
 const defaultTheme = require("tailwindcss/defaultTheme")
 
 /** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
   content: [
@@ -31,40 +32,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        body: [
-          "Inter",
-          "ui-sans-serif",
-          "system-ui",
-          "-apple-system",
-          "system-ui",
-          "Segoe UI",
-          "Roboto",
-          "Helvetica Neue",
-          "Arial",
-          "Noto Sans",
-          "sans-serif",
-          "Apple Color Emoji",
-          "Segoe UI Emoji",
-          "Segoe UI Symbol",
-          "Noto Color Emoji",
-        ],
-        sans: [
-          "Inter",
-          "ui-sans-serif",
-          "system-ui",
-          "-apple-system",
-          "system-ui",
-          "Segoe UI",
-          "Roboto",
-          "Helvetica Neue",
-          "Arial",
-          "Noto Sans",
-          "sans-serif",
-          "Apple Color Emoji",
-          "Segoe UI Emoji",
-          "Segoe UI Symbol",
-          "Noto Color Emoji",
-        ],
+        body: ["Poppins", "Roboto", "Inter", "ui-sans-serif", "system-ui", "-apple-system", "system-ui", "Segoe UI", "Helvetica Neue", "Arial", "Noto Sans", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
+        sans: ["Poppins", "Roboto", "Inter", "ui-sans-serif", "system-ui", "-apple-system", "system-ui", "Segoe UI", "Helvetica Neue", "Arial", "Noto Sans", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
       },
       borderWidth: {
         DEFAULT: "1px",
@@ -81,10 +50,35 @@ module.exports = {
       minWidth: {
         ...defaultTheme.width,
       },
+      textColor: {
+        default: "#ededed",
+      },
     },
   },
   plugins: [],
   future: {
     hoverOnlyWhenSupported: true,
   },
+    // Custom scrollbar styles
+    corePlugins: {
+      scrollbar: false, // Disable default scrollbar styles
+    },
+    variants: {
+      scrollbar: ["rounded"],
+    },
+    extend: {
+      scrollbar: {
+        width: "8px",
+      },
+      "::-webkit-scrollbar": {
+        width: "8px",
+      },
+      "::-webkit-scrollbar-thumb": {
+        backgroundColor: "#999",
+        borderRadius: "4px",
+      },
+      "::-webkit-scrollbar-thumb:hover": {
+        backgroundColor: "#666",
+      },
+    },
 }
