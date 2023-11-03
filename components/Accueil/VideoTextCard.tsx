@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa"; // Import the close icon from a library
 
 function ProjectModal({
@@ -90,8 +90,7 @@ function ProjectModal({
                         src={'/' + resource}
                         alt={`Resource Image ${index}`}
                         layout="fill"
-                        objectFit="cover"
-                        className="rounded-md"
+                        className="rounded-md object-cover"
                       />
                     </div>
                   ))}
@@ -127,7 +126,7 @@ function renderContentWithLineBreaks(content: any) {
   return (
     <div>
       {lines.map((line: string, index: number) => (
-        <p className="text-gray-700 text-sm xl:text-xl" key={index}>
+        <p className="text-gray-300 text-xl xl:text-3xl" key={index}>
           {line}
           {index !== lines.length - 1 && <br />}
         </p>
@@ -140,7 +139,6 @@ export default function VideoTextCard({
   title,
   content,
   type,
-  imageSrc,
   videoSrc,
   imageAlt,
   buttonCTA = "",
@@ -155,14 +153,29 @@ export default function VideoTextCard({
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  const buttons = [];
+  if (buttonCTA !== '')
+    buttons.push(
+      <button key={buttonCTA} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded self-start">
+        {buttonCTA}
+      </button>
+    )
+
+  if (moreDetails)
+    buttons.push(
+      <button key='Plus de détail' onClick={openModal} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded self-start">
+        Plus de détail
+      </button>
+    )
+
   return (
-    <div className="p-4 my-8 w-full xl:w-3/4">
+    <div className="p-4 w-full">
       <div
-        className={`w-full mx-auto bg-[#ededed] h-[800px] rounded-lg shadow-md flex ${swapContent ? "flex-col-reverse" : "flex-col"
+        className={`w-full h-[800px] rounded-lg shadow-md flex ${swapContent ? "flex-col-reverse" : "flex-col"
           } md:flex-row`}
       >
         <div
-          className={`relative w-full md:w-1/2 h-64 md:h-auto ${swapContent ? "md:order-2" : ""
+          className={`relative w-full h-64 md:h-auto ${swapContent ? "md:order-2" : ""
             }`}
         >
           {coverFilename ? (
@@ -171,7 +184,7 @@ export default function VideoTextCard({
                 loop
                 autoPlay
                 muted
-                className="w-full h-full absolute inset-0 object-cover"
+                className="w-full h-full absolute inset-0 object-contain"
               >
                 <source src={videoSrc} type="video/mp4" />
               </video>
@@ -179,42 +192,37 @@ export default function VideoTextCard({
               <Image
                 src={'/' + coverFilename}
                 layout="fill"
-                objectFit="cover"
                 alt={imageAlt}
+                className="object-contain"
               />
             )
           ) : null}
         </div>
-        <div className="flex-1 p-4 md:p-32 flex flex-col justify-between">
+        <div className="p-4 md:p-32 w-full flex flex-col justify-between">
           <div>
-            <h2 className="text-lg xl:text-6xl font-bold mb-2 text-[#1e2428]">
-              {title}
-            </h2>
-            {tags && tags.map((tag: string, index: number) => (
-              <span
-                key={index}
-                className="bg-gray-300 text-[#1e2428] px-2 py-1 text-xs rounded mr-2"
-              >
-                {tag}
-              </span>
-            ))}
-            <div className="h-[350px] overflow-y-scroll pr-10 mt-6">
+            <div className="h-[170px]">
+              <h2 className="text-lg xl:text-6xl overflow-y-auto  max-h-[150px] scroll-smooth hover:scroll-auto font-bold mb-6 text-white">
+                {title}
+              </h2>
+              {tags && tags.map((tag: string, index: number) => (
+                <span
+                  key={index}
+                  className="bg-gray-300 text-[#1e2428] px-2 py-1 text-xs rounded"
+                >
+                  {tag}
+                </span>
+              ))
+              }
+            </div>
+            <div className="max-h-[270px] overflow-y-scroll pr-10 mt-6">
               {renderContentWithLineBreaks(content)}
             </div>
           </div>
-          {buttonCTA !== "" && (
-            <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded self-start">
-              {buttonCTA}
-            </button>
-          )}
-          {moreDetails &&
-            <button
-              onClick={openModal}
-              className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded self-start"
-            >
-              Know More
-            </button>
-          }
+          <div className="">
+            {buttons.map(
+              (button: any) => button
+            )}
+          </div>
         </div>
       </div>
 

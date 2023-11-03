@@ -6,7 +6,7 @@ const PersonCard = ({ name, occupation, bio, imageSrc }) => {
     return (
         <div className="w-1/4 p-4">
             <div className="bg-white text-black rounded-lg shadow-lg overflow-hidden">
-                <div className="relative" style={{ paddingBottom: '100%' }}>
+                <div className="relative pb-[100%]">
                     <Image
                         src={'/' + imageSrc}
                         alt={name}
@@ -15,10 +15,10 @@ const PersonCard = ({ name, occupation, bio, imageSrc }) => {
                         className="rounded-t-lg"
                     />
                 </div>
-                <div className="p-4">
-                    <h2 className="text-xl font-semibold text-black">{name}</h2>
-                    <p className="text-gray-500">{occupation}</p>
-                    <p className="text-gray-600 mt-2">{bio}</p>
+                <div className="p-4 h-[550px] overflow-y-scroll">
+                    <h2 className="text-3xl font-semibold text-black">{name}</h2>
+                    <p className="text-gray-500 ">{occupation}</p>
+                    <p className="text-gray-600 text-2xl mt-2">{bio}</p>
                 </div>
             </div>
         </div>
@@ -29,28 +29,29 @@ const PersonCard = ({ name, occupation, bio, imageSrc }) => {
 export const TalentCard = ({ name, occupation, bio, imageSrc }) => {
     return (
         <div className="w-1/4 p-4">
-            <div className="bg-[#ededed] text-black rounded-lg shadow-lg overflow-hidden grid grid-cols-2">
+            <div className="bg-[#ededed] h-[700px] text-black rounded-lg shadow-lg overflow-hidden flex flex-col">
                 {/* Image */}
-                <div className="relative col-span-1 w-[150px] h-[150px]">
-                    <div className="rounded-full overflow-hidden w-full h-full">
-                        <Image
-                            src={`/${imageSrc}`}
-                            alt={name}
-                            layout="fill"
-                            objectFit="cover"
-                            className="rounded-full"
-                        />
+                <div className='flex'>
+                    <div className="relative col-span-1 w-[250px] h-[250px]">
+                        <div className="rounded-full overflow-hidden w-full h-full">
+                            <Image
+                                src={`/${imageSrc}`}
+                                alt={name}
+                                layout="fill"
+                                objectFit="cover"
+                            />
+                        </div>
                     </div>
-                </div>
-                {/* Name and Occupation */}
-                <div className="flex flex-col justify-center col-span-1">
-                    <h2 className="text-lg font-semibold text-black">{name}</h2>
-                    <p className="text-gray-500 text-sm">{occupation}</p>
+                    {/* Name and Occupation */}
+                    <div className="flex flex-col h-[200px] ml-6 justify-center col-span-1">
+                        <h2 className="text-2xl font-semibold text-black">{name}</h2>
+                        <p className="text-gray-500 text-xl">{occupation}</p>
+                    </div>
                 </div>
 
                 {/* Bio */}
-                <div className="col-span-2 p-4">
-                    <p className="text-gray-600 text-sm">{bio}</p>
+                <div className="col-span-2 h-[500px] p-4 overflow-y-scroll">
+                    <p className="text-gray-600 text-2xl">{bio}</p>
                 </div>
             </div>
         </div>

@@ -139,8 +139,9 @@ export default function AudioPage() {
         fetch("http://localhost:3000/alaune")
             .then((response) => response.json())
             .then((responseData: any) => {
+                console.log("responseData.aLaUneData")
+                console.log(responseData.aLaUneData)
                 setSelectedProjects(responseData.aLaUneData[0]); // Assuming the API returns an array of project objects
-
             })
             .catch((error) => console.error("Error fetching data:", error));
 
@@ -149,6 +150,9 @@ export default function AudioPage() {
         if (selectedProjects.audio != null)
             setALaUne(data.filter((elem) => elem._id === selectedProjects.audio)[0]);
     }, [selectedProjects])
+
+    console.log(aLaUne)
+
     return (
         <div className="flex flex-col justify-center items-center h-full">
             <div className="w-3/4 p-6 shadow-md rounded-lg min-h-[45vh]">
@@ -166,12 +170,15 @@ export default function AudioPage() {
                     <h1 className="text-2xl xl:text-6xl font-bold text-white mb-8">À la Une</h1>
                 </div>
                 {aLaUne &&
-                    <>
+                    <div className='flex flex-col gap-y-4'>
+                        <h3 className="text-gray-200 text-4xl font-bold">
+                            {aLaUne.title}
+                        </h3>
                         <p className="text-gray-200 text-4xl">
                             {aLaUne.description}
                         </p>
-                        <iframe title="Audio Player" src={aLaUne.enSavoirPlus} width="80%" height="480px" allow="autoplay"></iframe>
-                    </>
+                        <iframe title="Audio Player" className="mt-10" src={aLaUne.enSavoirPlus} width="100%" height="500px" allow="autoplay"></iframe>
+                    </div>
                 }
             </div>
             <div className="w-3/4 p-6 shadow-md rounded-lg min-h-[45vh]">
@@ -185,7 +192,7 @@ export default function AudioPage() {
                     Les Créations Originales de StudioFact Audio sont disponibles gratuitement sur toutes les plateformes de podcasts
                 </p>
                 <div className="flex flex-wrap justify-center gap-16 my-10">
-                    {data.map((item, index) => (
+                {data.map((item, index) => (
                         <>
                             <div key={index} className="w-80 h-80 mb-6">
                                 <a href={item.link} target="_blank" rel="noopener noreferrer">

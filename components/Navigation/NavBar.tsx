@@ -36,16 +36,16 @@ export default function NavBar() {
     };
 
     return (
-        <div className="relative h-full w-3/4 mx-auto flex items-center justify-center border-b border-[#ededed] shadow-md"> {/* Add relative to the container */}
-            <div className="container mx-auto flex items-center justify-between px-6 py-4 ">
+        <div className="h-[8vh] relative backdrop-blur-lg w-full p-10 mx-auto flex items-center justify-center shadow-md"> {/* Add relative to the container */}
+            <div className="flex items-center justify-between px-6 py-4 w-full">
                 {/* Logo */}
                 <div className="flex items-center">
                     <Image
                         src="/logo_blanc.png"
                         alt="Logo"
                         className="mr-2"
-                        width={200}
-                        height={200}
+                        width={300}
+                        height={300}
                     />
                 </div>
 
@@ -60,11 +60,11 @@ export default function NavBar() {
                 </div>
 
                 {/* Desktop Menu */}
-                <nav className="hidden md:flex xl:flex lg:flex space-x-10">
-                    <ul className="flex">
-                        {links.map((link, index) => (
+                <nav className="hidden md:flex xl:flex lg:flex w-full ">
+                    <ul className="flex w-full justify-end space-x-20">
+                        {links.map((link) => (
                             <li key={link.url}>
-                                <Link href={link.url} className={`relative mr-10 hover:text-gray-400 text-xs xl:text-lg ${link.url === path ? 'font-bold' : ''}`}>
+                                <Link href={link.url} className={`relative mr-10 hover:text-gray-400 text-xs xl:text-2xl  ${link.url === path ? 'font-bold' : ''}`}>
                                     {link.label}
                                 </Link>
                             </li>

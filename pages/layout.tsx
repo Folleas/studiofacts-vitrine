@@ -18,10 +18,23 @@ export default function Layout({ children }: { children: React.ReactNode }) {// 
                 <title>Studio Facts</title>
             </Head>
             <div className="flex flex-col h-screen bg-[#1e2428]">
-                <div className="h-[8vh]">
+                <div className="z-10 absolute top-0 left-0 w-full">
                     <NavBar />
                 </div>
-                <main className="h-[87vh] overflow-y-scroll">
+                <div className="z-10 absolute bottom-0 left-0 w-full">
+                    <div className="h-[5vh] w-full flex items-center justify-around backdrop-blur-lg">
+                        <p className="text-white text-[0.5rem] sm:text-2xl">
+                            Copyright © 2023 StudioFact Media Group, tous droits réservés.
+                        </p>
+                        <p className="text-white text-[0.5rem] sm:text-2xl">
+                            Mentions Légales
+                        </p>
+                    </div>
+                    {/* <div className=" backdrop-blur-lg">
+
+                    </div> */}
+                </div>
+                <main className="h-[100vh] overflow-y-scroll">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -29,16 +42,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {// 
                     >
                         {children}
                     </motion.div>
+                    <div className="h-[5vh]"></div>
                 </main>
-                <div className="h-[5vh] mx-auto flex items-center justify-between w-3/4 border-t border-[#ededed]">
-                    <p className="text-white text-[0.5rem] sm:text-lg">
-                        Copyright © 2023 StudioFact Media Group, tous droits réservés.
-                    </p>
-                    <p className="text-white text-[0.5rem] sm:text-lg">
-                        Mentions Légales
-                    </p>
-
-                </div>
             </div>
         </>
     );

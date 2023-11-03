@@ -14,7 +14,7 @@ export default function Web() {
   }, []);
   return (
     <div className='flex flex-col h-full justify-center items-center'>
-      <div className='flex w-3/4'>
+      <div className='flex w-full p-10 mt-[5vh]'>
         <h1 className="text-4xl font-semibold mt-10">Réalisations</h1>
       </div>
       <div className='flex flex-col h-full justify-center w-full items-center'>
@@ -33,6 +33,7 @@ export default function Web() {
               tags={item.tags}
               resourcesFilenames={item.resourcesFilenames}
               coverFilename={item.coverFilename}
+              swapContent={index % 2 !== 0 ? false : false}
             />
           )
         })}

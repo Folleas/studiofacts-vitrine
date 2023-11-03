@@ -2,8 +2,8 @@ import Image from 'next/image';
 
 export default function ImageRows() {
   return (
-    <div className="p-4 my-8 sm:my-16 md:w-3/4 lg:w-2/3 xl:w-3/4 mx-auto">
-      <h1 className="text-2xl xl:text-6xl font-bold text-white mb-4 sm:mb-8">LA GALAXIE STUDIOFACT</h1>
+    <div className="p-4 my-8 sm:my-16 md:w-3/4 lg:w-2/3 xl:w-full mx-auto">
+      <h1 className="text-2xl xl:text-6xl font-bold text-white p-10">LA GALAXIE STUDIOFACT</h1>
       <div className="flex flex-wrap mb-8 sm:mb-16 ">
         {/* First row of pictures */}
         <div className="w-full sm:w-1/2 lg:w-1/4 p-4 sm:p-8 relative">

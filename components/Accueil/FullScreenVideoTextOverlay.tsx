@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function FullScreenVideoTextOverlay() {
   return (
-      <div className="h-[90vh] relative w-full">
-      <div className="h-[87vh] relative w-full">
+    <div className="h-[95vh] relative w-full">
+      <div className="h-[95vh] relative w-full">
         <video
           id="background-video"
           loop
@@ -20,7 +20,7 @@ export default function FullScreenVideoTextOverlay() {
         {/* New centered instruction */}
         <div className="absolute bottom-0 text-white text-center w-full pb-4">
           <p className="text-xs xl:text-2xl">
-            STUDIOFACT est le premier groupe audiovisuel français à produire du contenu original exclusivement issu d’histoires vraies : Documentaire, Fiction, Podcast, Édition, Spectacle vivant.
+            V
           </p>
           {/* <button><p>V</p></button> */}
         </div>
