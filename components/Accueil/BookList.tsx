@@ -47,7 +47,7 @@ function ProjectModal({
                             {
                                 data?.coverFilename &&
                                 <Image loading="lazy"
-                                    src={'https://studiofact.fr/image/' + data.coverFilename}
+                                    src={'https://studiofact.fr:3002/image/' + data.coverFilename}
                                     alt={`Cover Image for ${data.title}`}
                                     width={367}
                                     height={500}
@@ -150,7 +150,7 @@ function ProjectModal({
                                             {
                                                 resource &&
                                                 <Image loading="lazy"
-                                                    src={'https://studiofact.fr/image/' + resource}
+                                                    src={'https://studiofact.fr:3002/image/' + resource}
                                                     alt={`Resource Image ${index}`}
                                                     layout="fill"
                                                     className="rounded-md object-cover"
@@ -183,7 +183,7 @@ function ProjectModal({
                             <h2 className='text-black text-3xl'>Kit presse {data.title}</h2>
                             {data.pressKit.map((elem: any, index: number) => (
                                 <div key={index}>
-                                    <a href={"https://studiofact.fr/image/" + elem.file}>
+                                    <a href={"https://studiofact.fr:3002/image/" + elem.file}>
                                         <h2 className='text-black'>- {elem.label}</h2>
                                     </a>
                                 </div>
@@ -209,7 +209,7 @@ function BookCard({ item }: any) {
                 {
                     item?.coverFilename &&
                     <Image loading="lazy"
-                        src={'https://studiofact.fr/image/' + item.coverFilename}
+                        src={'https://studiofact.fr:3002/image/' + item.coverFilename}
                         alt={item.title}
                         layout="fill"
                         objectFit="cover"
