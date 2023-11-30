@@ -115,7 +115,7 @@ export function ProjectModal({
                 {
                   coverFilename &&
                   <Image loading="lazy"
-                    src={'nestjs3002/image/' + coverFilename}
+                    src={'studiofact.group/image/' + coverFilename}
                     alt={`Cover Image for ${title}`}
                     width={567}
                     height={400}
@@ -139,7 +139,7 @@ export function ProjectModal({
                     controls // Add controls for playback
                   >
                     <source
-                      src={'nestjs3002/image/' + videoSrc}
+                      src={'studiofact.group/image/' + videoSrc}
                       type="video/mp4" // Update with the appropriate video format/type
                     />
                     Your browser does not support the video tag.
@@ -233,7 +233,7 @@ export default function VideoTextCard({
       </button>
     )
   files.map((file: any, index: number) => buttons.push(
-    <Link href={'nestjs3002/image/' + file.file} key={index} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 mb-4 px-4 rounded self-start">
+    <Link href={'studiofact.group/image/' + file.file} key={index} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 mb-4 px-4 rounded self-start">
       {file.label}
     </Link>
   ));
@@ -255,14 +255,14 @@ export default function VideoTextCard({
                 muted
                 className="w-full h-full absolute inset-0 object-contain"
               >
-                <source src={'nestjs3002/image/' + videoSrc} type="video/mp4" />
+                <source src={'studiofact.group/image/' + videoSrc} type="video/mp4" />
               </video>
             ) : (
               <div className="">
                 {
                   coverFilename &&
                   <Image loading="lazy"
-                    src={'nestjs3002/image/' + coverFilename}
+                    src={'studiofact.group/image/' + coverFilename}
                     layout="fill"
                     alt={imageAlt}
                     className="object-contain"

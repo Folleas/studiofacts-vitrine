@@ -10,7 +10,7 @@ export default function Web() {
     // Function to fetch data from the API
     const fetchData = async () => {
       try {
-        const response = await fetch(`nestjs3002/project`);
+        const response = await fetch(`studiofact.group/project`);
         const responseData: any = await response.json();
 
         // Filter the responseData based on the desired types
