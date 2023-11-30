@@ -15,19 +15,19 @@ export default function Web() {
     // Replace with your actual API endpoint and parameters
 
 
-    // fetch('studiofact.group/post/latest-release-dates/2')
+    // fetch('https://studiofact.group/post/latest-release-dates/2')
     //   .then((response) => response.json() as any) // Type assertion here
     //   .then((responseData) => { responseData?.posts && setDernierPosts(responseData.posts) })
     //   .catch((error) => console.error('Error fetching data:', error));
     const fetchPost = async () => {
       let posts: any = [];
-      await fetch('studiofact.group/post')
+      await fetch('https://studiofact.group/post')
         .then((response) => response.json())
         .then((responseData: any) => {
           posts = responseData.postData; // Assuming the API returns an array of post objects
         })
         .catch((error) => console.error('Error fetching data:', error));
-      await fetch('studiofact.group/alaune')
+      await fetch('https://studiofact.group/alaune')
         .then((response) => response.json() as any) // Type assertion here
         .then((responseData) => {
           if (responseData?.aLaUneData) {
@@ -37,7 +37,7 @@ export default function Web() {
         .catch((error) => console.error('Error fetching data:', error));
     }
     fetchPost();
-    fetch('studiofact.group/project/latest-release-dates/2')
+    fetch('https://studiofact.group/project/latest-release-dates/2')
       .then((response) => response.json() as any) // Type assertion here
       .then((responseData) => { responseData?.projects && setDerniereRealisations(responseData.projects) })
       .catch((error) => console.error('Error fetching data:', error));
