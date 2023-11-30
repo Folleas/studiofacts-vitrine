@@ -99,11 +99,11 @@ export default function LabPage() {
     useEffect(() => {
         // Make the API request to localhost:3000/project/ with Realisation as a parameter
         // Replace with your actual API endpoint and parameters
-        fetch('localhost:3002/project/type/Lab')
+        fetch('nestjs3002/project/type/Lab')
             .then((response) => response.json() as any) // Type assertion here
             .then((responseData) => { setData(responseData.realisationProjects) })
             .catch((error) => console.error('Error fetching data:', error));
-        fetch("localhost:3002/alaune")
+        fetch("nestjs3002/alaune")
             .then((response) => response.json())
             .then((responseData: any) => {
                 setSelectedProjects(responseData.aLaUneData[0]); // Assuming the API returns an array of project objects

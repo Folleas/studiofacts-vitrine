@@ -171,11 +171,11 @@ export default function RightsPage() {
     }, [controls, isInView]);
 
     useEffect(() => {
-        fetch('localhost:3002/project/rights')
+        fetch('nestjs3002/project/rights')
             .then((response) => response.json() as any)
             .then((responseData) => { setData(responseData.rightsProjects) })
             .catch((error) => console.error('Error fetching data:', error));
-        fetch("localhost:3002/alaune")
+        fetch("nestjs3002/alaune")
             .then((response) => response.json())
             .then((responseData: any) => {
                 setSelectedProjects(responseData.aLaUneData[0]);

@@ -88,12 +88,12 @@ export default function RightsProject({
                 muted
                 className="w-full h-full absolute inset-0 object-contain "
               >
-                <source src={'localhost:3002/image/' + videoSrc} type="video/mp4" />
+                <source src={'nestjs3002/image/' + videoSrc} type="video/mp4" />
               </video>
             ) : (
               <div className="">
                 <Image
-                  src={'localhost:3002/image/' + coverFilename}
+                  src={'nestjs3002/image/' + coverFilename}
                   layout="responsive"
                   alt={imageAlt}
                   width={300}

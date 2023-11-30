@@ -122,11 +122,11 @@ export default function AudioPage() {
     useEffect(() => {
         // Make the API request to localhost:3000/project/ with Realisation as a parameter
         // Replace with your actual API endpoint and parameters
-        fetch('localhost:3002/project/type/Audio')
+        fetch('nestjs3002/project/type/Audio')
             .then((response) => response.json() as any) // Type assertion here
             .then((responseData) => { setData(responseData.realisationProjects) })
             .catch((error) => console.error('Error fetching data:', error));
-        fetch("localhost:3002/alaune")
+        fetch("nestjs3002/alaune")
             .then((response) => response.json())
             .then((responseData: any) => {
                 setSelectedProjects(responseData.aLaUneData[0]); // Assuming the API returns an array of project objects
@@ -176,7 +176,7 @@ export default function AudioPage() {
                             <div className="w-80 h-80 mb-6">
                                 <a href={!(item.enSavoirPlus.includes('https://')) ? 'https://podcasts.audiomeans.fr/' + item.enSavoirPlus : item.enSavoirPlus} target="_blank" rel="noopener noreferrer">
                                     <Image loading="lazy"
-                                        src={'localhost:3002/image/' + item.coverFilename}
+                                        src={'nestjs3002/image/' + item.coverFilename}
                                         alt={item.title}
                                         width={400}
                                         height={400}
@@ -202,7 +202,7 @@ export default function AudioPage() {
                             <div className="w-80 h-80 mb-6">
                                 <a href={!(item.enSavoirPlus.includes('https://')) ? 'https://podcasts.audiomeans.fr/' + item.enSavoirPlus : item.enSavoirPlus} target="_blank" rel="noopener noreferrer">
                                     <Image loading="lazy"
-                                        src={'localhost:3002/image/' + item.coverFilename}
+                                        src={'nestjs3002/image/' + item.coverFilename}
                                         alt={item.title}
                                         width={400}
                                         height={400}
@@ -237,7 +237,7 @@ export default function AudioPage() {
                     />
                 </div>
                 <div className='flex justify-center'>
-                    <Button href="mailto:c.tavitian@localhost:3002">Contactez-nous</Button>
+                    <Button href="mailto:c.tavitian@nestjs3002">Contactez-nous</Button>
                 </div>
             </div>
             <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
