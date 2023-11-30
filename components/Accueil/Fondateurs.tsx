@@ -25,14 +25,12 @@ export const PersonCard = ({ name, occupation, bio, imageSrc }: any) => {
         </div>
     );
 };
-export const Fondateurs = ({ name, occupation, bio, imageSrc }: any) => {
+export const Fondateurs = () => {
     const ref = useRef(null);
     const isInView = useInView(ref);
     const controls = useAnimation();
 
     useEffect(() => {
-        console.log("isInView")
-        console.log(isInView)
         if (isInView) {
             controls.start('visible');
         }

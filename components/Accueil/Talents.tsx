@@ -114,7 +114,7 @@ const imageSources = [
     }
   ];
 
-export const TalentCard = ({ name, occupation, bio, imageSrc }) => {
+export const TalentCard = ({ name, occupation, imageSrc }: any) => {
     return (
         <div className="w-full xl:w-1/3 p-4">
             <div className="h-[400px] w-full text-black flex justify-center">
@@ -138,14 +138,12 @@ export const TalentCard = ({ name, occupation, bio, imageSrc }) => {
         </div>
     );
 };
-export const Talents = ({ name, occupation, bio, imageSrc }: any) => {
+export const Talents = () => {
     const ref = useRef(null);
     const isInView = useInView(ref);
     const controls = useAnimation();
 
     useEffect(() => {
-        console.log("isInView")
-        console.log(isInView)
         if (isInView) {
             controls.start('visible');
         }

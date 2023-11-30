@@ -1,10 +1,7 @@
 import ALaUne from 'components/Accueil/ALaUne';
-import BookList from 'components/Accueil/BookList';
 import RightsProject from 'components/Accueil/RightsProject';
-import { TalentCard } from 'components/Accueil/Talents';
 import Team from 'components/Accueil/Team';
 import TitleParagraph from 'components/Accueil/TitleParagraph';
-import VideoTextCard from 'components/Accueil/VideoTextCard';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
@@ -23,21 +20,15 @@ const ImageList = ({ images }: any) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [isAuto, setIsAuto] = useState(true);
 
-    const previousSlide = () => {
-        setIsAuto(false);
-        setActiveIndex((prevIndex) =>
-            prevIndex === 0 ? images.length - 4 : prevIndex - 4
-        );
-    };
-
-    const nextSlide = () => {
-        setIsAuto(false);
-        setActiveIndex((prevIndex) =>
-            prevIndex >= images.length - 4 ? 0 : prevIndex + 4
-        );
-    };
-
+    
     useEffect(() => {
+        
+            const nextSlide = () => {
+                setIsAuto(false);
+                setActiveIndex((prevIndex) =>
+                    prevIndex >= images.length - 4 ? 0 : prevIndex + 4
+                );
+            };
         const autoScroll = setInterval(() => {
             if (isAuto)
                 nextSlide();
@@ -48,7 +39,7 @@ const ImageList = ({ images }: any) => {
         return () => {
             clearInterval(autoScroll);
         };
-    }, [activeIndex, isAuto]);
+    }, [activeIndex, images.length, isAuto]);
 
     return (
         <div className="flex flex-col">
@@ -95,18 +86,6 @@ export default function RightsPage() {
     const controls = useAnimation();
     const [selectedTags, setSelectedTags] = useState<{ [key: string]: string[] }>({});
     const rightsValues = Array.from(new Set(data.map((elem) => elem.rights !== 'Non' && elem.rights !== undefined && elem.rights)));
-    const [currentPartnerIndex, setCurrentPartnerIndex] = useState(0);
-
-    const nextPartner = () => {
-        setCurrentPartnerIndex((prevIndex) =>
-            prevIndex === partnerImages.length - 1 ? 0 : prevIndex + 1
-        );
-    };
-
-    useEffect(() => {
-        const interval = setInterval(nextPartner, 3000); // Change image every 3 seconds (adjust as needed)
-        return () => clearInterval(interval);
-    }, []);
 
     // Extract unique tags for each right
     const tagsForRights: { [key: string]: string[] } = {};
@@ -186,36 +165,19 @@ export default function RightsPage() {
     };
 
     useEffect(() => {
-        console.log("isInView")
-        console.log(isInView)
         if (isInView) {
             controls.start('visible');
         }
     }, [controls, isInView]);
 
-    const imageVariants = {
-        hidden: {
-            opacity: 0,
-        },
-        visible: (custom: any) => ({
-            opacity: 1,
-            transition: {
-                duration: custom * 0.75,
-            },
-            delay: 2,
-        }),
-    };
-
     useEffect(() => {
         fetch('http://localhost:3000/project/rights')
             .then((response) => response.json() as any)
-            .then((responseData) => { console.log(responseData.rightsProjects); setData(responseData.rightsProjects) })
+            .then((responseData) => { setData(responseData.rightsProjects) })
             .catch((error) => console.error('Error fetching data:', error));
         fetch("http://localhost:3000/alaune")
             .then((response) => response.json())
             .then((responseData: any) => {
-                console.log("responseData.aLaUneData")
-                console.log(responseData.aLaUneData)
                 setSelectedProjects(responseData.aLaUneData[0]);
             })
             .catch((error) => console.error("Error fetching data:", error));

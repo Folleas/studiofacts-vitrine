@@ -11,7 +11,7 @@ export default function Web() {
     const fetchData = async () => {
       try {
         const response = await fetch(`http://localhost:3000/project`);
-        const responseData = await response.json();
+        const responseData: any = await response.json();
 
         // Filter the responseData based on the desired types
         const filteredData = responseData?.projectData?.filter(

@@ -70,8 +70,6 @@ const Filiale = ({ title, text, imageSrc, isEven, href }: any) => {
   const controls = useAnimation();
 
   useEffect(() => {
-    console.log("isInView")
-    console.log(isInView)
     if (isInView) {
       controls.start('visible');
     }

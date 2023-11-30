@@ -1,91 +1,90 @@
 // pages/editions.tsx
 import TitleParagraph from 'components/Accueil/TitleParagraph';
 import { Button } from 'components/Button/Button';
-import { motion } from 'framer-motion';
 import Image from "next/legacy/image";
 import { useEffect, useState } from 'react';
 
-const ImageList = ({ images }: any) => {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [isAuto, setIsAuto] = useState(true);
+// const ImageList = ({ images }: any) => {
+//     const [activeIndex, setActiveIndex] = useState(0);
+//     const [isAuto, setIsAuto] = useState(true);
 
-    const previousSlide = () => {
-        setIsAuto(false);
-        setActiveIndex((prevIndex) =>
-            prevIndex === 0 ? images.length - 4 : prevIndex - 4
-        );
-    };
+//     const previousSlide = () => {
+//         setIsAuto(false);
+//         setActiveIndex((prevIndex) =>
+//             prevIndex === 0 ? images.length - 4 : prevIndex - 4
+//         );
+//     };
 
-    const nextSlide = () => {
-        setIsAuto(false);
-        setActiveIndex((prevIndex) =>
-            prevIndex >= images.length - 4 ? 0 : prevIndex + 4
-        );
-    };
+//     const nextSlide = () => {
+//         setIsAuto(false);
+//         setActiveIndex((prevIndex) =>
+//             prevIndex >= images.length - 4 ? 0 : prevIndex + 4
+//         );
+//     };
 
-    useEffect(() => {
-        const autoScroll = setInterval(() => {
-            if (isAuto)
-                nextSlide();
-            else
-                setIsAuto(true);
-        }, 5000); // Adjust the timing for automatic scrolling
+//     useEffect(() => {
+//         const autoScroll = setInterval(() => {
+//             if (isAuto)
+//                 nextSlide();
+//             else
+//                 setIsAuto(true);
+//         }, 5000); // Adjust the timing for automatic scrolling
 
-        return () => {
-            clearInterval(autoScroll);
-        };
-    }, [activeIndex, isAuto]);
+//         return () => {
+//             clearInterval(autoScroll);
+//         };
+//     }, [activeIndex, isAuto]);
 
-    return (
-        <div className="flex flex-col">
-            <div className="flex justify-between gap-x-10 w-full h-full">
-                {images.slice(activeIndex, activeIndex + 4).map((image: any, index: number) => (
-                    <motion.div
-                        key={`image-${index}-${activeIndex}`}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 1.5 + index / 2 }}
-                        className='h-[200px]'
-                    >
-                        <Image loading="lazy"
-                            width={450}
-                            height={450}
-                            src={image.src}
-                            alt={image.alt}
-                        />
-                    </motion.div>
-                ))}
-            </div>
-            <div className="flex justify-center mt-6">
-                {images.slice(0, images.length / 4 + (images.length % 4 > 0 ? 1 : 0)).map((_: any, index: number) => (
-                    <button
-                        key={index}
-                        className={`h-6 w-6 mx-1 rounded-full bg-gray-500 ${index === activeIndex / 4 ? 'bg-gray-800' : ''}`}
-                        onClick={() => setActiveIndex(index * 4)}
-                    />
-                ))}
-            </div>
-        </div>
-    );
-};
+//     return (
+//         <div className="flex flex-col">
+//             <div className="flex justify-between gap-x-10 w-full h-full">
+//                 {images.slice(activeIndex, activeIndex + 4).map((image: any, index: number) => (
+//                     <motion.div
+//                         key={`image-${index}-${activeIndex}`}
+//                         initial={{ opacity: 0 }}
+//                         animate={{ opacity: 1 }}
+//                         exit={{ opacity: 0 }}
+//                         transition={{ duration: 1.5 + index / 2 }}
+//                         className='h-[200px]'
+//                     >
+//                         <Image loading="lazy"
+//                             width={450}
+//                             height={450}
+//                             src={image.src}
+//                             alt={image.alt}
+//                         />
+//                     </motion.div>
+//                 ))}
+//             </div>
+//             <div className="flex justify-center mt-6">
+//                 {images.slice(0, images.length / 4 + (images.length % 4 > 0 ? 1 : 0)).map((_: any, index: number) => (
+//                     <button
+//                         key={index}
+//                         className={`h-6 w-6 mx-1 rounded-full bg-gray-500 ${index === activeIndex / 4 ? 'bg-gray-800' : ''}`}
+//                         onClick={() => setActiveIndex(index * 4)}
+//                     />
+//                 ))}
+//             </div>
+//         </div>
+//     );
+// };
 
-const images = [
-    { src: '/audio.png', alt: 'Image 1' },
-    { src: '/audio.png', alt: 'Image 2' },
-    { src: '/audio.png', alt: 'Image 3' },
-    { src: '/editions.png', alt: 'Image 1' },
-    { src: '/audio.png', alt: 'Image 2' },
-    { src: '/audio.png', alt: 'Image 3' },
-    { src: '/audio.png', alt: 'Image 1' },
-    { src: '/audio.png', alt: 'Image 2' },
-    { src: '/audio.png', alt: 'Image 3' },
-    { src: '/audio.png', alt: 'Image 1' },
-    { src: '/audio.png', alt: 'Image 2' },
-    { src: '/audio.png', alt: 'Image 3' },
-    { src: '/editions.png', alt: 'Image 1' },
-    // Add more images as needed
-];
+// const images = [
+//     { src: '/audio.png', alt: 'Image 1' },
+//     { src: '/audio.png', alt: 'Image 2' },
+//     { src: '/audio.png', alt: 'Image 3' },
+//     { src: '/editions.png', alt: 'Image 1' },
+//     { src: '/audio.png', alt: 'Image 2' },
+//     { src: '/audio.png', alt: 'Image 3' },
+//     { src: '/audio.png', alt: 'Image 1' },
+//     { src: '/audio.png', alt: 'Image 2' },
+//     { src: '/audio.png', alt: 'Image 3' },
+//     { src: '/audio.png', alt: 'Image 1' },
+//     { src: '/audio.png', alt: 'Image 2' },
+//     { src: '/audio.png', alt: 'Image 3' },
+//     { src: '/editions.png', alt: 'Image 1' },
+//     // Add more images as needed
+// ];
 
 export const PersonCard = ({ name, occupation, bio, imageSrc }: any) => {
     return (
@@ -114,7 +113,7 @@ export const PersonCard = ({ name, occupation, bio, imageSrc }: any) => {
 export default function AudioPage() {
     const [data, setData] = useState<any[]>([]);
     const [aLaUne, setALaUne]: any = useState(null);
-    const [selectedProjects, setSelectedProjects] = useState<{ accueil: string | null, audio: [] | null, _id: string }>({
+    const [selectedProjects, setSelectedProjects] = useState<any>({
         accueil: null,
         audio: [],
         _id: "652ec1d556dfdb7cfae39dfc",
@@ -130,20 +129,16 @@ export default function AudioPage() {
         fetch("http://localhost:3000/alaune")
             .then((response) => response.json())
             .then((responseData: any) => {
-                console.log("responseData.aLaUneData")
-                console.log(responseData.aLaUneData)
                 setSelectedProjects(responseData.aLaUneData[0]); // Assuming the API returns an array of project objects
             })
             .catch((error) => console.error("Error fetching data:", error));
 
     }, []);
     useEffect(() => {
-        if (selectedProjects.audio) {
+        if (selectedProjects.audio && selectedProjects.audio.length > 0) {
             setALaUne(data.filter((elem) => elem._id === selectedProjects.audio[0])[0]);
         }
-    }, [selectedProjects])
-
-    console.log(aLaUne)
+    }, [data, selectedProjects])
 
     return (
         <div className="flex flex-col justify-center items-center h-full p-10 mt-[8vh]">
@@ -177,8 +172,8 @@ export default function AudioPage() {
                 </p>
                 <div className="flex flex-wrap justify-center gap-16 my-10">
                     {data.filter((elem: any) => elem.tags.includes("Nos Créations Originales")).map((item, index) => (
-                        <>
-                            <div key={index} className="w-80 h-80 mb-6">
+                        <div key={index}>
+                            <div className="w-80 h-80 mb-6">
                                 <a href={!(item.enSavoirPlus.includes('https://')) ? 'https://podcasts.audiomeans.fr/' + item.enSavoirPlus : item.enSavoirPlus} target="_blank" rel="noopener noreferrer">
                                     <Image loading="lazy"
                                         src={'http://localhost:3000/image/' + item.coverFilename}
@@ -190,7 +185,7 @@ export default function AudioPage() {
                                 </a>
                             </div>
                             {index % 3 === 2 && <div className="w-full"></div>}
-                        </>
+                        </div>
                     ))}
                 </div>
             </div>
@@ -203,8 +198,8 @@ export default function AudioPage() {
                 </p>
                 <div className="flex flex-wrap justify-center gap-16 my-10">
                     {data.filter((elem: any) => elem.tags.includes("Nos Créations pour les Marques")).map((item, index) => (
-                        <>
-                            <div key={index} className="w-80 h-80 mb-6">
+                        <div key={index}>
+                            <div className="w-80 h-80 mb-6">
                                 <a href={!(item.enSavoirPlus.includes('https://')) ? 'https://podcasts.audiomeans.fr/' + item.enSavoirPlus : item.enSavoirPlus} target="_blank" rel="noopener noreferrer">
                                     <Image loading="lazy"
                                         src={'http://localhost:3000/image/' + item.coverFilename}
@@ -216,7 +211,7 @@ export default function AudioPage() {
                                 </a>
                             </div>
                             {index % 3 === 2 && <div className="w-full"></div>}
-                        </>
+                        </div>
                     ))}
                 </div>
             </div>
@@ -253,7 +248,7 @@ export default function AudioPage() {
                     Chez StudioFact Audio, nous produisons aussi des podcasts pour les marques et les institutions qui veulent mettre l’audio au cœur de leur stratégie de communication. Nous vous accompagnons sur toute la chaîne de valeur du podcast de la conception à la diffusion, en passant par toutes les étapes de production.
                 </p>
                 <div className='flex justify-center my-10'>
-                    <iframe title="oui" className="w-[1000px] h-[900px]" id="instagram-embed-1" src="https://www.instagram.com/studiofact.audio/embed/" allowTransparency={true} allowFullScreen={true} frameBorder="0" height="560" data-instgrm-payload-id="instagram-media-payload-1"></iframe>
+                    <iframe title="oui" className="w-[1000px] h-[900px]" id="instagram-embed-1" src="https://www.instagram.com/studiofact.audio/embed/"  allowFullScreen={true} frameBorder="0" height="560" data-instgrm-payload-id="instagram-media-payload-1"></iframe>
                 </div>
             </div>
             {/* <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">

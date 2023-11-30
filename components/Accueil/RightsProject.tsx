@@ -1,8 +1,6 @@
 import { motion, useAnimation, useInView } from "framer-motion";
 import Image from "next/legacy/image";
 import React, { useEffect, useRef, useState } from "react";
-import { FaTimes } from "react-icons/fa"; // Import the close icon from a library
-import TextTabs from "./TextTabs";
 import { ProjectModal } from "./VideoTextCard";
 
 function renderContentWithLineBreaks(content: any) {

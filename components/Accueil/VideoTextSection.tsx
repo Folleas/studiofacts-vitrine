@@ -1,4 +1,4 @@
-import { motion, useAnimation, useAnimationControls } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { useInView } from "framer-motion"
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
@@ -7,14 +7,6 @@ export const MovingCircle = ({ top, left, color, x, y, size }: any) => {
   const ref = useRef(null);
   const isInView = useInView(ref);
   const controls = useAnimation();
-
-  useEffect(() => {
-    console.log("isInView")
-    console.log(isInView)
-    if (isInView) {
-      controls.start(driftVariants.animate);
-    }
-  }, [controls, isInView]);
 
   const initialPosition = {
     top: top,
@@ -30,6 +22,12 @@ export const MovingCircle = ({ top, left, color, x, y, size }: any) => {
       y: y,
     },
   };
+  useEffect(() => {
+    if (isInView) {
+      controls.start(driftVariants.animate);
+    }
+  }, [controls, driftVariants.animate, isInView]);
+
 
   const transition = {
     type: "spring",
@@ -71,8 +69,6 @@ export default function VideoTextSection({displayButton, title1, title2, paragra
   const controls = useAnimation();
 
   useEffect(() => {
-    console.log("isInView")
-    console.log(isInView)
     if (isInView) {
       controls.start('visible');
     }

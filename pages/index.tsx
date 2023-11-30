@@ -9,10 +9,6 @@ export default function Web() {
   const [derniereRealisations, setDerniereRealisations] = useState<any>(null);
   const [dernierPosts, setDernierPosts] = useState<any>(null);
   // Scroll to top when path changes
-  const [selectedProjects, setSelectedProjects] = useState<{ accueil: string | null, _id: string }>({
-    accueil: null,
-    _id: "652ec1d556dfdb7cfae39dfc",
-  });
 
   useEffect(() => {
     // Make the API request to localhost:3000/project/ with Realisation as a parameter
@@ -35,8 +31,6 @@ export default function Web() {
         .then((response) => response.json() as any) // Type assertion here
         .then((responseData) => {
           if (responseData?.aLaUneData) {
-            console.log("responseData.aLaUneData")
-            console.log(responseData.aLaUneData[0].accueil)
             setDernierPosts(posts.filter((post: any) => responseData.aLaUneData[0].accueil.includes(post._id)))
           }
         })
@@ -96,7 +90,7 @@ export default function Web() {
             <h1 className="text-2xl xl:text-6xl font-bold text-white mb-8">Suivez-nous sur Instagram</h1>
           </div>
           <div className='flex justify-center my-10'>
-            <iframe title="oui" className="w-[1000px] h-[900px]" id="instagram-embed-1" src="https://www.instagram.com/studiofact.officiel/embed/" allowTransparency={true} allowFullScreen={true} frameBorder="0" height="560" data-instgrm-payload-id="instagram-media-payload-1"></iframe>
+            <iframe title="oui" className="w-[1000px] h-[900px]" id="instagram-embed-1" src="https://www.instagram.com/studiofact.officiel/embed/"  allowFullScreen={true} frameBorder="0" height="560" data-instgrm-payload-id="instagram-media-payload-1"></iframe>
           </div>
         </div>
       </div>

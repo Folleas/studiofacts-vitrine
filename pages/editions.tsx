@@ -1,6 +1,5 @@
 import ALaUne from 'components/Accueil/ALaUne';
 import BookList from 'components/Accueil/BookList';
-import { TalentCard } from 'components/Accueil/Talents';
 import Team from 'components/Accueil/Team';
 import TitleParagraph from 'components/Accueil/TitleParagraph';
 import { motion, useAnimation, useInView } from 'framer-motion';
@@ -19,8 +18,6 @@ export default function EditionsPage() {
     const controls = useAnimation();
 
     useEffect(() => {
-        console.log("isInView")
-        console.log(isInView)
         if (isInView) {
             controls.start('visible');
         }
@@ -44,20 +41,16 @@ export default function EditionsPage() {
         // Replace with your actual API endpoint and parameters
         fetch('http://localhost:3000/project/type/Editions')
             .then((response) => response.json() as any) // Type assertion here
-            .then((responseData) => { console.log(responseData.realisationProjects); setData(responseData.realisationProjects) })
+            .then((responseData) => { setData(responseData.realisationProjects) })
             .catch((error) => console.error('Error fetching data:', error));
         fetch("http://localhost:3000/alaune")
             .then((response) => response.json())
             .then((responseData: any) => {
-                console.log("responseData.aLaUneData")
-                console.log(responseData.aLaUneData)
                 setSelectedProjects(responseData.aLaUneData[0]); // Assuming the API returns an array of project objects
             })
             .catch((error) => console.error("Error fetching data:", error));
     }, []);
 
-    console.log("selectedProjects.editions")
-    console.log(selectedProjects.editions)
     return (
         <div className="flex flex-col justify-center items-center h-full w-full p-10 mt-[8vh]">
             <TitleParagraph color1={'bg-[#59AA6F]'} color2={'bg-[#FF3133]'} top1={150} top2={50} left1={600} left2={400} x1={500} x2={400} y1={100} y2={-200} title="Éditions : Une maison d'édition spécialisée dans la littérature du réel" paragraph="La vocation de nos livres est de raconter le réel. Sans goût pour le scandale ou pour l’écume du jour, nous publions des histoires fortes, porteuses de sens." ></TitleParagraph>
@@ -107,7 +100,7 @@ export default function EditionsPage() {
                     </p>
                 </div>
                 <div className='flex justify-center my-16'>
-                    <iframe title="oui" className="w-[1000px] h-[900px]" id="instagram-embed-1" src="https://www.instagram.com/studiofact.editions/embed/" allowTransparency={true} allowFullScreen={true} frameBorder="0" height="560" data-instgrm-payload-id="instagram-media-payload-1"></iframe>
+                    <iframe title="oui" className="w-[1000px] h-[900px]" id="instagram-embed-1" src="https://www.instagram.com/studiofact.editions/embed/"  allowFullScreen={true} frameBorder="0" height="560" data-instgrm-payload-id="instagram-media-payload-1"></iframe>
                 </div>
             </motion.div>
         </div>

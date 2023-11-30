@@ -8,8 +8,6 @@ export default function TitleParagraph({ title, paragraph, top1, left1, top2, le
     const controls = useAnimation();
   
     useEffect(() => {
-      console.log("isInView")
-      console.log(isInView)
       if (isInView) {
         controls.start('visible');
       }
@@ -19,7 +17,7 @@ export default function TitleParagraph({ title, paragraph, top1, left1, top2, le
       hidden: {
         opacity: 0,
       },
-      visible: (custom: any) => ({
+      visible: () => ({
         opacity: 1,
         transition: {
           duration: 1.5,

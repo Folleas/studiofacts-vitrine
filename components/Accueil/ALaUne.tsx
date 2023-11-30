@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import NewsSlider from './NewsSlider';
-import { isArray } from 'lodash';
-import { useInView, useAnimation, motion } from 'framer-motion';
+import { motion, useAnimation, useInView } from 'framer-motion';
 
 export default function ALaUne({ selectedProjects, data }: any) {
     const [posts, setPosts] = useState<any[]>([]);
@@ -10,12 +9,10 @@ export default function ALaUne({ selectedProjects, data }: any) {
     const ref = useRef(null);
     const isInView = useInView(ref);
     const controls = useAnimation();
-    const temp = data.filter((elem: any, index: number) => selectedProjects.includes(elem._id));
+    const temp = data.filter((elem: any) => selectedProjects.includes(elem._id));
     const filteredPosts = posts.filter((elem: any) => temp.some((tempElem: any) => tempElem.title === elem.projectID));
 
     useEffect(() => {
-        console.log("isInView")
-        console.log(isInView)
         if (isInView) {
             controls.start('visible');
         }
@@ -25,7 +22,7 @@ export default function ALaUne({ selectedProjects, data }: any) {
         hidden: {
             opacity: 0,
         },
-        visible: (custom: any) => ({
+        visible: () => ({
             opacity: 1,
             transition: {
                 duration: 1.5,
@@ -45,20 +42,16 @@ export default function ALaUne({ selectedProjects, data }: any) {
 
     useEffect(() => {
         const slideInterval = setInterval(() => {
-            console.log("isAutoSlide")
-            console.log(isAutoSlide)
             if (isAutoSlide === true && filteredPosts.length > 0)
                 setCurrentSlide((prevSlide) => (prevSlide + 1) % filteredPosts.length);
             else
                 setIsAutoSlide(true);
-            console.log("end")
-            console.log(isAutoSlide)
         }, 5000);
 
         return () => {
             clearInterval(slideInterval);
         };
-    }, [isAutoSlide]);
+    }, [filteredPosts.length, isAutoSlide]);
 
     const prevSlide = () => {
         const prev = (currentSlide - 1 + selectedProjects?.length) % filteredPosts?.length;

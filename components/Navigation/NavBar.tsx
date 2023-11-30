@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import Image from "next/legacy/image";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { SocialIcon } from 'react-social-icons'
 
 const links = [

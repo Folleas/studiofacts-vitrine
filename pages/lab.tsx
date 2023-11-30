@@ -2,69 +2,29 @@
 import { TalentCard } from 'components/Accueil/Talents';
 import TitleParagraph from 'components/Accueil/TitleParagraph';
 import { Button } from 'components/Button/Button';
-import InstagramProfileGrid from 'components/InstagramProfileGrid';
 import { motion } from 'framer-motion';
 import Image from "next/legacy/image";
-import { useEffect, useRef, useState } from 'react';
-
-const data = [
-    {
-        title: 'Item 1',
-        src: '/journoir.png',
-        link: 'https://google.com',
-    },
-    {
-        title: 'Item 2',
-        src: '/audioculs.jpg',
-        link: 'link2',
-    },
-    {
-        title: 'Item 2',
-        src: '/audioculs.jpg',
-        link: 'link2',
-    },
-    {
-        title: 'Item 2',
-        src: '/audioculs.jpg',
-        link: 'link2',
-    },
-    {
-        title: 'Item 2',
-        src: '/audioculs.jpg',
-        link: 'link2',
-    },
-    {
-        title: 'Item 2',
-        src: '/audioculs.jpg',
-        link: 'link2',
-    },
-    {
-        title: 'Item 2',
-        src: '/audioculs.jpg',
-        link: 'link2',
-    },
-    // Add more items as needed
-];
+import { useEffect, useState } from 'react';
 
 const ImageList = ({ images }: any) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [isAuto, setIsAuto] = useState(true);
 
-    const previousSlide = () => {
-        setIsAuto(false);
-        setActiveIndex((prevIndex) =>
-            prevIndex === 0 ? images.length - 4 : prevIndex - 4
-        );
-    };
+    // const previousSlide = () => {
+    //     setIsAuto(false);
+    //     setActiveIndex((prevIndex) =>
+    //         prevIndex === 0 ? images.length - 4 : prevIndex - 4
+    //     );
+    // };
 
-    const nextSlide = () => {
-        setIsAuto(false);
-        setActiveIndex((prevIndex) =>
-            prevIndex >= images.length - 4 ? 0 : prevIndex + 4
-        );
-    };
-
+    
     useEffect(() => {
+        const nextSlide = () => {
+            setIsAuto(false);
+            setActiveIndex((prevIndex) =>
+                prevIndex >= images.length - 4 ? 0 : prevIndex + 4
+            );
+        };
         const autoScroll = setInterval(() => {
             if (isAuto)
                 nextSlide();
@@ -75,7 +35,7 @@ const ImageList = ({ images }: any) => {
         return () => {
             clearInterval(autoScroll);
         };
-    }, [activeIndex, isAuto]);
+    }, [activeIndex, images.length, isAuto]);
 
     return (
         <div className="flex flex-col">
@@ -146,8 +106,6 @@ export default function LabPage() {
         fetch("http://localhost:3000/alaune")
             .then((response) => response.json())
             .then((responseData: any) => {
-                console.log("responseData.aLaUneData")
-                console.log(responseData.aLaUneData)
                 setSelectedProjects(responseData.aLaUneData[0]); // Assuming the API returns an array of project objects
             })
             .catch((error) => console.error("Error fetching data:", error));
@@ -156,9 +114,7 @@ export default function LabPage() {
     useEffect(() => {
         if (selectedProjects.audio != null)
             setALaUne(data.filter((elem) => elem._id === selectedProjects.audio)[0]);
-    }, [selectedProjects])
-
-    console.log(aLaUne)
+    }, [data, selectedProjects])
 
     return (
         <div className="flex flex-col justify-center items-center h-full p-10 mt-[8vh]">
@@ -276,7 +232,7 @@ export default function LabPage() {
                     Chez StudioFact Audio, nous produisons aussi des podcasts pour les marques et les institutions qui veulent mettre l’audio au cœur de leur stratégie de communication. Nous vous accompagnons sur toute la chaîne de valeur du podcast de la conception à la diffusion, en passant par toutes les étapes de production.
                 </p>
                 <div className='flex justify-center my-10'>
-                    <iframe title="oui" className="w-[1000px] h-[900px]" id="instagram-embed-1" src="https://www.instagram.com/studiofact.audio/embed/" allowTransparency={true} allowFullScreen={true} frameBorder="0" height="560" data-instgrm-payload-id="instagram-media-payload-1"></iframe>
+                    <iframe title="oui" className="w-[1000px] h-[900px]" id="instagram-embed-1" src="https://www.instagram.com/studiofact.audio/embed/"  allowFullScreen={true} frameBorder="0" height="560" data-instgrm-payload-id="instagram-media-payload-1"></iframe>
                 </div>
             </div>
             <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">

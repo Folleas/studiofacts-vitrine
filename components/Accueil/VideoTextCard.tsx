@@ -21,8 +21,6 @@ export function ProjectModal({
 
   if (!isOpen) return null;
 
-  console.log("moreDetails")
-  console.log(moreDetails)
   return (
     <motion.div
       className="fixed inset-0 flex items-center justify-center z-50"
@@ -188,7 +186,7 @@ export default function VideoTextCard({
 }: any) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const ref = useRef(null);
-  const refVideo = useRef(null);
+  const refVideo: any = useRef(null);
   const isInView = useInView(ref);
   const controls = useAnimation();
 
@@ -197,12 +195,10 @@ export default function VideoTextCard({
       controls.start('visible');
       if (refVideo && refVideo.current && typeof refVideo.current.play === 'function') {
         refVideo.current.play();
-        console.log('Play');
       }
     } else {
       if (refVideo && refVideo.current && typeof refVideo.current.pause === 'function') {
         refVideo.current.pause();
-        console.log('Pause');
       }
     }
   }, [controls, isInView]);

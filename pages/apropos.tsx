@@ -1,9 +1,8 @@
 // pages/AboutUs.js
-import { Fondateurs } from 'components/Accueil/Fondateurs';
-import { Talents } from 'components/Accueil/Talents';
-import VideoTextSection from 'components/Accueil/VideoTextSection';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
+import { Fondateurs } from 'components/Accueil/Fondateurs';
+import VideoTextSection from 'components/Accueil/VideoTextSection';
+import { Talents } from 'components/Accueil/Talents';
 
 
 export default function AboutUs() {

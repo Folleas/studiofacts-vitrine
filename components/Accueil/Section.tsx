@@ -1,20 +1,11 @@
-import { motion, useAnimation, useAnimationControls } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { useInView } from "framer-motion"
-import Image from "next/legacy/image";
 import { useEffect, useRef, useState } from 'react';
 
 const MovingCircle = ({ top, left, color, x, y, size }: any) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
     const controls = useAnimation();
-
-    useEffect(() => {
-        console.log("isInView")
-        console.log(isInView)
-        if (isInView) {
-            controls.start(driftVariants.animate);
-        }
-    }, [controls, isInView]);
 
     const initialPosition = {
         top: top,
@@ -30,6 +21,12 @@ const MovingCircle = ({ top, left, color, x, y, size }: any) => {
             y: y,
         },
     };
+
+    useEffect(() => {
+        if (isInView) {
+            controls.start(driftVariants.animate);
+        }
+    }, [controls, driftVariants.animate, isInView]);
 
     const transition = {
         type: "spring",
@@ -74,8 +71,8 @@ const useWidth = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return width
-  }
-  
+}
+
 export default function Section() {
     const ref = useRef(null);
     const isInView = useInView(ref);
@@ -83,8 +80,6 @@ export default function Section() {
     const width = useWidth();
 
     useEffect(() => {
-        console.log("isInView")
-        console.log(isInView)
         if (isInView) {
             controls.start('visible');
         }
@@ -112,7 +107,7 @@ export default function Section() {
                 <h3 className="text-xl xl:text-5xl text-[red] font-bold mb-3">Nos spécificités</h3>
                 <h2 className="text-2xl xl:text-6xl font-bold w-[500px]">Le réel au coeur de notre ADN</h2>
                 <motion.div ref={ref} initial='hidden' animate={controls} variants={imageVariants} className='flex w-full'>
-                    { width < 768 ?
+                    {width < 768 ?
                         <div className='flex flex-col w-full'>
                             <p className="text-2xl xl:text-5xl w-full max-h-[650px] overflow-y-scroll mt-10">
                                 StudioFact media group se différencie avant tout par la nature de ses contenus :<br /><br />

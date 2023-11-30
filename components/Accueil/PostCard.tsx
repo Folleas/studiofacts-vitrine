@@ -4,7 +4,6 @@ export default function PostCard({
   title,
   tags,
   content,
-  projectID,
 }: any) {
   return (
     <div className="p-4 w-full xl:w-3/4">

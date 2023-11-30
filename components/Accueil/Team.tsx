@@ -1,18 +1,14 @@
 import { motion, useAnimation, useInView } from 'framer-motion';
-import Image from "next/legacy/image";
-import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { TalentCard } from './Talents';
 import { PersonCard } from 'pages/audio';
 
-export default function Team({ item, talents = [], isPerson = true }: any) {
+export default function Team({ talents = [], isPerson = true }: any) {
     const ref = useRef(null);
     const isInView = useInView(ref);
     const controls = useAnimation();
 
     useEffect(() => {
-        console.log("isInView")
-        console.log(isInView)
         if (isInView) {
             controls.start('visible');
         }
@@ -30,8 +26,6 @@ export default function Team({ item, talents = [], isPerson = true }: any) {
             delay: 2,
         }),
     };
-    console.log('item')
-    console.log(item)
     return (
         <motion.div variants={imageVariants}
             initial="hidden"

@@ -1,6 +1,5 @@
 import { motion, useAnimation, useInView } from 'framer-motion';
 import Image from "next/legacy/image";
-import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import TextTabs from './TextTabs';
@@ -10,14 +9,11 @@ function ProjectModal({
     onClose,
     data
 }: any) {
-    const modalRef = useRef<HTMLDivElement>(null);
     const [pressKitModalOpen, setPressKitModalOpen] = useState(false);
 
-    const openPressKitModal = (pressKit: { label: string, file: string }) => {
+    const openPressKitModal = () => {
         setPressKitModalOpen(true);
     };
-    console.log("--------------data")
-    console.log(data)
     if (!isOpen) return null;
     const today = new Date(data.releaseDate);
     const yyyy = today.getFullYear();
@@ -100,7 +96,7 @@ function ProjectModal({
                                 <h3 className='w-5/12 text-xs xl:text-lg font-bold text-end text-[#1e2428] mt-1'>Télécharger le kit presse</h3>
                                 <p
                                     className='w-5/12 text-xs xl:text-lg self-center font-semibold text-[#1e2428] mt-1 cursor-pointer'
-                                    onClick={() => openPressKitModal(data.pressKit)}>
+                                    onClick={() => openPressKitModal()}>
                                     Cliquez ici
                                 </p>
                             </div>
@@ -240,8 +236,6 @@ export default function BookList({ data }: any) {
     const controls = useAnimation();
 
     useEffect(() => {
-        console.log("isInView")
-        console.log(isInView)
         if (isInView) {
             controls.start('visible');
         }
