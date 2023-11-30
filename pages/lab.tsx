@@ -99,11 +99,11 @@ export default function LabPage() {
     useEffect(() => {
         // Make the API request to localhost:3000/project/ with Realisation as a parameter
         // Replace with your actual API endpoint and parameters
-        fetch('studiofact.fr/project/type/Lab')
+        fetch('https://studiofact.fr/project/type/Lab')
             .then((response) => response.json() as any) // Type assertion here
             .then((responseData) => { setData(responseData.realisationProjects) })
             .catch((error) => console.error('Error fetching data:', error));
-        fetch("studiofact.fr/alaune")
+        fetch("https://studiofact.fr/alaune")
             .then((response) => response.json())
             .then((responseData: any) => {
                 setSelectedProjects(responseData.aLaUneData[0]); // Assuming the API returns an array of project objects

@@ -88,12 +88,12 @@ export default function RightsProject({
                 muted
                 className="w-full h-full absolute inset-0 object-contain "
               >
-                <source src={'studiofact.fr/image/' + videoSrc} type="video/mp4" />
+                <source src={'https://studiofact.fr/image/' + videoSrc} type="video/mp4" />
               </video>
             ) : (
               <div className="">
                 <Image
-                  src={'studiofact.fr/image/' + coverFilename}
+                  src={'https://studiofact.fr/image/' + coverFilename}
                   layout="responsive"
                   alt={imageAlt}
                   width={300}
