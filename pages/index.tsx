@@ -15,19 +15,19 @@ export default function Web() {
     // Replace with your actual API endpoint and parameters
 
 
-    // fetch('https://studiofact.fr:3002/post/latest-release-dates/2')
+    // fetch('localhost:3002/post/latest-release-dates/2')
     //   .then((response) => response.json() as any) // Type assertion here
     //   .then((responseData) => { responseData?.posts && setDernierPosts(responseData.posts) })
     //   .catch((error) => console.error('Error fetching data:', error));
     const fetchPost = async () => {
       let posts: any = [];
-      await fetch('https://studiofact.fr:3002/post')
+      await fetch('localhost:3002/post')
         .then((response) => response.json())
         .then((responseData: any) => {
           posts = responseData.postData; // Assuming the API returns an array of post objects
         })
         .catch((error) => console.error('Error fetching data:', error));
-      await fetch('https://studiofact.fr:3002/alaune')
+      await fetch('localhost:3002/alaune')
         .then((response) => response.json() as any) // Type assertion here
         .then((responseData) => {
           if (responseData?.aLaUneData) {
@@ -37,7 +37,7 @@ export default function Web() {
         .catch((error) => console.error('Error fetching data:', error));
     }
     fetchPost();
-    fetch('https://studiofact.fr:3002/project/latest-release-dates/2')
+    fetch('localhost:3002/project/latest-release-dates/2')
       .then((response) => response.json() as any) // Type assertion here
       .then((responseData) => { responseData?.projects && setDerniereRealisations(responseData.projects) })
       .catch((error) => console.error('Error fetching data:', error));

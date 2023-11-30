@@ -32,7 +32,7 @@ export default function ALaUne({ selectedProjects, data }: any) {
     };
     useEffect(() => {
         // Make the API request to localhost:3000/post
-        fetch('https://studiofact.fr:3002/post')
+        fetch('localhost:3002/post')
             .then((response) => response.json())
             .then((responseData: any) => {
                 setPosts(responseData.postData); // Assuming the API returns an array of post objects
