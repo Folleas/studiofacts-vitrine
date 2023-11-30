@@ -10,7 +10,7 @@ export default function Web() {
     // Function to fetch data from the API
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/project`);
+        const response = await fetch(`studiofact.fr/project`);
         const responseData: any = await response.json();
 
         // Filter the responseData based on the desired types

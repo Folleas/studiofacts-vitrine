@@ -171,11 +171,11 @@ export default function RightsPage() {
     }, [controls, isInView]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/project/rights')
+        fetch('studiofact.fr/project/rights')
             .then((response) => response.json() as any)
             .then((responseData) => { setData(responseData.rightsProjects) })
             .catch((error) => console.error('Error fetching data:', error));
-        fetch("http://localhost:3000/alaune")
+        fetch("studiofact.fr/alaune")
             .then((response) => response.json())
             .then((responseData: any) => {
                 setSelectedProjects(responseData.aLaUneData[0]);
