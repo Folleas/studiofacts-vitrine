@@ -2,6 +2,8 @@
 import NavBar from "components/Navigation/NavBar";
 import { motion } from 'framer-motion';
 import Head from "next/head";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {// styles the main html tag
     return (
@@ -17,12 +19,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {// 
                 <meta name="twitter:card" content="summary_large_image" />
                 <title>Studio Facts</title>
             </Head>
-            <div className="flex flex-col h-screen bg-[#1e2428]">
-                <div className="z-10 absolute top-0 left-0 w-full">
+            <div className="flex flex-col relative bg-[#1e2428]">
+                <div className="z-30 fixed top-0 left-0 w-full">
                     <NavBar />
                 </div>
-                <div className="z-10 absolute bottom-0 left-0 w-full">
-                    <div className="h-[5vh] w-full flex items-center justify-around backdrop-blur-lg">
+                <main className=""> {/* Add padding-top to accommodate Navbar */}
+                    <motion.div
+                        id="top"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 20 }}
+                    >
+                        {children}
+                    </motion.div>
+                </main>
+                <div className="z-10 fixed bottom-0 left-0 w-full">
+                    <div className="h-[5vh] w-full flex items-center justify-between p-4 backdrop-blur-lg">
                         <p className="text-white text-[0.5rem] sm:text-2xl">
                             Copyright © 2023 StudioFact Media Group, tous droits réservés.
                         </p>
@@ -30,20 +42,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {// 
                             Mentions Légales
                         </p>
                     </div>
-                    {/* <div className=" backdrop-blur-lg">
-
-                    </div> */}
                 </div>
-                <main className="h-[100vh] overflow-y-scroll">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 20 }}
-                    >
-                        {children}
-                    </motion.div>
-                    <div className="h-[5vh]"></div>
-                </main>
             </div>
         </>
     );

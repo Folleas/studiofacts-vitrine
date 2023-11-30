@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env FORCE_COLOR=1 next dev",
+    "dev": "cross-env FORCE_COLOR=1 NEXT_SHARP_PATH=\"/node_modules/sharp\" next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -57,6 +57,8 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
     "react-instagram-embed": "^3.0.0",
+    "react-social-icons": "^6.7.0",
+    "sharp": "^0.32.6",
     "tailwind-merge": "^1.10.0",
     "zod": "^3.21.4"
   },

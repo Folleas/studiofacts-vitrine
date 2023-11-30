@@ -15,7 +15,7 @@ export default function Web() {
   }, []);
 
   return (
-    <div className='flex flex-col h-full justify-center items-center'>
+    <div className='flex flex-col h-full justify-center mt-[8vh] items-center'>
       <div className='flex w-3/4'>
         <h1 className="text-4xl font-semibold mt-10">Posts</h1>
       </div>

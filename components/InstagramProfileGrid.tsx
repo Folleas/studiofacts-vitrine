@@ -1,6 +1,6 @@
 // InstagramProfileGrid.js
 import axios from 'axios';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import React, { useEffect, useState } from 'react';
 
 const InstagramProfileGrid = ({ profileUsername }: any) => {

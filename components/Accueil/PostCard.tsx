@@ -18,11 +18,11 @@ export default function PostCard({
               <strong>Tags: {tags.join(', ')}</strong>
             </p>
           ) : null}
-          {projectID ? (
+          {/* {projectID ? (
             <p className="text-gray-700 text-sm xl:text-xl">
               <strong>Project ID: {projectID}</strong>
             </p>
-          ) : null}
+          ) : null} */}
           <p className="text-gray-700 text-sm xl:text-xl">{content}</p>
         </div>
       </div>
