@@ -49,7 +49,7 @@ const ImageList = ({ images }: any) => {
                         transition={{ duration: 1.5 + index / 2 }}
                         className='h-[200px]'
                     >
-                        <Image loading="lazy" 
+                        <Image  
                             width={450}
                             height={450}
                             src={image.src}
@@ -151,7 +151,7 @@ export default function LabPage() {
                         <>
                             <div key={index} className="w-80 h-80 mb-6">
                                 <a href={item.link} target="_blank" rel="noopener noreferrer">
-                                    <Image loading="lazy" 
+                                    <Image  
                                         src={'/' + item.coverFilename}
                                         alt={item.title}
                                         width={400}
@@ -177,7 +177,7 @@ export default function LabPage() {
                         <>
                             <div key={index} className="w-80 h-80 mb-6">
                                 <a href={item.link} target="_blank" rel="noopener noreferrer">
-                                    <Image loading="lazy" 
+                                    <Image  
                                         src={'/' + item.coverFilename}
                                         alt={item.title}
                                         width={400}
@@ -206,7 +206,7 @@ export default function LabPage() {
                         imageSrc="roxane2.png"
                     />
                     <div className="w-32 h-32 rounded-full mx-4">
-                        <Image loading="lazy" 
+                        <Image  
                             src="/vertical-logo-audio3.png"
                             alt="Your Image Alt Text"
                             width={128}

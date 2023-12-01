@@ -46,7 +46,7 @@ function ProjectModal({
                         <div className="flex mb-4 justify-center">
                             {
                                 data?.coverFilename &&
-                                <Image loading="lazy"
+                                <Image 
                                     src={'https://studiofact.group/image/' + data.coverFilename}
                                     alt={`Cover Image for ${data.title}`}
                                     width={367}
@@ -149,7 +149,7 @@ function ProjectModal({
                                         >
                                             {
                                                 resource &&
-                                                <Image loading="lazy"
+                                                <Image 
                                                     src={'https://studiofact.group/image/' + resource}
                                                     alt={`Resource Image ${index}`}
                                                     layout="fill"
@@ -208,7 +208,7 @@ function BookCard({ item }: any) {
             <div className="relative w-[325px] h-[450px]">
                 {
                     item?.coverFilename &&
-                    <Image loading="lazy"
+                    <Image 
                         src={'https://studiofact.group/image/' + item.coverFilename}
                         alt={item.title}
                         layout="fill"

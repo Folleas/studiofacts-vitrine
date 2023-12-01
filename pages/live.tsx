@@ -42,7 +42,7 @@ import { useEffect, useState } from 'react';
 //                         transition={{ duration: 1.5 + index / 2 }}
 //                         className='h-[200px]'
 //                     >
-//                         <Image loading="lazy"
+//                         <Image 
 //                             width={450}
 //                             height={450}
 //                             src={image.src}
@@ -141,7 +141,7 @@ export default function LivePage() {
                         <>
                             <div key={index} className="w-80 h-80 mb-6">
                                 <a href={item.link} target="_blank" rel="noopener noreferrer">
-                                    <Image loading="lazy"
+                                    <Image 
                                         src={'/' + item.coverFilename}
                                         alt={item.title}
                                         width={400}
@@ -167,7 +167,7 @@ export default function LivePage() {
                         <>
                             <div key={index} className="w-80 h-80 mb-6">
                                 <a href={item.link} target="_blank" rel="noopener noreferrer">
-                                    <Image loading="lazy"
+                                    <Image 
                                         src={'/' + item.coverFilename}
                                         alt={item.title}
                                         width={400}

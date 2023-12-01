@@ -121,7 +121,7 @@ export const TalentCard = ({ name, occupation, imageSrc }: any) => {
                 {/* Image */}
                 <div className="flex flex-col h-full rounded-lg shadow-xl overflow-hidden min-w-[350px]">
                     <div className="relative w-[250px] h-[250px]  rounded-full self-center overflow-hidden">
-                        <Image loading="lazy" 
+                        <Image  
                             src={`/${imageSrc}`}
                             alt={name}
                             layout="fill"

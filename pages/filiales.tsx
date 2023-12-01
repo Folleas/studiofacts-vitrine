@@ -91,7 +91,7 @@ const Filiale = ({ title, text, imageSrc, isEven, href }: any) => {
     <motion.div ref={ref} initial='hidden' animate={controls} variants={imageVariants} className={` w-full flex ${flexReverseClass} items-center mb-10 shadow-xl xl:mb-0 xl:p-10`}>
       <div className={`w-full flex ${justifyClass}`}>
         <Link href={href} className="relative mx-auto mb-6 xl:mb-0 rounded-xl overflow-hidden h-[150px] w-[300px] xl:h-[300px] xl:w-[600px] md:min-h-[64]">
-          <Image loading="lazy" 
+          <Image  
             src={imageSrc}
             alt={title}
             layout="fill"

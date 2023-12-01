@@ -47,7 +47,7 @@ import { useEffect, useState } from 'react';
 //                         transition={{ duration: 1.5 + index / 2 }}
 //                         className='h-[200px]'
 //                     >
-//                         <Image loading="lazy"
+//                         <Image 
 //                             width={450}
 //                             height={450}
 //                             src={image.src}
@@ -92,7 +92,7 @@ export const PersonCard = ({ name, occupation, bio, imageSrc }: any) => {
             <div className="text-black rounded-lg w-[700px] shadow-lg overflow-hidden">
                 <div className="flex justify-center">
                     <div className="relative xl:w-[350px] xl:h-[350px] w-[150px] h-[150px] rounded-lg self-center overflow-hidden">
-                        <Image loading="lazy" 
+                        <Image  
                             src={`/${imageSrc}`}
                             alt={name}
                             layout="fill"
@@ -175,7 +175,7 @@ export default function AudioPage() {
                         <div key={index}>
                             <div className="w-80 h-80 mb-6">
                                 <a href={!(item.enSavoirPlus.includes('https://')) ? 'https://podcasts.audiomeans.fr/' + item.enSavoirPlus : item.enSavoirPlus} target="_blank" rel="noopener noreferrer">
-                                    <Image loading="lazy"
+                                    <Image 
                                         src={'https://studiofact.group/image/' + item.coverFilename}
                                         alt={item.title}
                                         width={400}
@@ -201,7 +201,7 @@ export default function AudioPage() {
                         <div key={index}>
                             <div className="w-80 h-80 mb-6">
                                 <a href={!(item.enSavoirPlus.includes('https://')) ? 'https://podcasts.audiomeans.fr/' + item.enSavoirPlus : item.enSavoirPlus} target="_blank" rel="noopener noreferrer">
-                                    <Image loading="lazy"
+                                    <Image 
                                         src={'https://studiofact.group/image/' + item.coverFilename}
                                         alt={item.title}
                                         width={400}

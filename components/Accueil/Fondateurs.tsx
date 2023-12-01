@@ -8,7 +8,7 @@ export const PersonCard = ({ name, occupation, bio, imageSrc }: any) => {
             <div className="text-black rounded-lg w-[700px] shadow-lg overflow-hidden">
                 <div className="flex justify-center">
                     <div className="relative xl:w-[350px] xl:h-[350px] w-[150px] h-[150px] rounded-lg self-center overflow-hidden">
-                        <Image loading="lazy" 
+                        <Image  
                             src={`/${imageSrc}`}
                             alt={name}
                             layout="fill"

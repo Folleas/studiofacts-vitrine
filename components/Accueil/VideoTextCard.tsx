@@ -88,7 +88,7 @@ export function ProjectModal({
                       key={index}
                       className={`relative min-w-[200px] min-h-[200px] rounded-xl overflow-hidden`}
                     >
-                      <Image loading="lazy"
+                      <Image 
                         src={'/' + resource}
                         alt={`Resource Image ${index}`}
                         layout="fill"
@@ -114,7 +114,7 @@ export function ProjectModal({
                 {/* Display cover image */}
                 {
                   coverFilename &&
-                  <Image loading="lazy"
+                  <Image 
                     src={'https://studiofact.group/image/' + coverFilename}
                     alt={`Cover Image for ${title}`}
                     width={567}
@@ -261,7 +261,7 @@ export default function VideoTextCard({
               <div className="">
                 {
                   coverFilename &&
-                  <Image loading="lazy"
+                  <Image 
                     src={'https://studiofact.group/image/' + coverFilename}
                     layout="fill"
                     alt={imageAlt}

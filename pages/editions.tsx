@@ -86,7 +86,7 @@ export default function EditionsPage() {
                 <h1 className="text-2xl xl:text-6xl font-bold mb-6">Suivez-nous sur Instagram</h1>
                 <div className="flex items-center">
                     <div className="w-[50px] h-[50px] mr-2">
-                        <Image loading="lazy"
+                        <Image 
                             src={'/instagram.svg'}
                             alt={`instagram icon`}
                             className='w-[50px] h-[50px]'

@@ -53,7 +53,7 @@ const ImageList = ({ images }: any) => {
                         transition={{ duration: 1.5 + index / 2 }}
                         className=''
                     >
-                        <Image loading="lazy"
+                        <Image 
                             width={400}
                             height={400}
                             src={'/' + image}
