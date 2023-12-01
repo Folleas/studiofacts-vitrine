@@ -42,7 +42,7 @@ export function ProjectModal({
             <h2 className="text-xl xl:text-6xl overflow-y-scroll min-h-[50px] max-h-[200px] text-[#1e2428] font-bold">{title}</h2>
 
             {/* Display tags under the title */}
-            <div className="my-6">
+            <div className="my-6 overflow-x-scroll">
               {type && (
                 <span
                   className={`${type === 'Stories' ? 'bg-[#FF3133]' :
