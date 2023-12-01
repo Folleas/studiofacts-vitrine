@@ -38,10 +38,10 @@ const links = [
                 url: 'audio',
                 label: 'Audio'
             },
-            {
-                url: 'stories',
-                label: 'Stories'
-            },
+            // {
+            //     url: 'stories',
+            //     label: 'Stories'
+            // },
             {
                 url: 'presse',
                 label: 'Presse'
@@ -54,10 +54,10 @@ const links = [
             //     url: 'lab',
             //     label: 'Lab'
             // },
-            {
-                url: 'live',
-                label: 'Live'
-            },
+            // {
+            //     url: 'live',
+            //     label: 'Live'
+            // },
         ]
     }
 ];

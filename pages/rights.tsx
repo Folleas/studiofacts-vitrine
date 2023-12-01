@@ -76,9 +76,9 @@ const ImageList = ({ images }: any) => {
 };
 export default function RightsPage() {
     const [data, setData] = useState<any[]>([]);
-    const [selectedProjects, setSelectedProjects] = useState<{ accueil: [], editions: [], _id: string }>({
+    const [selectedProjects, setSelectedProjects] = useState<{ accueil: [], live: [], _id: string }>({
         accueil: [],
-        editions: [],
+        live: [],
         _id: "",
     });
     const ref = useRef(null);
@@ -186,7 +186,7 @@ export default function RightsPage() {
         <div className="flex flex-col justify-center items-center h-full w-full p-10 mt-[8vh]">
             <TitleParagraph color1={'bg-[#59AA6F]'} color2={'bg-[#FF3133]'} top1={150} top2={50} left1={600} left2={400} x1={500} x2={400} y1={100} y2={-200} title="Rights : Une maison d'édition spécialisée dans la littérature du réel" paragraph="La vocation de nos livres est de raconter le réel. Sans goût pour le scandale ou pour l’écume du jour, nous publions des histoires fortes, porteuses de sens." ></TitleParagraph>
 
-            <ALaUne data={data} selectedProjects={selectedProjects.editions}></ALaUne>
+            <ALaUne data={data} selectedProjects={sortedRightsValues.flatMap(right => filteredProjects(right).map(project => project._id))}></ALaUne>
 
             <div className='bg-[#ededed] w-[100vw] mt-10 h-[600px] p-10'>
                 <h2 className="text-2xl xl:text-5xl text-left mb-4 text-black font-bold">Nos Partenaires</h2>

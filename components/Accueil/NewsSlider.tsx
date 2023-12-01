@@ -30,6 +30,8 @@ export default function NewsSlider({ item, currentSlide }: any) {
             <>
             </>
         )
+        console.log("item")
+        console.log(item)
     return (
         <div className={`absolute transition-opacity ease-in-out w-full duration-300 ${currentSlide ? 'opacity-[1]' : 'opacity-0'}`}>
             <div className="relative w-full h-[300px] xl:h-[600px]">
@@ -43,7 +45,7 @@ export default function NewsSlider({ item, currentSlide }: any) {
                 <motion.div initial="hidden" animate={controls} ref={ref} variants={variants} className="absolute inset-0 flex flex-col justify-center bg-gradient-to-b from-transparent from-0% via-[rgba(30,36,40,0.5)] via-50% to-transparent to-100% items-center text-white">
                     <h2 className="text-3xl xl:text-6xl font-bold">{item.title}</h2>
                     <p className="text-2xl">{item.subtitle}</p>
-                    <Link href={item.link} className="mt-4 px-4 py-2 bg-[#ededed] hover:bg-[#ffffff] text-[#1e2428] rounded">
+                    <Link href={item.link} passHref={true} className="mt-4 px-4 py-2 bg-[#ededed] hover:bg-[#ffffff] text-[#1e2428] rounded">
                         En savoir plus
                     </Link>
                 </motion.div>
