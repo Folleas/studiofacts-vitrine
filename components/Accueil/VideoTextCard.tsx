@@ -39,7 +39,7 @@ export function ProjectModal({
               {/* You can use an 'x' icon from a library like FontAwesome */}
               <FaTimes size={20} />
             </button>
-            <h2 className="text-xl xl:text-6xl overflow-y-scroll min-h-[50px] max-h-[200px] text-[#1e2428] font-bold">{title}</h2>
+            <h2 className="text-xl md:text-5xl xl:text-6xl overflow-y-scroll min-h-[50px] max-h-[200px] text-[#1e2428] font-bold">{title}</h2>
 
             {/* Display tags under the title */}
             <div className="my-6 overflow-x-scroll">
@@ -110,7 +110,7 @@ export function ProjectModal({
           <div className="w-full xl:w-5/12 p-10 h-full">
             {coverFilename && coverFilename !== '' && !(coverFilename.includes('.mp4')) &&
               <div className="mb-4">
-                <h2 className="text-xl xl:text-4xl font-bold text-[#1e2428] mt-2 mb-6">Couverture</h2>
+                <h2 className="text-xl md:text-3xl xl:text-4xl font-bold text-[#1e2428] mt-2 mb-6">Couverture</h2>
                 {/* Display cover image */}
                 {
                   coverFilename &&
@@ -131,7 +131,7 @@ export function ProjectModal({
             {/* Video */}
             {videoSrc && (
               <div className="mt-4 w-full h-full">
-                <h3 className="text-xl xl:text-4xl font-bold text-[#1e2428]">Video</h3>
+                <h3 className="text-xl md:text-3xl xl:text-4xl font-bold text-[#1e2428]">Video</h3>
                 <div className="w-[300px] h-[200px] xl:w-[600px] xl:h-[500px]">
                   <video
                     width="100%"
@@ -160,7 +160,7 @@ function renderContentWithLineBreaks(content: any) {
   return (
     <div>
       {lines.map((line: string, index: number) => (
-        <p className="text-gray-300 text-xl xl:text-3xl" key={index}>
+        <p className="text-gray-300 text-xl md:text-xl xl:text-2xl" key={index}>
           {line}
           {index !== lines.length - 1 && <br />}
         </p>
@@ -273,9 +273,9 @@ export default function VideoTextCard({
           ) : null}
         </div>
         <div className="p-4 md:p-32 w-full flex flex-col justify-between">
-          <div className="flex flex-col">
+          <div className="flex flex-col h-full">
             <div className="flex flex-col max-h-[100px] xl:max-h-[180px]">
-              <h2 className="text-2xl xl:text-5xl overflow-y-scroll min-h-[70px] max-h-[1200px] xl:max-h-[180px] font-bold text-white">
+              <h2 className="text-2xl md:text-4xl xl:text-5xl overflow-y-scroll min-h-[70px] max-h-[1200px] xl:max-h-[180px] font-bold text-white">
                 {title}
               </h2>
               {
@@ -293,7 +293,7 @@ export default function VideoTextCard({
                 </div>
               }
             </div>
-            <div className="max-h-[250px] overflow-y-scroll pr-10 my-6">
+            <div className="h-full overflow-y-scroll pr-10 my-6">
               {renderContentWithLineBreaks(content)}
             </div>
           </div>

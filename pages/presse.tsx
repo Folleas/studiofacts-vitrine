@@ -121,7 +121,7 @@ export default function PressePage() {
 
             <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
                 <div className="mb-4">
-                    <h1 className="text-2xl xl:text-6xl font-bold text-white mb-8">Nos Créations Originales</h1>
+                    <h1 className="text-2xl md:text-4xl xl:text-6xl font-bold text-white mb-8">Nos Créations Originales</h1>
                 </div>
                 <p className="text-gray-200 text-4xl">
                     Des projets d’auteurices qui sortent des studios pour raconter le monde autour de nous.<br />
@@ -156,7 +156,7 @@ export default function PressePage() {
             </div>
             <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
                 <div className="mb-4">
-                    <h1 className="text-2xl xl:text-6xl font-bold text-white mb-8">Suivez-nous sur Instagram</h1>
+                    <h1 className="text-2xl md:text-4xl xl:text-6xl font-bold text-white mb-8">Suivez-nous sur Instagram</h1>
                 </div>
                 <p className="text-gray-200 text-4xl">
                     Chez StudioFact Audio, nous produisons aussi des podcasts pour les marques et les institutions qui veulent mettre l’audio au cœur de leur stratégie de communication. Nous vous accompagnons sur toute la chaîne de valeur du podcast de la conception à la diffusion, en passant par toutes les étapes de production.
@@ -167,7 +167,7 @@ export default function PressePage() {
             </div>
             <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
                 <div className="mb-4">
-                    <h1 className="text-2xl xl:text-6xl font-bold text-white mb-8">Ils parlent de nous</h1>
+                    <h1 className="text-2xl md:text-4xl xl:text-6xl font-bold text-white mb-8">Ils parlent de nous</h1>
                     <ImageList images={images}></ImageList>
                 </div>
             </div>

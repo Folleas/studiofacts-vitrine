@@ -51,7 +51,7 @@ export const Fondateurs = () => {
     return (
         <div className="w-full p-10 shadow-xl bg-[#ffffff] rounded-lg">
             <motion.div ref={ref} initial='hidden' animate={controls} variants={imageVariants} custom={1} className="mb-4">
-                <h1 className="text-4xl xl:text-6xl font-bold text-black mb-8">Les Fondateurs</h1>
+                <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold text-black mb-8">Les Fondateurs</h1>
                 <div className='flex flex-col xl:flex-row xl:justify-around'>
                     <PersonCard
                         name="Roxane Rouas-Rafowicz"

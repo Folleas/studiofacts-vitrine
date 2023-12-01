@@ -97,7 +97,7 @@ export default function VideoTextSection({displayButton, title1, title2, paragra
   const isTextTooLong = paragraph2.length > 400;
 
   // Define CSS classes based on the condition
-  const textClass = isTextTooLong ? "xl:text-3xl" : "xl:text-5xl";
+  const textClass = isTextTooLong ? "md:text-2xl xl:text-3xl" : "md:text-4xl xl:text-5xl";
 
   return (
     <section id="VideoTextSection" className="xl:pt-[8vh] relative h-[95vh] w-full">
@@ -107,18 +107,18 @@ export default function VideoTextSection({displayButton, title1, title2, paragra
       </div>
       <motion.div initial="hidden" animate={controls} ref={ref} className="flex w-full h-full p-10">
         <div className="w-1/2">
-          <motion.h2 variants={variantsLeft} className="text-3xl xl:text-7xl font-bold">{title1}</motion.h2>
+          <motion.h2 variants={variantsLeft} className="text-3xl md:text-6xl xl:text-7xl font-bold">{title1}</motion.h2>
           <motion.p variants={variantsLeft} className={`text-lg ${textClass} mt-10`}>{paragraph1}</motion.p>
         </div>
         <div className="w-1/2 justify-between flex flex-col content-end">
           {
             displayButton ?
-            <Link href="/apropos" className="bg-[#46fd9e] h-[50px] xl:h-[75px] text-[#1e2428] text-lg xl:text-5xl hover:bg-[#84f588] font-semibold py-2 px-4 rounded self-end">
+            <Link href="/apropos" className="bg-[#46fd9e] h-[50px] xl:h-[75px] text-[#1e2428] text-lg md:text-4xl xl:text-5xl hover:bg-[#84f588] font-semibold py-2 px-4 rounded self-end">
             En Savoir Plus
           </Link> : <div></div>
           }
           <div className="self-end">
-            <motion.h2 variants={variantsRight} className="text-3xl xl:text-7xl font-bold text-[#46fd9e]">{title2}</motion.h2>
+            <motion.h2 variants={variantsRight} className="text-3xl md:text-6xl xl:text-7xl font-bold text-[#46fd9e]">{title2}</motion.h2>
             <motion.p variants={variantsRight} className={`text-lg ${textClass} overflow-y-scroll mt-10 min-h-[160px] max-h-[350px]`}>{paragraph2}</motion.p>
           </div>
         </div>
@@ -135,9 +135,9 @@ export default function VideoTextSection({displayButton, title1, title2, paragra
     //   </div>
     //   <div className="w-1/2 mx-8 xl:my-16 relative flex justify-center flex-col">
     //     {/* Text content */}
-    //     <h1 className="text-base xl:text-6xl font-bold mb-2 xl:mb-8">Le réel au cœur de notre ADN</h1>
+    //     <h1 className="text-base md:text-5xl xl:text-6xl font-bold mb-2 xl:mb-8">Le réel au cœur de notre ADN</h1>
     //     <div className="overflow-y-scroll xl:overflow-y-hidden max-h-[10em] xl:max-h-full">
-    //       <p className="text-xs xl:text-3xl text-gray-300 mr-16">
+    //       <p className="text-xs md:text-2xl xl:text-3xl text-gray-300 mr-16">
     //         StudioFact media group se différencie avant tout par la nature de ses contenus :
 
     //         Nous sommes le seul groupe de production spécialisé dans les histoires vraies et l’écriture du réel.

@@ -21,7 +21,7 @@ export default function TextTabs({ tabs, height = "400px", icon = false }: any) 
                         const color = index === selectedTab ? "bg-gray-300" : "bg-gray-200";
 
                         return (
-                            <button key={index} onClick={() => handleTabChange(index)} className={`w-1/3 text-xs xl:text-2xl font-bold text-[#1e2428] mt-4 ${color} hover:bg-gray-300 font-bold py-2 px-4 rounded`}>
+                            <button key={index} onClick={() => handleTabChange(index)} className={`w-1/3 text-xs md:text-xl xl:text-2xl font-bold text-[#1e2428] mt-4 ${color} hover:bg-gray-300 font-bold py-2 px-4 rounded`}>
                                 {tab.title}
                             </button>
                         )
@@ -44,7 +44,7 @@ export default function TextTabs({ tabs, height = "400px", icon = false }: any) 
                 </div>
                 )
                     :
-                    <p className={`text-black text-base xl:text-2xl ${formattedHeight} p-6 overflow-y-scroll`}  style={{ whiteSpace: 'pre-line' }}>
+                    <p className={`text-black text-base md:text-xl xl:text-2xl ${formattedHeight} p-6 overflow-y-scroll`}  style={{ whiteSpace: 'pre-line' }}>
                         {tabs[selectedTab].content}
                     </p>
             }

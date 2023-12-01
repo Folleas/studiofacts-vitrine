@@ -32,7 +32,7 @@ export default function Team({ talents = [], isPerson = true }: any) {
             animate={controls} ref={ref}
             custom={1}
             className="mt-8 w-full">
-            <h2 className="text-2xl xl:text-6xl font-bold mb-8">Qui sommes-nous ?</h2>
+            <h2 className="text-2xl md:text-5xl xl:text-6xl font-bold mb-8">Qui sommes-nous ?</h2>
             <div className="flex flex-col xl:flex-row xl:justify-around">
                 {talents.map((talent: any, index: number) => (
                     isPerson ?

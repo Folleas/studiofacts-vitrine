@@ -106,7 +106,7 @@ function ProjectModal({
 
                         {/* Display tags under the title */}
                         <div className="my-6">
-                            <h2 className="text-xl xl:text-6xl overflow-y-scroll min-h-[75px] mt-auto xl:mb-4 max-h-[200px] text-[#1e2428] font-bold">{data.title}</h2>
+                            <h2 className="text-xl md:text-5xl xl:text-6xl overflow-y-scroll min-h-[75px] mt-auto xl:mb-4 max-h-[200px] text-[#1e2428] font-bold">{data.title}</h2>
                             {data.type && (
                                 <span
                                     className="bg-gray-300 text-[#1e2428] px-2 xl:py-1 text-lg rounded mr-2"
@@ -255,7 +255,7 @@ export default function BookList({ data }: any) {
     };
     return (
         <motion.div ref={ref} initial='hidden' animate={controls} variants={imageVariants} className="my-10 w-full">
-            <h2 className="text-2xl xl:text-6xl font-bold mb-10">Nos livres</h2>
+            <h2 className="text-2xl md:text-5xl xl:text-6xl font-bold mb-10">Nos livres</h2>
             <div className="flex flex-wrap">
                 {data.map((project: any, index: number) => (
                     <BookCard key={index} item={project} />

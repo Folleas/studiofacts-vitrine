@@ -118,7 +118,7 @@ export default function NavBar() {
                                         <Link
                                             href={link.url + ''}
                                             scroll={true}
-                                            className={`mr-10 shadow-2xl outline-black outline-8 text-xs xl:text-2xl ${link.url === path ? 'font-bold' : ''}`}
+                                            className={`mr-10 shadow-2xl outline-black outline-8 text-xs md:text-xl xl:text-2xl ${link.url === path ? 'font-bold' : ''}`}
                                         >
                                             {link.label}
                                         </Link>
@@ -142,7 +142,7 @@ export default function NavBar() {
                                     <Link
                                         href={link.url + ''}
                                         scroll={true}
-                                        className={`mr-10 shadow-2xl outline-black outline-8 text-xs xl:text-2xl ${link.url === path ? 'font-bold' : ''}`}
+                                        className={`mr-10 shadow-2xl outline-black outline-8 text-xs md:text-xl xl:text-2xl ${link.url === path ? 'font-bold' : ''}`}
                                     >
                                         {link.label}
                                     </Link>

@@ -8,7 +8,7 @@ function renderContentWithLineBreaks(content: any) {
   return (
     <div>
       {lines.map((line: string, index: number) => (
-        <p className="text-gray-300 text-xl xl:text-2xl" key={index}>
+        <p className="text-gray-300 text-xl md:text-xl xl:text-2xl" key={index}>
           {line}
           {index !== lines.length - 1 && <br />}
         </p>
@@ -107,7 +107,7 @@ export default function RightsProject({
         <div className="p-4 w-full flex flex-col justify-between">
           <div className="flex flex-col">
             <div className="flex flex-col max-h-[100px] xl:max-h-[180px]">
-              <h2 className="text-2xl xl:text-3xl overflow-y-scroll h-[70px] mb-1 xl:h-[75px] font-bold text-white">
+              <h2 className="text-2xl md:text-2xl xl:text-3xl overflow-y-scroll h-[70px] mb-1 xl:h-[75px] font-bold text-white">
                 {title}
               </h2>
               {

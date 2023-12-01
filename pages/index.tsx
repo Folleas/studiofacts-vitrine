@@ -49,13 +49,13 @@ export default function Web() {
       <VideoTextSection displayButton={true} top1={0} left1={900} x1={-100} y1={300} top2={-200} left2={1200} x2={200} y2={-200} title1="Raconter le reel" paragraph1="STUDIOFACT est le premier groupe audiovisuel français à produire du contenu original exclusivement issu dhistoires vraies : Documentaire, Fiction, Podcast, Édition, Spectacle vivant." title2="Qui sommes-nous ?" paragraph2="« Nos contenus racontent le monde.Tendez loreille, ouvrez les yeux. La réalité dépasse toutes les fictions »" />
       <div className="w-full">{/*bg-gradient-to-b from-[#1e2428] via-gray-600 to-[#1e2428]*/}
         <ImageRows />
-        <h1 className="text-4xl p-6 xl:p-10 xl:text-6xl font-bold text-white">A la une</h1>
+        <h1 className="text-4xl p-6 xl:p-10 md:text-4xl xl:text-6xl font-bold text-white">A la une</h1>
         {
           dernierPosts && dernierPosts.map((dernierPost: any, index: number) =>
             <VideoTextCard key={index} files={dernierPost.files} coverFilename={dernierPost.coverFilename} imageSrc={dernierPost.cover} imageAlt={dernierPost.title} title={dernierPost.title} content={dernierPost.content} />
           )
         }
-        <h1 className="text-4xl xl:text-6xl font-bold text-white p-6 xl:p-10">Nos dernières réalisations</h1>
+        <h1 className="text-4xl md:text-4xl xl:text-6xl font-bold text-white p-6 xl:p-10">Nos dernières réalisations</h1>
         {derniereRealisations && derniereRealisations.length > 0 &&
           <VideoTextCard
             imageSrc={"/" + derniereRealisations[0].coverFilename}
@@ -87,7 +87,7 @@ export default function Web() {
         <Section></Section>
         <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
           <div className="mb-4">
-            <h1 className="text-2xl xl:text-6xl font-bold text-white mb-8">Suivez-nous sur Instagram</h1>
+            <h1 className="text-2xl md:text-4xl xl:text-6xl font-bold text-white mb-8">Suivez-nous sur Instagram</h1>
           </div>
           <div className='flex justify-center my-10'>
             <iframe title="oui" className="w-[1000px] h-[900px]" id="instagram-embed-1" src="https://www.instagram.com/studiofact.officiel/embed/"  allowFullScreen={true} frameBorder="0" height="560" data-instgrm-payload-id="instagram-media-payload-1"></iframe>

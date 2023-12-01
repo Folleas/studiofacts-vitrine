@@ -127,7 +127,7 @@ export default function StoriesPage() {
             }
             <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
                 <div className="mb-4">
-                    <h1 className="text-2xl xl:text-6xl font-bold text-white mb-8">Nos Créations Originales</h1>
+                    <h1 className="text-2xl md:text-4xl xl:text-6xl font-bold text-white mb-8">Nos Créations Originales</h1>
                 </div>
                 <p className="text-gray-200 text-4xl">
                     Des projets d’auteurices qui sortent des studios pour raconter le monde autour de nous.<br />
@@ -156,7 +156,7 @@ export default function StoriesPage() {
             </div>
             <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
                 <div className="mb-4">
-                    <h1 className="text-2xl xl:text-6xl font-bold text-white mb-8">Nos Créations pour les Marques</h1>
+                    <h1 className="text-2xl md:text-4xl xl:text-6xl font-bold text-white mb-8">Nos Créations pour les Marques</h1>
                 </div>
                 <p className="text-gray-200 text-4xl">
                     Chez StudioFact Audio, nous produisons aussi des podcasts pour les marques et les institutions qui veulent mettre l’audio au cœur de leur stratégie de communication. Nous vous accompagnons sur toute la chaîne de valeur du podcast de la conception à la diffusion, en passant par toutes les étapes de production.
@@ -182,7 +182,7 @@ export default function StoriesPage() {
             </div>
             <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
                 <div className="mb-4">
-                    <h1 className="text-2xl xl:text-6xl font-bold text-white mb-8">Qui sommes-nous ?</h1>
+                    <h1 className="text-2xl md:text-4xl xl:text-6xl font-bold text-white mb-8">Qui sommes-nous ?</h1>
                 </div>
                 <p className="text-gray-200 text-4xl">
                     Les meilleures histoires sont en train d’être vécues tout autour de nous. Chez StudioFact Audio nous mettons le réel en ondes pour raconter le monde. Pour révéler des voix, des territoires, des luttes et faire entendre d’autres vies que les nôtres. Nous mettons les meilleurs ingrédients des fictions au service du documentaire et la force du documentaire au service des fictions pour fabriquer des histoires qui nous font vibrer.
