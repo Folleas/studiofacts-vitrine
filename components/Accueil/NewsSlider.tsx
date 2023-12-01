@@ -1,6 +1,5 @@
 import { motion, useAnimation, useInView } from "framer-motion";
 import Image from "next/legacy/image";
-import Link from 'next/link';
 import { useEffect, useRef } from "react";
 
 export default function NewsSlider({ item, currentSlide }: any) {
