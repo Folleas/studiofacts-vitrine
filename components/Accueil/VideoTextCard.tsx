@@ -1,9 +1,8 @@
 import { motion, useAnimation, useInView } from "framer-motion";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { FaTimes } from "react-icons/fa"; // Import the close icon from a library
 import TextTabs from "./TextTabs";
-import Link from "next/link";
 
 export function ProjectModal({
   isOpen,
@@ -89,7 +88,7 @@ export function ProjectModal({
                       className={`relative min-w-[200px] min-h-[200px] rounded-xl overflow-hidden`}
                     >
                       <Image 
-                        src={'/' + resource}
+                        src={'https://studiofact.group/image/' + resource}
                         alt={`Resource Image ${index}`}
                         layout="fill"
                         className="rounded-md object-contain"
