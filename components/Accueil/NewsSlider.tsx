@@ -34,7 +34,7 @@ export default function NewsSlider({ item, currentSlide }: any) {
         <div className={`absolute transition-opacity ease-in-out w-full duration-300 ${currentSlide ? 'opacity-[1]' : 'opacity-0'}`}>
             <div className="relative w-full h-[300px] xl:h-[600px]">
                 <Image
-                    src={'https://studiofact.group/image/' + item.cover}
+                    src={'https://studiofact.group/image/' + item.coverFilename}
                     alt={item.title}
                     layout="fill"
                     className="object-cover"
