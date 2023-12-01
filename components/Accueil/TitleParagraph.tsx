@@ -31,10 +31,10 @@ export default function TitleParagraph({ title, paragraph, top1, left1, top2, le
                 <MovingCircle top={top1} left={left1} size={size1} color={color1} x={x1} y={y1} />
                 <MovingCircle top={top2} left={left2} size={size2} color={color2} x={x2} y={y2} />
             </div>
-            <h1 className="text-2xl md:text-5xl xl:text-6xl font-bold text-white mb-8">
+            <h1 className="text-2xl md:text-5xl xl:text-5xl 2xl:text-6xl font-bold text-white mb-8">
                 {title}
             </h1>
-            <p className="text-gray-200 text-2xl md:text-3xl xl:text-4xl">
+            <p className="text-gray-200 text-2xl md:text-3xl xl:text-3xl 2xl:text-4xl">
                 {paragraph}
             </p>
         </motion.div>

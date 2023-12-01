@@ -121,7 +121,7 @@ export default function PressePage() {
 
             <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
                 <div className="mb-4">
-                    <h1 className="text-2xl md:text-4xl xl:text-6xl font-bold text-white mb-8">Nos Créations Originales</h1>
+                    <h1 className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white mb-8">Nos Créations Originales</h1>
                 </div>
                 <p className="text-gray-200 text-4xl">
                     Des projets d’auteurices qui sortent des studios pour raconter le monde autour de nous.<br />
@@ -152,23 +152,6 @@ export default function PressePage() {
                 <Team></Team>
                 <div className='flex justify-center'>
                     <Button href="">Contactez-nous</Button>
-                </div>
-            </div>
-            <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
-                <div className="mb-4">
-                    <h1 className="text-2xl md:text-4xl xl:text-6xl font-bold text-white mb-8">Suivez-nous sur Instagram</h1>
-                </div>
-                <p className="text-gray-200 text-4xl">
-                    Chez StudioFact Audio, nous produisons aussi des podcasts pour les marques et les institutions qui veulent mettre l’audio au cœur de leur stratégie de communication. Nous vous accompagnons sur toute la chaîne de valeur du podcast de la conception à la diffusion, en passant par toutes les étapes de production.
-                </p>
-                <div className='flex justify-center my-10'>
-                    <iframe title="oui" className="w-[1000px] h-[900px]" id="instagram-embed-1" src="https://www.instagram.com/studiofact.audio/embed/"  allowFullScreen={true} frameBorder="0" height="560" data-instgrm-payload-id="instagram-media-payload-1"></iframe>
-                </div>
-            </div>
-            <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
-                <div className="mb-4">
-                    <h1 className="text-2xl md:text-4xl xl:text-6xl font-bold text-white mb-8">Ils parlent de nous</h1>
-                    <ImageList images={images}></ImageList>
                 </div>
             </div>
         </div>

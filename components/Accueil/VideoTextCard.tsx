@@ -39,7 +39,7 @@ export function ProjectModal({
               {/* You can use an 'x' icon from a library like FontAwesome */}
               <FaTimes size={20} />
             </button>
-            <h2 className="text-xl md:text-5xl xl:text-6xl overflow-y-scroll min-h-[50px] max-h-[200px] text-[#1e2428] font-bold">{title}</h2>
+            <h2 className="text-xl md:text-5xl xl:text-5xl 2xl:text-6xl overflow-y-scroll min-h-[50px] max-h-[200px] text-[#1e2428] font-bold">{title}</h2>
 
             {/* Display tags under the title */}
             <div className="my-6 overflow-x-scroll">
@@ -110,7 +110,7 @@ export function ProjectModal({
           <div className="w-full xl:w-5/12 p-10 h-full">
             {coverFilename && coverFilename !== '' && !(coverFilename.includes('.mp4')) &&
               <div className="mb-4">
-                <h2 className="text-xl md:text-3xl xl:text-4xl font-bold text-[#1e2428] mt-2 mb-6">Couverture</h2>
+                <h2 className="text-xl md:text-3xl xl:text-3xl 2xl:text-4xl font-bold text-[#1e2428] mt-2 mb-6">Couverture</h2>
                 {/* Display cover image */}
                 {
                   coverFilename &&
@@ -131,7 +131,7 @@ export function ProjectModal({
             {/* Video */}
             {videoSrc && (
               <div className="mt-4 w-full h-full">
-                <h3 className="text-xl md:text-3xl xl:text-4xl font-bold text-[#1e2428]">Video</h3>
+                <h3 className="text-xl md:text-3xl xl:text-3xl 2xl:text-4xl font-bold text-[#1e2428]">Video</h3>
                 <div className="w-[300px] h-[200px] xl:w-[600px] xl:h-[500px]">
                   <video
                     width="100%"
@@ -160,7 +160,7 @@ function renderContentWithLineBreaks(content: any) {
   return (
     <div>
       {lines.map((line: string, index: number) => (
-        <p className="text-gray-300 text-xl md:text-xl xl:text-2xl" key={index}>
+        <p className="text-gray-300 text-xl md:text-xl xl:text-xl 2xl:text-2xl" key={index}>
           {line}
           {index !== lines.length - 1 && <br />}
         </p>
@@ -186,14 +186,17 @@ export default function VideoTextCard({
 }: any) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const ref = useRef(null);
-  const refVideo: any = useRef(null);
   const isInView = useInView(ref);
   const controls = useAnimation();
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false); // State to track video loading
+  const refVideo: any = useRef(null);
+
+  // Existing code...
 
   useEffect(() => {
     if (isInView) {
       controls.start('visible');
-      if (refVideo && refVideo.current && typeof refVideo.current.play === 'function') {
+      if (refVideo && refVideo.current && typeof refVideo.current.play === 'function' && isVideoLoaded) {
         refVideo.current.play();
       }
     } else {
@@ -201,8 +204,10 @@ export default function VideoTextCard({
         refVideo.current.pause();
       }
     }
-  }, [controls, isInView]);
-
+  }, [controls, isInView, isVideoLoaded]);
+  const handleVideoLoad = () => {
+    setIsVideoLoaded(true);
+  };
   const imageVariants = {
     hidden: {
       opacity: 0,
@@ -221,9 +226,9 @@ export default function VideoTextCard({
   const buttons = [];
   if (buttonCTA !== '')
     buttons.push(
-      <Link href={buttonCTA} key={buttonCTA} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded self-start">
+      <a href={buttonCTA} key={buttonCTA} target="_blank" rel="noopener noreferrer"  className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded self-start">
         En savoir plus
-      </Link>
+      </a>
     )
 
   if (moreDetails)
@@ -233,9 +238,9 @@ export default function VideoTextCard({
       </button>
     )
   files.map((file: any, index: number) => buttons.push(
-    <Link href={'https://studiofact.group/image/' + file.file} key={index} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 mb-4 px-4 rounded self-start">
+    <a target="_blank" rel="noopener noreferrer" href={'https://studiofact.group/image/' + file.file} key={index} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 mb-4 px-4 rounded self-start">
       {file.label}
-    </Link>
+    </a>
   ));
   return (
     <motion.div ref={ref} initial='hidden' variants={imageVariants} animate={controls} className="p-4 w-full">
@@ -254,11 +259,12 @@ export default function VideoTextCard({
                 loop
                 muted
                 className="w-full h-full absolute inset-0 object-contain"
+                onCanPlayThrough={handleVideoLoad} // Event listener for video load
               >
                 <source src={'https://studiofact.group/image/' + videoSrc} type="video/mp4" />
               </video>
             ) : (
-              <div className="">
+              <div className="relative w-full h-full">
                 {
                   coverFilename &&
                   <Image 
@@ -272,10 +278,10 @@ export default function VideoTextCard({
             )
           ) : null}
         </div>
-        <div className="p-4 md:p-32 w-full flex flex-col justify-between">
+        <div className="p-4 md:py-32 md:pl-12 md:pr-4 w-full flex flex-col justify-between">
           <div className="flex flex-col h-full">
             <div className="flex flex-col max-h-[100px] xl:max-h-[180px]">
-              <h2 className="text-2xl md:text-4xl xl:text-5xl overflow-y-scroll min-h-[70px] max-h-[1200px] xl:max-h-[180px] font-bold text-white">
+              <h2 className="text-2xl md:text-4xl xl:text-4xl 2xl:text-5xl overflow-y-scroll min-h-[70px] max-h-[1200px] xl:max-h-[180px] font-bold text-white">
                 {title}
               </h2>
               {

@@ -30,7 +30,7 @@ export default function ImageRows() {
 
   return (
     <div className="p-10 my-8 sm:my-16 md:w-3/4 lg:w-2/3 xl:w-full h-[80vh] mx-auto">
-      <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold text-white">LA GALAXIE STUDIOFACT</h1>
+      <h1 className="text-4xl md:text-5xl xl:text-5xl 2xl:text-6xl font-bold text-white">LA GALAXIE STUDIOFACT</h1>
       <div className='flex flex-col h-full'>
         <motion.div ref={ref} className="flex mb-8 sm:mb-16 grow overflow-x-scroll xl:overflow-x-hidden space-x-10">
           {/* First row of pictures */}

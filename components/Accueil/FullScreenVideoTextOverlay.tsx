@@ -20,7 +20,7 @@ export default function FullScreenVideoTextOverlay() {
 
         {/* New centered instruction */}
         <div className="absolute bottom-0 text-white text-center w-full pb-4">
-          <Link href='#VideoTextSection' className="text-xs md:text-xl xl:text-2xl">
+          <Link href='#VideoTextSection' className="text-xs md:text-xl xl:text-xl 2xl:text-2xl">
             V
           </Link>
           {/* <button><p>V</p></button> */}

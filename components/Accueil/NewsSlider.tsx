@@ -40,7 +40,7 @@ export default function NewsSlider({ item, currentSlide }: any) {
                     variants={variants}
                     className="absolute inset-0 flex flex-col justify-center bg-gradient-to-b from-transparent from-0% via-[rgba(30,36,40,0.5)] via-50% to-transparent to-100% items-center text-white"
                 >
-                    <h2 className="text-3xl md:text-5xl xl:text-6xl w-3/4 text-center font-bold">{item.title}</h2>
+                    <h2 className="text-3xl md:text-5xl xl:text-5xl 2xl:text-6xl w-3/4 text-center font-bold">{item.title}</h2>
                     <p className="text-2xl">{item.subtitle}</p>
                     {item.link !== '' && (
                         <a href={item.link} target="_blank" rel="noopener noreferrer" className="mt-4 px-4 py-2 bg-[#ededed] hover:bg-[#ffffff] text-[#1e2428] rounded">

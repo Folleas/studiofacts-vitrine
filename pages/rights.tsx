@@ -189,7 +189,7 @@ export default function RightsPage() {
             <ALaUne data={data} selectedProjects={sortedRightsValues.flatMap(right => filteredProjects(right).map(project => project._id))}></ALaUne>
 
             <div className='bg-[#ededed] w-[100vw] mt-10 h-[600px] p-10'>
-                <h2 className="text-2xl xl:text-5xl text-left mb-4 text-black font-bold">Nos Partenaires</h2>
+                <h2 className="text-2xl xl:text-4xl 2xl:text-5xl text-left mb-4 text-black font-bold">Nos Partenaires</h2>
                 <ImageList images={partnerImages}></ImageList>
             </div>
 
@@ -197,7 +197,7 @@ export default function RightsPage() {
             {sortedRightsValues.map((right, index) => right !== '' && (
                 <div key={index} className="w-full">
                     <div className='flex flex-col mt-10 mb-6'>
-                        <h2 className="text-2xl xl:text-5xl text-left mb-4 font-bold">{right}</h2>
+                        <h2 className="text-2xl xl:text-4xl 2xl:text-5xl text-left mb-4 font-bold">{right}</h2>
                         <div className="flex flex-wrap w-fit h-fit justify-center mb-4">{renderTagsForRight(right)}</div>
                     </div>
 

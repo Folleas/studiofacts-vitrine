@@ -40,7 +40,7 @@ export default function Web() {
   return (
     <div className='flex flex-col p-10 h-full justify-center items-center bg-[#1e2428]'>
       <div className='flex w-full mt-[5vh]'>
-        <h1 className="text-4xl md:text-4xl xl:text-6xl font-semibold mt-10">Réalisations</h1>
+        <h1 className="text-4xl md:text-4xl xl:text-5xl 2xl:text-6xl font-semibold mt-10">Réalisations</h1>
       </div>
       <div className='flex flex-col h-full justify-center  w-full items-center'>
         {data.slice(0, loadedCount).map((item, index) => (

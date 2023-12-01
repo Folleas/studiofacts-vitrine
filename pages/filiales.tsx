@@ -100,8 +100,8 @@ const Filiale = ({ title, text, imageSrc, isEven, href }: any) => {
         </Link>
       </div>
         <Link href={href} className={`w-full px-8 flex flex-col ${itemsClass}`}>
-          <h2 className="text-2xl xl:text-4xl font-semibold text-white mb-4">{title}</h2>
-          <p className={`text-[##ededed] ${textClass} text-xl xl:text-2xl`}>{text}</p>
+          <h2 className="text-2xl xl:text-3xl 2xl:text-4xl font-semibold text-white mb-4">{title}</h2>
+          <p className={`text-[##ededed] ${textClass} text-xl xl:text-xl 2xl:text-2xl`}>{text}</p>
         </Link>
     </motion.div>
   );
@@ -111,7 +111,7 @@ export default function Web() {
   return (
     <div className='flex flex-col w-full h-full justify-center space-y-16 mt-[8vh] items-start p-10'>
       <div className='flex'>
-        <h1 className="text-4xl md:text-4xl xl:text-6xl font-semibold mt-10">Filiales</h1>
+        <h1 className="text-4xl md:text-4xl xl:text-5xl 2xl:text-6xl font-semibold mt-10">Filiales</h1>
       </div>
       <div className='flex w-full flex-col space-y-10'>
         {filialesData.map((filiale, index) => (

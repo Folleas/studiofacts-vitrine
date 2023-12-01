@@ -18,8 +18,8 @@ export const PersonCard = ({ name, occupation, bio, imageSrc }: any) => {
                 </div>
                 <div className="p-4 h-[550px] text-center">
                     <h2 className="text-3xl font-semibold text-black">{name}</h2>
-                    <p className="text-[#1e2428] text-xl">{occupation}</p>
-                    <p className="text-[#1e2428] text-2xl mt-2 h-[500px] overflow-y-scroll">{bio}</p>
+                    <p className="text-[#1e2428] text-lg 2xl:text-xl">{occupation}</p>
+                    <p className="text-[#1e2428] text-xl 2xl:text-2xl mt-2 h-[500px] overflow-y-scroll">{bio}</p>
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@ export const Fondateurs = () => {
     return (
         <div className="w-full p-10 shadow-xl bg-[#ffffff] rounded-lg">
             <motion.div ref={ref} initial='hidden' animate={controls} variants={imageVariants} custom={1} className="mb-4">
-                <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold text-black mb-8">Les Fondateurs</h1>
+                <h1 className="text-4xl md:text-5xl xl:text-5xl 2xl:text-6xl font-bold text-black mb-8">Les Fondateurs</h1>
                 <div className='flex flex-col xl:flex-row xl:justify-around'>
                     <PersonCard
                         name="Roxane Rouas-Rafowicz"

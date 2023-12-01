@@ -83,7 +83,7 @@ export default function EditionsPage() {
             <motion.div ref={ref} initial="hidden" variants={imageVariants}
                 animate={controls}
                 custom={2} className="w-full shadow-md rounded-lg min-h-[45vh]">
-                <h1 className="text-2xl md:text-4xl xl:text-6xl font-bold mb-6">Suivez-nous sur Instagram</h1>
+                <h1 className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-bold mb-6">Suivez-nous sur Instagram</h1>
                 <div className="flex items-center">
                     <div className="w-[50px] h-[50px] mr-2">
                         <Image 

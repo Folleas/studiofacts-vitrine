@@ -165,7 +165,7 @@ export const Talents = () => {
 
         <div className="w-full p-10 shadow-md rounded-lg">
             <motion.div ref={ref} initial='hidden' animate={controls} variants={imageVariants} custom={2} className="mb-4 flex flex-col">
-                <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold text-white mb-8">Nos Talents</h1>
+                <h1 className="text-4xl md:text-5xl xl:text-5xl 2xl:text-6xl font-bold text-white mb-8">Nos Talents</h1>
                 <div className='flex flex-wrap'>
                     {imageSources.map((imageSrc, index) => (
                         <TalentCard
