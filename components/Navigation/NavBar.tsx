@@ -65,11 +65,18 @@ const links = [
 export default function NavBar() {
     const path = usePathname();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [activeHoverIndex, setActiveHoverIndex] = useState(null);
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
+    const handleMouseEnter = (index: any) => {
+        setActiveHoverIndex(index);
+    };
 
+    const handleMouseLeave = () => {
+        setActiveHoverIndex(null);
+    };
     return (
         <div className="h-[8vh] relative backdrop-blur-lg w-full xl:p-10 mx-auto flex items-center justify-center shadow-md"> {/* Add relative to the container */}
             <div className="flex items-center justify-between xl:px-6 py-4 w-full h-full">
@@ -100,22 +107,29 @@ export default function NavBar() {
                 {/* Desktop Menu */}
                 <nav className="hidden md:flex xl:flex lg:flex w-full">
                     <ul className="flex w-full justify-end space-x-20">
-                        {links.map((link) => (
+                        {links.map((link, index) => (
                             <li key={link.url} className="relative group">
                                 {link.subLinks ? (
-                                    <div className="relative group">
+                                    <div
+                                        className="relative group"
+                                        onMouseEnter={() => handleMouseEnter(index)}
+                                        onMouseLeave={handleMouseLeave}
+                                    >
                                         <Link
                                             href={link.url + ''}
                                             scroll={true}
-                                            className={`mr-10 shadow-2xl outline-black outline-8 hover:text-gray-400 text-xs xl:text-2xl ${link.url === path ? 'font-bold' : ''}`}
+                                            className={`mr-10 shadow-2xl outline-black outline-8 text-xs xl:text-2xl ${link.url === path ? 'font-bold' : ''}`}
                                         >
                                             {link.label}
                                         </Link>
-                                        <motion.div className="absolute hidden group-hover:block mt-2 bg-[#1e2428] p-2 rounded top-5 ">
-                                            {link.subLinks.map((item, index) => (
+                                        <motion.div
+                                            className={`absolute mt-2 bg-[#1e2428] p-2 rounded top-5 ${activeHoverIndex === index ? 'block' : 'hidden'
+                                                }`}
+                                        >
+                                            {link.subLinks.map((item, subIndex: any) => (
                                                 <Link
                                                     scroll={true}
-                                                    key={index}
+                                                    key={subIndex}
                                                     href={`/${item.url}`}
                                                     className="group text-white hover:text-gray-400 text-xs xl:text-lg block px-2 py-1 z-20"
                                                 >
@@ -128,7 +142,7 @@ export default function NavBar() {
                                     <Link
                                         href={link.url + ''}
                                         scroll={true}
-                                        className={`mr-10 shadow-2xl outline-black outline-8 hover:text-gray-400 text-xs xl:text-2xl ${link.url === path ? 'font-bold' : ''}`}
+                                        className={`mr-10 shadow-2xl outline-black outline-8 text-xs xl:text-2xl ${link.url === path ? 'font-bold' : ''}`}
                                     >
                                         {link.label}
                                     </Link>

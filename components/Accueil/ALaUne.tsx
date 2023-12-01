@@ -73,7 +73,7 @@ export default function ALaUne({ selectedProjects, data }: any) {
         <motion.div ref={ref} initial='hidden' animate={controls} variants={imageVariants} className="mt-8 w-full relative">
             <div className="w-full h-[300px] xl:h-[600px] relative overflow-hidden">
                 {filteredPosts?.map((post: any, index: number) => (
-                    <NewsSlider key={index} item={post} currentSlide={index === currentSlide} />
+                    <NewsSlider key={post._id} item={post} currentSlide={index === currentSlide} />
                 ))}
             </div>
             <div className="absolute top-1/2 -mt-4 left-0 flex items-center space-x-4">

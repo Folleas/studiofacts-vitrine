@@ -34,7 +34,7 @@ export default function TextTabs({ tabs, height = "400px", icon = false }: any) 
                     tabs[selectedTab].content.map((elem: any, index: number) =>
                         <div className={`flex`} key={index}>
                             {
-                                icon && <Image alt={'calendar icon'}  src={'/calendar.png'}  className="object-contain ml-6 w-[30px]" width={50} height={50}></Image>
+                                icon && <Image alt={'calendar icon'}  src={'/calendar.webp'}  className="object-contain ml-6 w-[30px]" width={50} height={50}></Image>
                             }
                             <p className="text-black text-xl p-6">
                                 {`${tabs[selectedTab].content[index]}`}
