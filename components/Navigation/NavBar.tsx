@@ -137,10 +137,10 @@ export default function NavBar() {
                         ))}
                     </ul>
                     <div className="flex items-center justify-end space-x-4">
-                        <SocialIcon style={{ height: 42, width: 42 }} url="https://www.instagram.com/studiofact.officiel/" />
-                        <SocialIcon style={{ height: 42, width: 42 }} url="https://www.facebook.com/studiofact.officiel" />
-                        <SocialIcon style={{ height: 42, width: 42 }} url="https://twitter.com/StudioFactOff" />
-                        <SocialIcon style={{ height: 42, width: 42 }} url="https://www.linkedin.com/company/studiofact/posts/?feedView=all" />
+                        <SocialIcon style={{ height: 32, width: 32 }} url="https://www.instagram.com/studiofact.officiel/" />
+                        <SocialIcon style={{ height: 32, width: 32 }} url="https://www.facebook.com/studiofact.officiel" />
+                        <SocialIcon style={{ height: 32, width: 32 }} url="https://twitter.com/StudioFactOff" />
+                        <SocialIcon style={{ height: 32, width: 32 }} url="https://www.linkedin.com/company/studiofact/posts/?feedView=all" />
                     </div>
                 </nav>
             </div>
@@ -167,7 +167,7 @@ export default function NavBar() {
                             </li>
                         ))}
                     </ul>
-                    <div className="py-2 left-6 flex fixed bottom-0 justify-start">
+                    <div className="py-2 right-6 flex fixed top-6 space-x-2 justify-start">
                         <SocialIcon style={{ height: 42, width: 42 }} url="https://www.instagram.com/studiofact.officiel/" />
                         <SocialIcon style={{ height: 42, width: 42 }} url="https://www.facebook.com/studiofact.officiel" />
                         <SocialIcon style={{ height: 42, width: 42 }} url="https://twitter.com/StudioFactOff" />
