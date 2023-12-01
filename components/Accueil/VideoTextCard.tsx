@@ -87,7 +87,7 @@ export function ProjectModal({
                       key={index}
                       className={`relative min-w-[200px] min-h-[200px] rounded-xl overflow-hidden`}
                     >
-                      <Image 
+                      <Image
                         src={'https://studiofact.group/image/' + resource}
                         alt={`Resource Image ${index}`}
                         layout="fill"
@@ -113,7 +113,7 @@ export function ProjectModal({
                 {/* Display cover image */}
                 {
                   coverFilename &&
-                  <Image 
+                  <Image
                     src={'https://studiofact.group/image/' + coverFilename}
                     alt={`Cover Image for ${title}`}
                     width={567}
@@ -225,7 +225,7 @@ export default function VideoTextCard({
   const buttons = [];
   if (buttonCTA !== '')
     buttons.push(
-      <a href={buttonCTA} key={buttonCTA} target="_blank" rel="noopener noreferrer"  className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded self-start">
+      <a href={buttonCTA} key={buttonCTA} target="_blank" rel="noopener noreferrer" className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded self-start">
         En savoir plus
       </a>
     )
@@ -244,7 +244,7 @@ export default function VideoTextCard({
   return (
     <motion.div ref={ref} initial='hidden' variants={imageVariants} animate={controls} className="p-4 w-full">
       <div
-        className={`w-full h-[700px] rounded-lg shadow-xl flex ${swapContent ? "flex-col-reverse" : "flex-col"
+        className={`w-full h-[900px] md:h-[700px] rounded-lg shadow-xl flex ${swapContent ? "flex-col-reverse" : "flex-col"
           } md:flex-row`}
       >
         <div
@@ -263,10 +263,10 @@ export default function VideoTextCard({
                 <source src={'https://studiofact.group/image/' + videoSrc} type="video/mp4" />
               </video>
             ) : (
-              <div className="relative w-full h-full">
+              <div className="relative w-full h-full ">
                 {
                   coverFilename &&
-                  <Image 
+                  <Image
                     src={'https://studiofact.group/image/' + coverFilename}
                     layout="fill"
                     alt={imageAlt}
@@ -277,7 +277,7 @@ export default function VideoTextCard({
             )
           ) : null}
         </div>
-        <div className="p-4 md:py-32 md:pl-12 md:pr-4 w-full flex flex-col justify-between">
+        <div className="p-4 md:py-32 md:pl-12 md:pr-4 w-full h-full flex flex-col justify-between">
           <div className="flex flex-col h-full">
             <div className="flex flex-col max-h-[100px] xl:max-h-[180px]">
               <h2 className="text-2xl md:text-4xl xl:text-4xl 2xl:text-5xl overflow-y-scroll min-h-[70px] max-h-[1200px] xl:max-h-[180px] font-bold text-white">
@@ -298,7 +298,7 @@ export default function VideoTextCard({
                 </div>
               }
             </div>
-            <div className="h-full overflow-y-scroll pr-10 my-6">
+            <div className="h-[500px] md:h-fit overflow-y-scroll pr-10 my-6">
               {renderContentWithLineBreaks(content)}
             </div>
           </div>
