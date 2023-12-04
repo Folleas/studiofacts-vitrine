@@ -230,9 +230,9 @@ export default function VideoTextCard({
       </a>
     )
 
-  if (moreDetails)
+  if (moreDetails || aPropos !== '')
     buttons.push(
-      <button key='Plus de détail' onClick={openModal} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded self-start">
+      <button key='Plus de détailx' onClick={openModal} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded self-start">
         Plus de détail
       </button>
     )

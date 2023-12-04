@@ -148,8 +148,7 @@ export default function DocPage() {
                 setSelectedProjects(responseData.aLaUneData[0]); // Assuming the API returns an array of project objects
             })
             .catch((error) => console.error("Error fetching data:", error));
-
-    });
+    }, []);
     useEffect(() => {
         if (selectedProjects.doc != null)
             setALaUne(data.filter((elem) => elem._id === selectedProjects.doc)[0]);
@@ -157,7 +156,7 @@ export default function DocPage() {
 
     return (
         <div className="flex flex-col justify-center items-center h-full p-10 mt-[8vh]">
-            <TitleParagraph color1={'bg-[#00D779]'} color2={'bg-[#CF6FED]'} top1={100} top2={75} left1={450} left2={750} x1={-100} x2={350} y1={-100} y2={-300} title="Doc : Des documentaires qui se regardent comme des fictions." paragraph="Chez StudioFact Audio, nous écoutons le réel pour mieux comprendre le monde et fabriquer des histoires audio qui nous rapprochent" ></TitleParagraph>
+            <TitleParagraph color1={'bg-[#00D779]'} color2={'bg-[#CF6FED]'} top1={100} top2={75} left1={450} left2={750} x1={-100} x2={350} y1={-100} y2={-300} title="Doc : Des documentaires qui se regardent comme des fictions." paragraph="" ></TitleParagraph>
 
             {aLaUne && selectedProjects.doc.length > 0 &&
                 <ALaUne data={data} selectedProjects={selectedProjects.doc}></ALaUne>
@@ -167,12 +166,12 @@ export default function DocPage() {
                 <div className="mb-4">
                     <h1 className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white mb-8">Nos Créations Originales</h1>
                 </div>
-                <p className="text-gray-200 text-4xl">
+                {/* <p className="text-gray-200 text-4xl">
                     Des projets d’auteurices qui sortent des studios pour raconter le monde autour de nous.<br />
                     Des récits singuliers qui mêlent histoires intimes et grande Histoire.<br />
                     Des histoires qui racontent les bouleversements du monde et nos bouleversements intérieurs.<br /><br />
                     Les Créations Originales de StudioFact Audio sont disponibles gratuitement sur toutes les plateformes de podcasts
-                </p>
+                </p> */}
                 <div className="flex flex-wrap justify-center gap-16 my-10">
                     {data.map((item, index) => (
                         <VideoTextCard
@@ -192,7 +191,7 @@ export default function DocPage() {
                     ))}
                 </div>
             </div>
-            <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
+            {/* <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
                 <div className="mb-4">
                     <h1 className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white mb-8">Qui sommes-nous ?</h1>
                 </div>
@@ -227,7 +226,7 @@ export default function DocPage() {
                 <div className='flex justify-center my-10'>
                     <iframe title="oui" className="w-[1000px] h-[900px]" id="instagram-embed-1" src="https://www.instagram.com/studiofact.audio/embed/"  allowFullScreen={true} frameBorder="0" height="560" data-instgrm-payload-id="instagram-media-payload-1"></iframe>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }
