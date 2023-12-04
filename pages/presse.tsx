@@ -1,87 +1,9 @@
 // pages/editions.tsx
 import ALaUne from 'components/Accueil/ALaUne';
-import Team from 'components/Accueil/Team';
 import TitleParagraph from 'components/Accueil/TitleParagraph';
 import VideoTextCard from 'components/Accueil/VideoTextCard';
-import { Button } from 'components/Button/Button';
-import { motion } from 'framer-motion';
-import Image from "next/legacy/image";
 import { useEffect, useState } from 'react';
 
-const ImageList = ({ images }: any) => {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [isAuto, setIsAuto] = useState(true);
-
-    
-    useEffect(() => {
-        const nextSlide = () => {
-            setIsAuto(false);
-            setActiveIndex((prevIndex) =>
-                prevIndex >= images.length - 4 ? 0 : prevIndex + 4
-            );
-        };
-        const autoScroll = setInterval(() => {
-            if (isAuto)
-                nextSlide();
-            else
-                setIsAuto(true);
-        }, 5000); // Adjust the timing for automatic scrolling
-
-        return () => {
-            clearInterval(autoScroll);
-        };
-    }, [activeIndex, images.length, isAuto]);
-
-    return (
-        <div className="flex flex-col">
-            <div className="flex justify-between gap-x-10 w-full h-full">
-                {images.slice(activeIndex, activeIndex + 4).map((image: any, index: number) => (
-                    <motion.div
-                        key={`image-${index}-${activeIndex}`}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 1.5 + index / 2 }}
-                        className='h-[200px]'
-                    >
-                        <Image 
-                            width={450}
-                            height={450}
-                            src={image.src}
-                            alt={image.alt}
-                        />
-                    </motion.div>
-                ))}
-            </div>
-            <div className="flex justify-center mt-6">
-                {images.slice(0, images.length / 4 + (images.length % 4 > 0 ? 1 : 0)).map((_: any, index: number) => (
-                    <button
-                        key={index}
-                        className={`h-6 w-6 mx-1 rounded-full bg-gray-500 ${index === activeIndex / 4 ? 'bg-gray-800' : ''}`}
-                        onClick={() => setActiveIndex(index * 4)}
-                    />
-                ))}
-            </div>
-        </div>
-    );
-};
-
-const images = [
-    { src: '/audio.png', alt: 'Image 1' },
-    { src: '/audio.png', alt: 'Image 2' },
-    { src: '/audio.png', alt: 'Image 3' },
-    { src: '/editions.png', alt: 'Image 1' },
-    { src: '/audio.png', alt: 'Image 2' },
-    { src: '/audio.png', alt: 'Image 3' },
-    { src: '/audio.png', alt: 'Image 1' },
-    { src: '/audio.png', alt: 'Image 2' },
-    { src: '/audio.png', alt: 'Image 3' },
-    { src: '/audio.png', alt: 'Image 1' },
-    { src: '/audio.png', alt: 'Image 2' },
-    { src: '/audio.png', alt: 'Image 3' },
-    { src: '/editions.png', alt: 'Image 1' },
-    // Add more images as needed
-];
 export default function PressePage() {
     const [data, setData] = useState<any[]>([]);
     const [aLaUne, setALaUne]: any = useState(null);
@@ -96,7 +18,7 @@ export default function PressePage() {
         // Replace with your actual API endpoint and parameters
         fetch('https://studiofact.group/project/type/Presse')
             .then((response) => response.json() as any) // Type assertion here
-            .then((responseData) => { setData(responseData.realisationProjects) })
+            .then((responseData) => { setData(responseData.realisationProjects.sort((a: any, b: any) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())) })
             .catch((error) => console.error('Error fetching data:', error));
         fetch("https://studiofact.group/alaune")
             .then((response) => response.json())

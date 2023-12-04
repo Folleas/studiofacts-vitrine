@@ -124,7 +124,7 @@ export default function AudioPage() {
         // Replace with your actual API endpoint and parameters
         fetch('https://studiofact.group/project/type/Audio')
             .then((response) => response.json() as any) // Type assertion here
-            .then((responseData) => { setData(responseData.realisationProjects) })
+            .then((responseData) => { setData(responseData.realisationProjects.sort((a: any, b: any) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())) })
             .catch((error) => console.error('Error fetching data:', error));
         fetch("https://studiofact.group/alaune")
             .then((response) => response.json())

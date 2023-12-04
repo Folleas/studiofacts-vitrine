@@ -54,10 +54,10 @@ const links = [
             //     url: 'lab',
             //     label: 'Lab'
             // },
-            // {
-            //     url: 'live',
-            //     label: 'Live'
-            // },
+            {
+                url: 'live',
+                label: 'Live'
+            },
         ]
     }
 ];

@@ -173,7 +173,7 @@ export default function RightsPage() {
     useEffect(() => {
         fetch('https://studiofact.group/project/rights')
             .then((response) => response.json() as any)
-            .then((responseData) => { setData(responseData.rightsProjects) })
+            .then((responseData) => { setData(responseData.rightsProjects.sort((a: any, b: any) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())) })
             .catch((error) => console.error('Error fetching data:', error));
         fetch("https://studiofact.group/alaune")
             .then((response) => response.json())

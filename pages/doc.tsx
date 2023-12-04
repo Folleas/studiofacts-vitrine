@@ -1,9 +1,7 @@
 // pages/editions.tsx
 import ALaUne from 'components/Accueil/ALaUne';
-import { TalentCard } from 'components/Accueil/Talents';
 import TitleParagraph from 'components/Accueil/TitleParagraph';
 import VideoTextCard from 'components/Accueil/VideoTextCard';
-import { Button } from 'components/Button/Button';
 import { useEffect, useState } from 'react';
 
 // const data = [
@@ -140,7 +138,7 @@ export default function DocPage() {
         // Replace with your actual API endpoint and parameters
         fetch('https://studiofact.group/project/type/Doc')
             .then((response) => response.json() as any) // Type assertion here
-            .then((responseData) => { setData(responseData.realisationProjects) })
+            .then((responseData) => { setData(responseData.realisationProjects.sort((a: any, b: any) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())) })
             .catch((error) => console.error('Error fetching data:', error));
         fetch("https://studiofact.group/alaune")
             .then((response) => response.json())

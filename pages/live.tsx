@@ -1,16 +1,14 @@
 // pages/editions.tsx
-import Team from 'components/Accueil/Team';
+import ALaUne from 'components/Accueil/ALaUne';
 import TitleParagraph from 'components/Accueil/TitleParagraph';
-import { Button } from 'components/Button/Button';
-import Image from "next/legacy/image";
+import VideoTextCard from 'components/Accueil/VideoTextCard';
 import { useEffect, useState } from 'react';
-
 
 // const ImageList = ({ images }: any) => {
 //     const [activeIndex, setActiveIndex] = useState(0);
 //     const [isAuto, setIsAuto] = useState(true);
 
-    
+
 //     useEffect(() => {
 //         const nextSlide = () => {
 //             setIsAuto(false);
@@ -80,12 +78,12 @@ import { useEffect, useState } from 'react';
 //     { src: '/editions.png', alt: 'Image 1' },
 //     // Add more images as needed
 // ];
-export default function LivePage() {
+export default function StoriesPage() {
     const [data, setData] = useState<any[]>([]);
     const [aLaUne, setALaUne]: any = useState(null);
-    const [selectedProjects, setSelectedProjects] = useState<{ accueil: string | null, audio: string | null, _id: string }>({
+    const [selectedProjects, setSelectedProjects] = useState<{ accueil: string | null, live: [], _id: string }>({
         accueil: null,
-        audio: null,
+        live: [],
         _id: "652ec1d556dfdb7cfae39dfc",
     });
 
@@ -94,7 +92,7 @@ export default function LivePage() {
         // Replace with your actual API endpoint and parameters
         fetch('https://studiofact.group/project/type/Live')
             .then((response) => response.json() as any) // Type assertion here
-            .then((responseData) => { setData(responseData.realisationProjects) })
+            .then((responseData) => { setData(responseData.realisationProjects.sort((a: any, b: any) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())) })
             .catch((error) => console.error('Error fetching data:', error));
         fetch("https://studiofact.group/alaune")
             .then((response) => response.json())
@@ -105,94 +103,83 @@ export default function LivePage() {
 
     }, []);
     useEffect(() => {
-        if (selectedProjects.audio != null)
-            setALaUne(data.filter((elem) => elem._id === selectedProjects.audio)[0]);
+        if (selectedProjects.live != null)
+            setALaUne(data.filter((elem) => elem._id === selectedProjects.live)[0]);
     }, [data, selectedProjects])
 
     return (
         <div className="flex flex-col justify-center items-center h-full p-10 mt-[8vh]">
-            <TitleParagraph color1={'bg-[#05E2DC]'} color2={'bg-[#E3981B]'} top1={100} top2={75} left1={450} left2={750} x1={-100} x2={350} y1={-100} y2={-300} title="Live :  Le réel se met en scène. Rien n’est plus vrai que le spectacle vivant. Rien n’est plus vivant que le spectacle du vrai." paragraph="Chez StudioFact Audio, nous écoutons le réel pour mieux comprendre le monde et fabriquer des histoires audio qui nous rapprochent" ></TitleParagraph>
+            <TitleParagraph color1={'bg-[#FF3133]'} color2={'bg-[#17FFDA]'} top1={100} top2={75} left1={450} left2={750} x1={-100} x2={350} y1={-100} y2={-300} title="Live : Le réel se met en scène." paragraph="Rien n’est plus vrai que le spectacle vivant. Rien n’est plus vivant que le spectacle du vrai." ></TitleParagraph>
 
-            {aLaUne &&
-                <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
-                    <div className='flex flex-col gap-y-4'>
-                        <h3 className="text-gray-200 text-4xl font-bold">
-                            {aLaUne.title}
-                        </h3>
-                        <p className="text-gray-200 text-4xl">
-                            {aLaUne.description}
-                        </p>
-                        <iframe title="Audio Player" className="mt-10" src={aLaUne.enSavoirPlus} width="100%" height="500px" allow="autoplay"></iframe>
-                    </div>
-                </div>
+            {aLaUne && selectedProjects.live.length > 0 &&
+                <ALaUne data={data} selectedProjects={selectedProjects.live}></ALaUne>
             }
+
             <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
                 <div className="mb-4">
                     <h1 className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white mb-8">Nos Créations Originales</h1>
                 </div>
-                <p className="text-gray-200 text-4xl">
+                {/* <p className="text-gray-200 text-4xl">
                     Des projets d’auteurices qui sortent des studios pour raconter le monde autour de nous.<br />
                     Des récits singuliers qui mêlent histoires intimes et grande Histoire.<br />
                     Des histoires qui racontent les bouleversements du monde et nos bouleversements intérieurs.<br /><br />
                     Les Créations Originales de StudioFact Audio sont disponibles gratuitement sur toutes les plateformes de podcasts
-                </p>
+                </p> */}
                 <div className="flex flex-wrap justify-center gap-16 my-10">
                     {data.map((item, index) => (
-                        <>
-                            <div key={index} className="w-80 h-80 mb-6">
-                                <a href={item.link} target="_blank" rel="noopener noreferrer">
-                                    <Image 
-                                        src={'/' + item.coverFilename}
-                                        alt={item.title}
-                                        width={400}
-                                        height={400}
-                                        className="w-full h-full"
-                                    />
-                                </a>
-                            </div>
-                            {index % 3 === 2 && <div className="w-full"></div>}
-                        </>
+                        <VideoTextCard
+                            key={index}
+                            imageSrc={"/" + item.coverFilename}
+                            videoSrc={item.videoTrailer}
+                            imageAlt={item.coverFilename}
+                            title={item.title}
+                            content={item.description}
+                            moreDetails={item.enSavoirPlus}
+                            aPropos={item.aPropos}
+                            type={item.type}
+                            tags={item.tags}
+                            resourcesFilenames={item.resourcesFilenames}
+                            coverFilename={item.coverFilename}
+                        />
                     ))}
                 </div>
             </div>
-            <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
-                <div className="mb-4">
-                    <h1 className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white mb-8">Nos Créations pour les Marques</h1>
-                </div>
-                <p className="text-gray-200 text-4xl">
-                    Chez StudioFact Audio, nous produisons aussi des podcasts pour les marques et les institutions qui veulent mettre l’audio au cœur de leur stratégie de communication. Nous vous accompagnons sur toute la chaîne de valeur du podcast de la conception à la diffusion, en passant par toutes les étapes de production.
-                </p>
-                <div className="flex flex-wrap justify-center gap-16 my-10">
-                    {data.map((item, index) => (
-                        <>
-                            <div key={index} className="w-80 h-80 mb-6">
-                                <a href={item.link} target="_blank" rel="noopener noreferrer">
-                                    <Image 
-                                        src={'/' + item.coverFilename}
-                                        alt={item.title}
-                                        width={400}
-                                        height={400}
-                                        className="w-full h-full"
-                                    />
-                                </a>
-                            </div>
-                            {index % 3 === 2 && <div className="w-full"></div>}
-                        </>
-                    ))}
-                </div>
-            </div>
-            <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
+            {/* <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
                 <div className="mb-4">
                     <h1 className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white mb-8">Qui sommes-nous ?</h1>
                 </div>
                 <p className="text-gray-200 text-4xl">
                     Les meilleures histoires sont en train d’être vécues tout autour de nous. Chez StudioFact Audio nous mettons le réel en ondes pour raconter le monde. Pour révéler des voix, des territoires, des luttes et faire entendre d’autres vies que les nôtres. Nous mettons les meilleurs ingrédients des fictions au service du documentaire et la force du documentaire au service des fictions pour fabriquer des histoires qui nous font vibrer.
                 </p>
-                <Team></Team>
+                <div className='flex justify-center gap-x-10 min-h-[60vh]'>
+                    <TalentCard
+                        name="Roxane Rouas-Rafowicz"
+                        occupation="Avocate et entrepreneuse"
+                        bio="Roxane Rouas-Rafowicz est avocat produire du contenu original exclusivement produire du contenu original exclusivement produire du contenu original exclusivement produire du contenu original exclusivement produire du contenu original exclusivement produire du contenu original exclusivement produire du contenu original exclusivement issu d'histoires vraies."
+                        imageSrc="roxane2.png"
+                    />
+                    <TalentCard
+                        name="Roxane Rouas-Rafowicz"
+                        occupation="Avocate et entrepreneuse"
+                        bio="Roxane Rouas-Rafowicz est avocat produire du contenu original exclusivement produire du contenu original exclusivement produire du contenu original exclusivement produire du contenu original exclusivement produire du contenu original exclusivement produire du contenu original exclusivement produire du contenu original exclusivement issu d'histoires vraies."
+                        imageSrc="roxane2.png"
+                    />
+                </div>
                 <div className='flex justify-center'>
                     <Button href="g">Contactez-nous</Button>
                 </div>
             </div>
+            <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
+                <div className="mb-4">
+                    <h1 className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white mb-8">Suivez-nous sur Instagram</h1>
+                </div>
+                <p className="text-gray-200 text-4xl">
+                    Chez StudioFact Audio, nous produisons aussi des podcasts pour les marques et les institutions qui veulent mettre l’audio au cœur de leur stratégie de communication. Nous vous accompagnons sur toute la chaîne de valeur du podcast de la conception à la diffusion, en passant par toutes les étapes de production.
+                </p>
+                <div className='flex justify-center my-10'>
+                    <iframe title="oui" className="w-[1000px] h-[900px]" id="instagram-embed-1" src="https://www.instagram.com/studiofact.audio/embed/" allowFullScreen={true} frameBorder="0" height="560" data-instgrm-payload-id="instagram-media-payload-1"></iframe>
+                </div>
+            </div> */}
         </div>
     );
 }
