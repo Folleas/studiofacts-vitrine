@@ -105,7 +105,7 @@ export default function Section() {
             </div>
             <div className="flex flex-col w-full h-full p-10 xl:mb-[2vh]">
                 <h3 className="text-xl md:text-4xl xl:text-4xl 2xl:text-5xl text-[red] font-bold mb-3">Nos spécificités</h3>
-                <h2 className="text-2xl md:text-5xl xl:text-5xl 2xl:text-6xl font-bold w-[500px]">Le réel au coeur de notre ADN</h2>
+                <h2 className="text-2xl md:text-5xl xl:text-5xl 2xl:text-6xl font-bold max-w-[1000px]">Le réel au coeur de notre ADN</h2>
                 <motion.div ref={ref} initial='hidden' animate={controls} variants={imageVariants} className='flex w-full'>
                     {width < 768 ?
                         <div className='flex flex-col w-full'>

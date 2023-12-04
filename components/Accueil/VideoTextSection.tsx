@@ -63,7 +63,7 @@ export const MovingCircle = ({ top, left, color, x, y, size }: any) => {
 
 
 
-export default function VideoTextSection({displayButton, title1, title2, paragraph1, paragraph2, top1, top2, left1, left2, x1, x2, y1, y2}: any) {
+export default function VideoTextSection({ displayButton, title1, title2, paragraph1, paragraph2, top1, top2, left1, left2, x1, x2, y1, y2 }: any) {
   const ref = useRef(null);
   const isInView = useInView(ref);
   const controls = useAnimation();
@@ -106,16 +106,16 @@ export default function VideoTextSection({displayButton, title1, title2, paragra
         <MovingCircle top={top2} left={left2} size={'w-[500px] h-[500px]'} color="bg-[#ff3333]" x={x2} y={y2} />
       </div>
       <motion.div initial="hidden" animate={controls} ref={ref} className="flex w-full h-full p-10">
-        <div className="w-1/2">
+        <div className="w-1/2 pr-10 md:pr-0">
           <motion.h2 variants={variantsLeft} className="text-3xl xl:text-6xl 2xl:text-7xl font-bold">{title1}</motion.h2>
           <motion.p variants={variantsLeft} className={`text-base ${textClass} mt-10`}>{paragraph1}</motion.p>
         </div>
         <div className="w-1/2 justify-between flex flex-col content-end">
           {
             displayButton ?
-            <Link href="/apropos" className="bg-[#46fd9e] h-[50px] xl:h-[75px] text-[#1e2428] text-lg xl:text-4xl 2xl:text-5xl hover:bg-[#84f588] font-semibold py-2 px-4 rounded self-end">
-            En Savoir Plus
-          </Link> : <div></div>
+              <Link href="/apropos" className="bg-[#46fd9e] h-fit p-1 xl:h-[75px] text-[#1e2428] text-base xl:text-4xl 2xl:text-5xl hover:bg-[#84f588] font-semibold md:py-2 md:px-4 rounded self-end">
+                En Savoir Plus
+              </Link> : <div></div>
           }
           <div className="self-end">
             <motion.h2 variants={variantsRight} className="text-3xl xl:text-6xl 2xl:text-7xl font-bold text-[#46fd9e]">{title2}</motion.h2>

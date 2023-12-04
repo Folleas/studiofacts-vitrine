@@ -90,7 +90,7 @@ export default function Web() {
             <h1 className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white mb-8">Suivez-nous sur Instagram</h1>
           </div>
           <div className='flex justify-center my-10'>
-            <iframe title="oui" className="w-[1000px] h-[900px]" id="instagram-embed-1" src="https://www.instagram.com/studiofact.officiel/embed/"  allowFullScreen={true} frameBorder="0" height="560" data-instgrm-payload-id="instagram-media-payload-1"></iframe>
+            <iframe title="oui" className="w-[1000px] h-[400px] md:h-[900px]" id="instagram-embed-1" src="https://www.instagram.com/studiofact.officiel/embed/"  allowFullScreen={true} frameBorder="0" height="560" data-instgrm-payload-id="instagram-media-payload-1"></iframe>
           </div>
         </div>
       </div>

@@ -1,10 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import VideoTextCard from 'components/Accueil/VideoTextCard';
 
+
+const useWidth = () => {
+  const [width, setWidth] = useState(0)
+  const handleResize = () => setWidth(window.innerWidth)
+  useEffect(() => {
+      handleResize()
+      window.addEventListener('resize', handleResize)
+      return () => window.removeEventListener('resize', handleResize)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  return width
+}
+
 export default function Web() {
   const [data, setData] = useState<any[]>([]);
   const [loadedCount, setLoadedCount] = useState(4); // Initially load 4 items
   const itemsPerPage = 4; // Number of items to load per additional request
+  const width = useWidth();
 
   useEffect(() => {
     // Function to fetch data from the API
@@ -57,7 +71,7 @@ export default function Web() {
             tags={item.tags}
             resourcesFilenames={item.resourcesFilenames}
             coverFilename={item.coverFilename}
-            swapContent={index % 2 !== 0}
+            swapContent={width > 712 ? index % 2 !== 0 : false}
           />
         ))}
         {loadedCount < data.length && (
