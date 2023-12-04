@@ -108,7 +108,7 @@ export default function VideoTextSection({displayButton, title1, title2, paragra
       <motion.div initial="hidden" animate={controls} ref={ref} className="flex w-full h-full p-10">
         <div className="w-1/2">
           <motion.h2 variants={variantsLeft} className="text-3xl xl:text-6xl 2xl:text-7xl font-bold">{title1}</motion.h2>
-          <motion.p variants={variantsLeft} className={`text-lg ${textClass} mt-10`}>{paragraph1}</motion.p>
+          <motion.p variants={variantsLeft} className={`text-base ${textClass} mt-10`}>{paragraph1}</motion.p>
         </div>
         <div className="w-1/2 justify-between flex flex-col content-end">
           {
@@ -119,7 +119,7 @@ export default function VideoTextSection({displayButton, title1, title2, paragra
           }
           <div className="self-end">
             <motion.h2 variants={variantsRight} className="text-3xl xl:text-6xl 2xl:text-7xl font-bold text-[#46fd9e]">{title2}</motion.h2>
-            <motion.p variants={variantsRight} className={`text-lg ${textClass} overflow-y-scroll mt-10 min-h-[160px] max-h-[350px]`}>{paragraph2}</motion.p>
+            <motion.p variants={variantsRight} className={`text-base ${textClass} overflow-y-scroll mt-10 min-h-[160px] max-h-[350px]`}>{paragraph2}</motion.p>
           </div>
         </div>
       </motion.div>
