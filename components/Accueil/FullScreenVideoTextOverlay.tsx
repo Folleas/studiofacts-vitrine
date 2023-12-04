@@ -10,9 +10,11 @@ export default function FullScreenVideoTextOverlay() {
           loop
           autoPlay
           muted
+          playsInline
           className="absolute w-full h-full object-contain z-0"
         >
           <source src={'/pres.mp4'} type="video/mp4" />
+          Your browser does not support the video tag or the file format of this video.
         </video>
         {/* Conditionally render the gradients based on screen size */}
         <div className="absolute inset-y-0 left-0 w-full lg:bg-gradient-to-b from-transparent from-60% to-[#1e2428] to-90%"></div>
