@@ -117,7 +117,7 @@ export default function LabPage() {
     }, [data, selectedProjects])
 
     return (
-        <div className="flex flex-col justify-center items-center h-full p-10 mt-[8vh]">
+        <div className="flex flex-col justify-center items-center h-full w-full md:p-10 mt-[8vh]">
             <TitleParagraph color1={'bg-[#05E2DC]'} color2={'bg-[#E3981B]'} top1={100} top2={75} left1={450} left2={750} x1={-100} x2={350} y1={-100} y2={-300} title="Lab : Une pépinière de talents du journalisme et de l’investigation. Une chance aux talents du journalisme de demain." paragraph="Chez StudioFact Audio, nous écoutons le réel pour mieux comprendre le monde et fabriquer des histoires audio qui nous rapprochent" ></TitleParagraph>
 
             <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">

@@ -20,15 +20,15 @@ const ImageList = ({ images }: any) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [isAuto, setIsAuto] = useState(true);
 
-    
+
     useEffect(() => {
-        
-            const nextSlide = () => {
-                setIsAuto(false);
-                setActiveIndex((prevIndex) =>
-                    prevIndex >= images.length - 4 ? 0 : prevIndex + 4
-                );
-            };
+
+        const nextSlide = () => {
+            setIsAuto(false);
+            setActiveIndex((prevIndex) =>
+                prevIndex >= images.length - 4 ? 0 : prevIndex + 4
+            );
+        };
         const autoScroll = setInterval(() => {
             if (isAuto)
                 nextSlide();
@@ -53,7 +53,7 @@ const ImageList = ({ images }: any) => {
                         transition={{ duration: 1.5 + index / 2 }}
                         className=''
                     >
-                        <Image 
+                        <Image
                             width={400}
                             height={400}
                             src={'/' + image}
@@ -66,7 +66,7 @@ const ImageList = ({ images }: any) => {
                 {images.slice(0, images.length / 4 + (images.length % 4 > 0 ? 1 : 0)).map((_: any, index: number) => (
                     <button
                         key={index}
-                        className={`h-6 w-6 mx-1 rounded-full bg-gray-500 ${index === activeIndex / 4 ? 'bg-gray-800' : ''}`}
+                        className={`h-3 w-3 mx-1 rounded-full bg-gray-500 ${index === activeIndex / 4 ? 'bg-gray-800' : ''}`}
                         onClick={() => setActiveIndex(index * 4)}
                     />
                 ))}
@@ -155,7 +155,7 @@ export default function RightsPage() {
         return tagsForRights[right].map((tag, index) => (
             <button
                 key={index}
-                className={`mx-2 mb-2 px-3 py-1 rounded-md text-black ${selectedTags[right]?.includes(tag) ? 'bg-gray-300 shadow-xl' : 'bg-[#ffffff]'
+                className={`mx-2 mb-2 px-2 md:px-3 py-1 text-xs md:text-base rounded-md text-black ${selectedTags[right]?.includes(tag) ? 'bg-gray-300 shadow-xl' : 'bg-[#ffffff]'
                     }`}
                 onClick={() => handleTagSelect(right, tag)}
             >
@@ -183,63 +183,65 @@ export default function RightsPage() {
             .catch((error) => console.error("Error fetching data:", error));
     }, []);
     return (
-        <div className="flex flex-col justify-center items-center h-full w-full p-10 mt-[8vh]">
+        <div className="flex flex-col justify-center items-center h-full w-full md:p-10 mt-[8vh] overflow-x-hidden">
             <TitleParagraph color1={'bg-[#59AA6F]'} color2={'bg-[#FF3133]'} top1={150} top2={50} left1={600} left2={400} x1={500} x2={400} y1={100} y2={-200} title="Rights : Une maison d'édition spécialisée dans la littérature du réel" paragraph="La vocation de nos livres est de raconter le réel. Sans goût pour le scandale ou pour l’écume du jour, nous publions des histoires fortes, porteuses de sens." ></TitleParagraph>
 
             <ALaUne data={data} selectedProjects={sortedRightsValues.flatMap(right => filteredProjects(right).map(project => project._id))}></ALaUne>
 
-            <div className='bg-[#ededed] w-[100vw] mt-10 h-[600px] p-10'>
+            <div className='bg-[#ededed] w-[100vw] mt-10 h-fit py-10 px-6 md:p-16'>
                 <h2 className="text-2xl xl:text-4xl 2xl:text-5xl text-left mb-4 text-black font-bold">Nos Partenaires</h2>
                 <ImageList images={partnerImages}></ImageList>
             </div>
 
-            {/* Display titles and corresponding projects */}
-            {sortedRightsValues.map((right, index) => right !== '' && (
-                <div key={index} className="w-full">
-                    <div className='flex flex-col mt-10 mb-6'>
-                        <h2 className="text-2xl xl:text-4xl 2xl:text-5xl text-left mb-4 font-bold">{right}</h2>
-                        <div className="flex flex-wrap w-fit h-fit justify-center mb-4">{renderTagsForRight(right)}</div>
+            <div className='w-full h-full pl-6'>
+                {/* Display titles and corresponding projects */}
+                {sortedRightsValues.map((right, index) => right !== '' && (
+                    <div key={index} className="w-full">
+                        <div className='flex flex-col mt-10 mb-6'>
+                            <h2 className="text-2xl xl:text-4xl 2xl:text-5xl text-left mb-4 font-bold">{right}</h2>
+                            <div className="flex flex-wrap w-fit h-fit justify-start mb-4">{renderTagsForRight(right)}</div>
+                        </div>
+
+                        <ul className='max-h-[1600px] flex overflow-y-scroll'>
+                            {filteredProjects(right)
+                                .map((project, projIndex) => {
+                                    return (
+                                        <RightsProject
+                                            key={projIndex}
+                                            imageSrc={"/" + project.coverFilename}
+                                            videoSrc={project.videoTrailer}
+                                            imageAlt={project.coverFilename}
+                                            title={project.title}
+                                            content={project.description}
+                                            moreDetails={project.enSavoirPlus}
+                                            type={project.type}
+                                            tags={project.tags}
+                                            resourcesFilenames={project.resourcesFilenames}
+                                            coverFilename={project.coverFilename}
+                                        />
+                                    )
+                                })
+                            }
+                        </ul>
                     </div>
-
-                    <ul className='max-h-[1600px] flex overflow-y-scroll'>
-                        {filteredProjects(right)
-                            .map((project, projIndex) => {
-                                return (
-                                    <RightsProject
-                                        key={projIndex}
-                                        imageSrc={"/" + project.coverFilename}
-                                        videoSrc={project.videoTrailer}
-                                        imageAlt={project.coverFilename}
-                                        title={project.title}
-                                        content={project.description}
-                                        moreDetails={project.enSavoirPlus}
-                                        type={project.type}
-                                        tags={project.tags}
-                                        resourcesFilenames={project.resourcesFilenames}
-                                        coverFilename={project.coverFilename}
-                                    />
-                                )
-                            })
-                        }
-                    </ul>
-                </div>
-            ))}
+                ))}
 
 
-            <Team isPerson={false} talents={[
-                {
-                    name: "Julie Tolza",
-                    occupation: "Directrice Générale Rights",
-                    bio: "Julie Tolza specializes in rights management with a focus on maximizing content value...",
-                    imageSrc: "julie-Tolza_site.webp"
-                },
-                {
-                    name: "Daniel Meneses",
-                    occupation: "Responsable Ventes et Marketing",
-                    bio: "Daniel Meneses excels in strategic sales and marketing initiatives with a goal-oriented approach...",
-                    imageSrc: "daniel-meneses_site.webp"
-                },
-            ]}></Team>
+                <Team isPerson={false} talents={[
+                    {
+                        name: "Julie Tolza",
+                        occupation: "Directrice Générale Rights",
+                        bio: "Julie Tolza specializes in rights management with a focus on maximizing content value...",
+                        imageSrc: "julie-Tolza_site.webp"
+                    },
+                    {
+                        name: "Daniel Meneses",
+                        occupation: "Responsable Ventes et Marketing",
+                        bio: "Daniel Meneses excels in strategic sales and marketing initiatives with a goal-oriented approach...",
+                        imageSrc: "daniel-meneses_site.webp"
+                    },
+                ]}></Team>
+            </div>
         </div>
     );
 }

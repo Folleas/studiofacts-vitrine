@@ -108,7 +108,7 @@ export default function StoriesPage() {
     }, [data, selectedProjects])
 
     return (
-        <div className="flex flex-col justify-center items-center h-full p-10 mt-[8vh]">
+        <div className="flex flex-col justify-center items-center h-full w-full md:p-10 mt-[8vh]">
             <TitleParagraph color1={'bg-[#FF3133]'} color2={'bg-[#17FFDA]'} top1={100} top2={75} left1={450} left2={750} x1={-100} x2={350} y1={-100} y2={-300} title="Live : Le réel se met en scène." paragraph="Rien n’est plus vrai que le spectacle vivant. Rien n’est plus vivant que le spectacle du vrai." ></TitleParagraph>
 
             {aLaUne && selectedProjects.live.length > 0 &&

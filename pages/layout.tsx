@@ -24,6 +24,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {// 
                 </div>
                 <main className=""> {/* Add padding-top to accommodate Navbar */}
                     <motion.div
+                        className="w-full h-full"
                         id="top"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}

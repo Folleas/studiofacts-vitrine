@@ -141,7 +141,7 @@ export default function AudioPage() {
     }, [data, selectedProjects])
 
     return (
-        <div className="flex flex-col justify-center items-center h-full p-10 mt-[8vh]">
+        <div className="flex flex-col justify-center items-center h-full w-full md:p-10 mt-[8vh]">
             <TitleParagraph color1={'bg-[#ff3333]'} color2={'bg-[#FFC300]'} top1={100} top2={75} left1={450} left2={750} x1={-100} x2={350} y1={-100} y2={-300} title="Audio : le studio de podcasts d'histoires vraies du groupe StudioFact" paragraph="Chez StudioFact Audio, nous écoutons le réel pour mieux comprendre le monde et fabriquer des histoires audio qui nous rapprochent" ></TitleParagraph>
 
             {aLaUne !== undefined && aLaUne !== null &&

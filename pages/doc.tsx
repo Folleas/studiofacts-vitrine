@@ -153,7 +153,7 @@ export default function DocPage() {
     }, [data, selectedProjects])
 
     return (
-        <div className="flex flex-col justify-center items-center h-full p-10 mt-[8vh]">
+        <div className="flex flex-col justify-center items-center h-full w-full md:p-10 mt-[8vh]">
             <TitleParagraph color1={'bg-[#00D779]'} color2={'bg-[#CF6FED]'} top1={100} top2={75} left1={450} left2={750} x1={-100} x2={350} y1={-100} y2={-300} title="Doc : Des documentaires qui se regardent comme des fictions." paragraph="" ></TitleParagraph>
 
             {aLaUne && selectedProjects.doc.length > 0 &&

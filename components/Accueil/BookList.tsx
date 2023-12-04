@@ -204,8 +204,8 @@ function BookCard({ item }: any) {
     const closeModal = () => setIsModalOpen(false);
 
     return (
-        <div className="p-4 w-[360px]">
-            <div className="relative w-[325px] h-[450px]">
+        <div className="p-4 w-[350px] md:w-[360px]">
+            <div className="relative w-[300px] h-[400px] md:w-[325px] md:h-[450px]">
                 {
                     item?.coverFilename &&
                     <Image 
