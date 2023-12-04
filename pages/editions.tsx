@@ -52,7 +52,7 @@ export default function EditionsPage() {
     }, []);
 
     return (
-        <div className="flex flex-col justify-center items-center h-full w-full md:p-10 mt-[8vh]">
+        <div className="flex flex-col justify-center items-center h-full w-full md:p-10 mt-[8vh] overflow-x-hidden">
             <TitleParagraph color1={'bg-[#59AA6F]'} color2={'bg-[#FF3133]'} top1={150} top2={50} left1={600} left2={400} x1={500} x2={400} y1={100} y2={-200} title="Éditions : Une maison d'édition spécialisée dans la littérature du réel" paragraph="La vocation de nos livres est de raconter le réel. Sans goût pour le scandale ou pour l’écume du jour, nous publions des histoires fortes, porteuses de sens." ></TitleParagraph>
 
             <ALaUne data={data} selectedProjects={selectedProjects.editions}></ALaUne>
