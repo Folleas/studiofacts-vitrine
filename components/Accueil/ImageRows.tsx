@@ -29,11 +29,11 @@ export default function ImageRows() {
   };
 
   return (
-    <div className="p-10 my-8 sm:my-16 md:w-3/4 lg:w-2/3 xl:w-full h-[80vh] mx-auto">
+    <div className="p-10 my-8 sm:my-16 md:w-3/4 lg:w-2/3 xl:w-full h-fit mx-auto">
       <h1 className="text-4xl md:text-5xl xl:text-5xl 2xl:text-6xl font-bold text-white">LA GALAXIE STUDIOFACT</h1>
-      <div className='flex flex-col h-full'>
-        <motion.div ref={ref} className="flex mb-8 sm:mb-16 grow overflow-x-scroll justify-center xl:overflow-x-hidden space-x-10">
-          <div className='flex w-full justify-center'>
+      <div className='flex flex-col xl:items-center h-fit'>
+        <motion.div ref={ref} className="flex mb-8 sm:mb-16 grow h-[200px] xl:h-[300px] overflow-x-scroll justify-center xl:overflow-x-hidden space-x-10">
+          <div className='flex w-full overflow-y-hidden'>
             {/* First row of pictures */}
             {['/STUDIOFACT_STORIES_ROUGEVERMEIL.png', '/STUDIOFACT_PRESSE_BLEULAVANDE.png', '/STUDIOFACT_DOC_VERT.png', '/STUDIOFACT_AUDIO_JAUNE.png'].map((src, index) => (
               <motion.div
@@ -56,8 +56,8 @@ export default function ImageRows() {
             ))}
           </div>
         </motion.div>
-        <div className="flex overflow-x-scroll grow xl:overflow-x-hidden justify-center space-x-10">
-          <div className='flex w-full justify-center'>
+        <div className="flex overflow-x-scroll grow xl:overflow-x-hidden h-[200px] xl:h-[300px] justify-center space-x-10">
+          <div className='flex w-full overflow-y-hidden'>
             {/* Second row of pictures */}
             {['/01_STUDIOFACT_RIGHT.png', '/STUDIOFACT_EDITION_BLEU.png', '/STUDIOFACT_LAB_BLEUTURQUOISE.png', '/01_STUDIOFACT_LIVE.png'].map((src, index) => (
               <motion.div
