@@ -1,11 +1,30 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 export default function FullScreenVideoTextOverlay() {
+  const videoRef: any = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    const playPromise = video.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(_ => {
+          // Autoplay started
+        })
+        .catch((error: any) => {
+          // Autoplay was prevented, handle it here
+          console.log('Autoplay was prevented: ', error);
+        });
+    }
+  }, []);
   return (
     <div className="h-[30vh] xl:h-screen relative w-screen">
       <div className="h-[30vh] xl:h-screen relative w-full">
         <video
+          ref={videoRef}
           id="background-video"
           loop
           autoPlay
