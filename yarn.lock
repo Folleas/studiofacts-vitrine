@@ -1938,10 +1938,10 @@
     pump "^3.0.0"
     tar-fs "^2.1.1"
 
-"@next/bundle-analyzer@^13.3.0":
-  version "13.4.19"
-  resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-13.4.19.tgz#aaa423b029a4c7af04c7da9ba5980b267946a5fb"
-  integrity sha512-nXKHz63dM0Kn3XPFOKrv2wK+hP9rdBg2iR1PsxuXLHVBoZhMyS1/ldRcX80YFsm2VUws9zM4a0E/1HlLI+P92g==
+"@next/bundle-analyzer@^14.0.3":
+  version "14.0.3"
+  resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-14.0.3.tgz#84850308cde730fa6f8ca53f304d26f05f7abd95"
+  integrity sha512-+UriXNEn2vGR2IxTiiuen45G7lXUbtMh0hgS/UH2o2E4TnScwjEEepqT76pY8fdpa5JEZ+gvBy6aSnrw4G2P2w==
   dependencies:
     webpack-bundle-analyzer "4.7.0"
 
