@@ -51,7 +51,7 @@ const ImageList = ({ images }: any) => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 1.5 + index / 2, delay: 0.35 * index}}
-                        className=''
+                        className=' '
                     >
                         <Image
                             width={200}
