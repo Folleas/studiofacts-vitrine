@@ -11,7 +11,7 @@ export default function FullScreenVideoTextOverlay() {
 
     if (playPromise !== undefined) {
       playPromise
-        .then(_ => {
+        .then((_: any) => {
           // Autoplay started
         })
         .catch((error: any) => {
