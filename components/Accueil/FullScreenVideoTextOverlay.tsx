@@ -1,30 +1,20 @@
 import Link from 'next/link';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 
 export default function FullScreenVideoTextOverlay() {
-  const videoRef: any = useRef(null);
-
   useEffect(() => {
-    const video = videoRef.current;
-
-    const playPromise = video.play();
-
-    if (playPromise !== undefined) {
-      playPromise
-        .then((_: any) => {
-          // Autoplay started
-        })
-        .catch((error: any) => {
-          // Autoplay was prevented, handle it here
-          console.log('Autoplay was prevented: ', error);
-        });
+    // Check if window is defined (ensuring code runs in the browser)
+    if (typeof window !== 'undefined') {
+      const video: any = document.getElementById('background-video');
+      if (video) {
+        video.play();
+      }
     }
   }, []);
   return (
     <div className="h-[30vh] xl:h-screen relative w-screen">
       <div className="h-[30vh] xl:h-screen relative w-full">
         <video
-          ref={videoRef}
           id="background-video"
           loop
           autoPlay
@@ -40,9 +30,9 @@ export default function FullScreenVideoTextOverlay() {
         {/* <div className="absolute inset-y-0 right-0 w-1/4 lg:bg-gradient-to-l from-[#1e2428] via-black to-transparent"></div> */}
 
         {/* New centered instruction */}
-        <div className="absolute bottom-0 text-white text-center w-full pb-4">
+        <div className="absolute bottom-[10%] text-white text-center w-full pb-4">
           <Link href='#VideoTextSection' className="text-xs md:text-xl xl:text-xl 2xl:text-2xl">
-            V
+            Nous découvrir
           </Link>
           {/* <button><p>V</p></button> */}
         </div>

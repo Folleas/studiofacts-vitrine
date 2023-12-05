@@ -1,7 +1,7 @@
 import { motion, useAnimation, useInView } from "framer-motion";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
-import { FaTimes } from "react-icons/fa"; // Import the close icon from a library
+import { FaTimes } from "react-icons/fa";
 import TextTabs from "./TextTabs";
 
 export function ProjectModal({
@@ -90,7 +90,8 @@ export function ProjectModal({
                       <Image
                         src={'https://studiofact.group/image/' + resource}
                         alt={`Resource Image ${index}`}
-                        layout="fill"
+                        fill
+                        sizes={"(max-width: 640px) 100vw, (max-width: 768px) 90vw, 40vw"}
                         className="rounded-md object-contain"
                       />
                     </div>
@@ -118,7 +119,6 @@ export function ProjectModal({
                     alt={`Cover Image for ${title}`}
                     width={567}
                     height={400}
-
                     className="rounded-lg object-contain"
                   />
                 }
@@ -248,7 +248,7 @@ export default function VideoTextCard({
           } md:flex-row`}
       >
         <div
-          className={`relative bg-black w-full h-full xl:w-[1600px] rounded-xl overflow-hidden ${swapContent ? "md:order-2" : ""
+          className={`relative bg-black w-full h-full xl:w-[1000px] rounded-xl overflow-hidden ${swapContent ? "md:order-2" : ""
             }`}
         >
           {coverFilename ? (
@@ -263,14 +263,15 @@ export default function VideoTextCard({
                 <source src={'https://studiofact.group/image/' + videoSrc} type="video/mp4" />
               </video>
             ) : (
-              <div className="relative w-full h-full ">
+              <div className="relative w-full h-full">
                 {
                   coverFilename &&
                   <Image
                     src={'https://studiofact.group/image/' + coverFilename}
-                    layout="fill"
+                    fill
+                    sizes={"(max-width: 640px) 100vw, (max-width: 768px) 90vw, 40vw"}
                     alt={imageAlt}
-                    className="object-contain"
+                    className="object-cover"
                   />
                 }
               </div>

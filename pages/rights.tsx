@@ -43,7 +43,7 @@ const ImageList = ({ images }: any) => {
 
     return (
         <div className="flex flex-col">
-            <div className="flex justify-between gap-x-10 w-full h-full">
+            <div className="flex justify-around gap-x-10 w-full h-full">
                 {images.slice(activeIndex, activeIndex + 4).map((image: any, index: number) => (
                     <motion.div
                         key={`image-${index}-${activeIndex}`}
@@ -54,8 +54,8 @@ const ImageList = ({ images }: any) => {
                         className=''
                     >
                         <Image
-                            width={400}
-                            height={400}
+                            width={200}
+                            height={200}
                             src={'/' + image}
                             alt={'logo-' + index}
                         />
@@ -202,7 +202,7 @@ export default function RightsPage() {
                             <div className="flex flex-wrap w-fit h-fit justify-start mb-4">{renderTagsForRight(right)}</div>
                         </div>
 
-                        <ul className='max-h-[1600px] flex overflow-y-scroll'>
+                        <ul className='flex flex-wrap'>
                             {filteredProjects(right)
                                 .map((project, projIndex) => {
                                     return (
