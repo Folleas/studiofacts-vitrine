@@ -20,7 +20,7 @@ export default function FullScreenVideoTextOverlay() {
           playsInline
           autoPlay
           muted
-          controls={true}
+          controls={false}
           className="absolute w-full h-full object-contain z-0"
         >
           <source src={'/pres.mp4'} type="video/mp4" />
