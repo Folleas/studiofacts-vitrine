@@ -248,7 +248,7 @@ export default function VideoTextCard({
           } md:flex-row`}
       >
         <div
-          className={`relative bg-black w-full h-full xl:w-[1000px] rounded-xl overflow-hidden ${swapContent ? "md:order-2" : ""
+          className={`relative w-full h-full xl:w-[1000px] rounded-xl overflow-hidden ${swapContent ? "md:order-2" : ""
             }`}
         >
           {coverFilename ? (
@@ -271,7 +271,7 @@ export default function VideoTextCard({
                     fill
                     sizes={"(max-width: 640px) 100vw, (max-width: 768px) 90vw, 40vw"}
                     alt={imageAlt}
-                    className="object-cover"
+                    className="object-contain"
                   />
                 }
               </div>
