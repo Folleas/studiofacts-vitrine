@@ -78,7 +78,7 @@ export default function NavBar() {
         setActiveHoverIndex(null);
     };
     return (
-        <div className="h-[8vh] relative backdrop-blur-lg w-full xl:p-10 mx-auto flex items-center justify-center shadow-md"> {/* Add relative to the container */}
+        <div className="h-[8vh] relative backdrop-blur-lg bg-[rgba(0,0,0,0.3)] w-full xl:p-10 mx-auto flex items-center justify-center shadow-md"> {/* Add relative to the container */}
             <div className="flex items-center justify-between xl:px-6 py-4 w-full h-full">
                 <div className="lg:hidden flex-none w-1/6">
                 </div>
@@ -118,7 +118,7 @@ export default function NavBar() {
                                         <Link
                                             href={link.url + ''}
                                             scroll={true}
-                                            className={`mr-10 shadow-2xl outline-black outline-8 text-xs md:text-xl xl:text-xl 2xl:text-2xl ${link.url === path ? 'font-bold' : ''}`}
+                                            className={`mr-10 outline-black outline-8 text-xs md:text-xl xl:text-xl 2xl:text-2xl ${link.url === path ? 'font-bold' : ''}`}
                                         >
                                             {link.label}
                                         </Link>
@@ -141,7 +141,7 @@ export default function NavBar() {
                                     <Link
                                         href={link.url + ''}
                                         scroll={true}
-                                        className={`mr-10 shadow-2xl outline-black outline-8 text-xs md:text-xl xl:text-xl 2xl:text-2xl ${link.url === path ? 'font-bold' : ''}`}
+                                        className={`mr-10 outline-black outline-8 text-xs md:text-xl xl:text-xl 2xl:text-2xl ${link.url === path ? 'font-bold' : ''}`}
                                     >
                                         {link.label}
                                     </Link>
