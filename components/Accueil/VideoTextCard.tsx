@@ -159,7 +159,7 @@ function renderContentWithLineBreaks(content: any) {
   return (
     <div>
       {lines.map((line: string, index: number) => (
-        <p className="text-gray-300 text-xl md:text-xl xl:text-xl 2xl:text-2xl" key={index}>
+        <p className="text-gray-300 text-xl md:text-lg xl:text-lg 2xl:text-xl" key={index}>
           {line}
           {index !== lines.length - 1 && <br />}
         </p>
@@ -281,7 +281,7 @@ export default function VideoTextCard({
         <div className="p-4 md:py-32 md:pl-12 md:pr-4 w-full h-full flex flex-col justify-between">
           <div className="flex flex-col h-full">
             <div className="flex flex-col max-h-[100px] xl:max-h-[180px]">
-              <h2 className="text-2xl md:text-4xl xl:text-4xl 2xl:text-5xl overflow-y-scroll min-h-[70px] max-h-[1200px] xl:max-h-[180px] font-bold text-white">
+              <h2 className="text-xl md:text-2xl xl:text-3xl 2xl:text-4xl overflow-y-scroll min-h-[50px] max-h-[1200px] xl:max-h-[180px] font-bold text-white">
                 {title}
               </h2>
               {
@@ -299,7 +299,7 @@ export default function VideoTextCard({
                 </div>
               }
             </div>
-            <div className="h-[500px] md:h-fit overflow-y-scroll pr-10 my-6">
+            <div className="h-[500px] md:h-fit overflow-y-scroll pr-10 mt-3 mb-6">
               {renderContentWithLineBreaks(content)}
             </div>
           </div>
