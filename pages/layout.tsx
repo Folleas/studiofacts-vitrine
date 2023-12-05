@@ -8,15 +8,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {// 
     return (
         <>
             <Head>
-                <meta property="og:url" content="https://next-enterprise.vercel.app/" />
-                <meta
-                    property="og:image"
-                    content="https://raw.githubusercontent.com/Blazity/next-enterprise/main/project-logo.png"
-                />
+                <meta property="og:url" content="https://studiofact.fr/" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <meta name="twitter:card" content="summary_large_image" />
                 <title>Studio Facts</title>
+                <meta name="description" content="Site vitrine de Studiofact MediaGroup" />
             </Head>
             <div className="flex flex-col relative bg-[#1e2428]">
                 <div className="z-30 fixed top-0 left-0 w-full">
