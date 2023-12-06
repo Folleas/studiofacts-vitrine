@@ -2,19 +2,15 @@ import { isArray } from "lodash";
 import Image from "next/legacy/image";
 import { useState } from "react";
 
-export default function TextTabs({ tabs, height = "400px", icon = false }: any) {
+export default function TextTabs({ tabs, height = "h-[400px]", icon = false }: any) {
     const [selectedTab, setSelectedTab] = useState(0);
 
     const handleTabChange = (index: number) => {
         setSelectedTab(index);
     }
 
-    const formattedHeight = 'h-[' + height + ']'
-    console.log('icon')
-    console.log(icon)
-
     return (
-        <div className={`relative w-full flex flex-col ${formattedHeight} shadow-[inset_0_-1px_2px_rgba(0,0,0,0.1)]`}>
+        <div className={`relative w-full flex flex-col ${height} shadow-[inset_0_-1px_2px_rgba(0,0,0,0.1)]`}>
             <div className="flex xl:mb-4 justify-start space-x-1 xl:space-x-6 xl:p-2">
                 {
                     tabs.map((tab: any, index: number) => {
@@ -30,7 +26,7 @@ export default function TextTabs({ tabs, height = "400px", icon = false }: any) 
                 }
             </div>
             {
-                isArray(tabs[selectedTab].content) ? (<div className={`${formattedHeight} overflow-y-scroll`}> {
+                isArray(tabs[selectedTab].content) ? (<div className={`${height} overflow-y-scroll`}> {
                     tabs[selectedTab].content.map((elem: any, index: number) =>
                         <div className={`flex`} key={index}>
                             {
@@ -44,7 +40,7 @@ export default function TextTabs({ tabs, height = "400px", icon = false }: any) 
                 </div>
                 )
                     :
-                    <p className={`text-black text-base md:text-xl xl:text-xl 2xl:text-2xl ${formattedHeight} p-6 overflow-y-scroll`} style={{ whiteSpace: 'pre-line' }}>
+                    <p className={`text-black text-base md:text-xl xl:text-xl 2xl:text-2xl ${height} p-6 overflow-y-scroll`} style={{ whiteSpace: 'pre-line' }}>
                         {tabs[selectedTab].content}
                     </p>
             }
