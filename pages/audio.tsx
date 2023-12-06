@@ -167,7 +167,7 @@ export default function AudioPage() {
                 <p className="text-gray-200 text-4xl">
                     Des projets d’auteurices qui sortent des studios pour raconter le monde autour de nous.<br />
                     Des récits singuliers qui mêlent histoires intimes et grande Histoire.<br />
-                    Des histoires qui racontent les bouleversements du monde et nos bouleversements intérieurs.<br /><br />
+                    Des histoires qui racontent les bouleversements du monde et nos bouleversements intérieurs.<br /><br />&
                     Les Créations Originales de StudioFact Audio sont disponibles gratuitement sur toutes les plateformes de podcasts
                 </p>
                 <div className="flex flex-wrap justify-center gap-16 my-10">

@@ -278,15 +278,15 @@ export default function VideoTextCard({
             )
           ) : null}
         </div>
-        <div className="p-4 md:py-32 md:pl-12 md:pr-4 w-full h-full flex flex-col justify-between">
+        <div className={`${swapContent ? "mr-10" : ""} p-4 md:py-32 md:pl-12 md:pr-4 w-full h-full flex flex-col justify-between`}>
           <div className="flex flex-col h-full">
             <div className="flex flex-col max-h-[100px] xl:max-h-[180px]">
-              <h2 className="text-xl md:text-2xl xl:text-3xl 2xl:text-4xl overflow-y-scroll min-h-[50px] max-h-[1200px] xl:max-h-[180px] font-bold text-white">
+              <h2 className={`${swapContent ? "text-end" : ""} text-xl md:text-2xl xl:text-3xl 2xl:text-4xl overflow-y-scroll min-h-[50px] max-h-[1200px] xl:max-h-[180px] font-bold text-white`}>
                 {title}
               </h2>
               {
                 tags &&
-                <div className="flex space-x-2">
+                <div className={`${swapContent ? "self-end" : ""} flex space-x-2`}>
                   {tags && tags.map((tag: string, index: number) => (
                     <span
                       key={index}
@@ -299,11 +299,11 @@ export default function VideoTextCard({
                 </div>
               }
             </div>
-            <div className="h-[500px] md:h-fit overflow-y-scroll pr-10 mt-3 mb-6">
+            <div className={`${swapContent ? "text-end" : ""} h-[500px]  md:h-fit overflow-y-scroll ${swapContent ? "" : "pr-10"} mt-3 mb-6`}>
               {renderContentWithLineBreaks(content)}
             </div>
           </div>
-          <div className="flex flex-col">
+          <div className={`${swapContent ? "self-end" : ""}  flex flex-col`}>
             {buttons.map(
               (button: any) => button
             )}
