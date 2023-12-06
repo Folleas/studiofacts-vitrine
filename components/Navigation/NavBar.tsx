@@ -13,7 +13,7 @@ const links = [
     },
     {
         url: '/apropos',
-        label: 'A propos',
+        label: 'À propos',
         subLinks: undefined
     },
     {
@@ -78,20 +78,22 @@ export default function NavBar() {
         setActiveHoverIndex(null);
     };
     return (
-        <div className="h-[8vh] relative backdrop-blur-lg bg-[rgba(0,0,0,0.3)] w-full xl:p-10 mx-auto flex items-center justify-center shadow-md"> {/* Add relative to the container */}
+        <div className="h-[8vh] relative backdrop-blur-lg bg-[rgba(0,0,0,0.25)] w-full xl:p-10 mx-auto flex items-center justify-center shadow-md"> {/* Add relative to the container */}
             <div className="flex items-center justify-between xl:px-6 py-4 w-full h-full">
                 <div className="lg:hidden flex-none w-1/6">
                 </div>
                 {/* Logo */}
                 <div className="flex items-center justify-center h-[100px] w-[300px]">
-                    <Image
-                        src="/logo_blanc.png"
-                        alt="Logo"
-                        className='mr-2 object-contain p-10'
-                        width={250}
-                        height={100}
-                        layout='fixed'
-                    />
+                    <a href='/'>
+                        <Image
+                            src="/logo_blanc.png"
+                            alt="Logo"
+                            className='mr-2 object-contain p-10'
+                            width={250}
+                            height={100}
+                            layout='fixed'
+                        />
+                    </a>
                 </div>
 
                 {/* Mobile Menu Button */}
