@@ -109,7 +109,7 @@ export default function StoriesPage() {
 
     return (
         <div className="flex flex-col justify-center items-center h-full w-full md:p-10 mt-[8vh] overflow-x-hidden">
-            <TitleParagraph color1={'bg-[#FF3133]'} color2={'bg-[#17FFDA]'} top1={100} top2={75} left1={450} left2={750} x1={-100} x2={350} y1={-100} y2={-300} title="Stories : Des fictions tirées d’histoires vrais" paragraph="" ></TitleParagraph>
+            <TitleParagraph color1={'bg-[#FF3133]'} color2={'bg-[#17FFDA]'} top1={100} top2={75} left1={450} left2={750} x1={-100} x2={350} y1={-100} y2={-300} title="Stories : Des fictions tirées d’histoires vrais" paragraph="Parce que la réalité dépasse toujours la fiction, nous explorons cet univers inépuisable en combinant l’exigence de l’enquête et les possibilités infinies de la narration." ></TitleParagraph>
 
             {aLaUne && selectedProjects.stories.length > 0 &&
                 <ALaUne data={data} selectedProjects={selectedProjects.stories}></ALaUne>

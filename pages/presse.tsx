@@ -35,7 +35,7 @@ export default function PressePage() {
 
     return (
         <div className="flex flex-col justify-center items-center h-full w-full md:p-10 mt-[8vh] overflow-x-hidden">
-            <TitleParagraph color1={'bg-[#00D779]'} color2={'bg-[#CF6FED]'} top1={100} top2={75} left1={450} left2={750} x1={-100} x2={350} y1={-100} y2={-300} title="Presse : Une agence de presse reconnue et expérimentée" paragraph="" ></TitleParagraph>
+            <TitleParagraph color1={'bg-[#00D779]'} color2={'bg-[#CF6FED]'} top1={100} top2={75} left1={450} left2={750} x1={-100} x2={350} y1={-100} y2={-300} title="Presse : Une agence de presse reconnue et expérimentée" paragraph="L’agence rassemble aujourd’hui de nombreux talents, journalistes, réalisateurs et grands reporters, qui ont depuis 15 ans écrit des documentaires, des enquêtes, des sujets pour des magazines d’informations et des reportages diffusés sur toutes les chaînes." ></TitleParagraph>
 
             {aLaUne &&
                 <ALaUne data={data} selectedProjects={selectedProjects.presse}></ALaUne>

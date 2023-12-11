@@ -54,7 +54,7 @@ const filialesData = [
   // Placeholder for StudioFact Live
   {
     title: "StudioFact Rights",
-    text: "Rien n’est plus vrai que le spectacle vivant. Rien n’est plus vivant que le spectacle du vrai. De la vie à la scène, il n’y a qu’un pas : StudioFact Live le franchit pour monter sur les planches avec des histoires qui ne sont pas imaginées mais qui sont arrivées. Écrire pour le théâtre avec l’encre du vrai, c’est inventer une narration qui respecte à la fois l’exactitude des faits et l’alchimie émotionnelle de la scène.",
+    text: "StudioFact Rights est le distributeur en France et à l’international de l'ensemble des productions du groupe ainsi que de productions externes, tous genres confondus.",
     imageSrc: "/01_STUDIOFACT_RIGHT.png",
     href: "/live"
   },
