@@ -108,7 +108,7 @@ export default function NavBar() {
 
                 {/* Desktop Menu */}
                 <nav className="hidden xl:flex lg:flex w-full">
-                    <ul className="flex w-full justify-end space-x-8 2xl:space-x-20">
+                    <ul className="flex w-full justify-end space-x-2 md:space-x-8 2xl:space-x-20">
                         {links.map((link, index) => (
                             <li key={link.url} className="relative group">
                                 {link.subLinks ? (
@@ -120,7 +120,7 @@ export default function NavBar() {
                                         <Link
                                             href={link.url + ''}
                                             scroll={true}
-                                            className={`mr-10 outline-black outline-8 text-xs md:text-xl xl:text-xl 2xl:text-2xl ${link.url === path ? 'font-bold' : ''}`}
+                                            className={`mr-10 outline-black outline-8 text-xs xl:text-xl 2xl:text-2xl ${link.url === path ? 'font-bold' : ''}`}
                                         >
                                             {link.label}
                                         </Link>
@@ -143,7 +143,7 @@ export default function NavBar() {
                                     <Link
                                         href={link.url + ''}
                                         scroll={true}
-                                        className={`mr-10 outline-black outline-8 text-xs md:text-xl xl:text-xl 2xl:text-2xl ${link.url === path ? 'font-bold' : ''}`}
+                                        className={`mr-10 outline-black outline-8 text-xs xl:text-xl 2xl:text-2xl ${link.url === path ? 'font-bold' : ''}`}
                                     >
                                         {link.label}
                                     </Link>

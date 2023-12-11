@@ -32,10 +32,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {// 
                 </main>
                 <div className="z-10 fixed bottom-0 left-0 w-full">
                     <div className="h-[5vh] w-full flex items-center justify-between p-4 px-10 backdrop-blur-lg">
-                        <p className="text-white text-[0.5rem] sm:text-2xl">
+                        <p className="text-white text-[0.5rem] lg:text-2xl">
                             Copyright © 2023 StudioFact Media Group, tous droits réservés.
                         </p>
-                        <Link href={'/mentionslegales'} className="text-white text-[0.5rem] sm:text-2xl">
+                        <Link href={'/mentionslegales'} className="text-white text-[0.5rem] lg:text-2xl">
                             Mentions Légales
                         </Link>
                     </div>
