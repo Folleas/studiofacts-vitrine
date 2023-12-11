@@ -174,7 +174,7 @@ function ProjectModal({
                     {/* Press Kit Modal */}
                     {pressKitModalOpen && (
                         <motion.div>
-                            <div className="fixed inset-0 z-50 flex items-center justify-center">
+                            <div onClick={stopPropagation} className="fixed inset-0 z-50 flex items-center justify-center">
                                 <div className="bg-[#ededed] relative p-6 rounded-lg shadow-md">
                                     <button
                                         onClick={() => {
