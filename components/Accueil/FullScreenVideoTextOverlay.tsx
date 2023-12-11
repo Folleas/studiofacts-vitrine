@@ -12,8 +12,8 @@ export default function FullScreenVideoTextOverlay() {
     }
   }, []);
   return (
-    <div className="h-[30vh] xl:h-screen relative w-screen">
-      <div className="h-[30vh] xl:h-screen relative w-full">
+    <div className="h-[30vh] md:h-screen relative w-screen">
+      <div className="h-[30vh] md:h-screen relative w-full">
         <video
           id="background-video"
           loop
@@ -21,7 +21,7 @@ export default function FullScreenVideoTextOverlay() {
           autoPlay
           muted
           controls={false}
-          className="absolute w-full h-full object-contain z-0"
+          className="absolute w-full h-full object-cover z-0"
         >
           <source src={'/pres.mp4'} type="video/mp4" />
           Your browser does not support the video tag or the file format of this video.
