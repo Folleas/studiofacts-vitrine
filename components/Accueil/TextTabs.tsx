@@ -8,12 +8,15 @@ export default function TextTabs({ tabs, height = "h-[400px]", icon = false }: a
     const handleTabChange = (index: number) => {
         setSelectedTab(index);
     }
+    
+    // filter out tab with empty content
+    const filteredTabs = tabs.filter((tab: any) => tab.content !== '');
 
     return (
         <div className={`relative w-full flex flex-col ${height} shadow-[inset_0_-1px_2px_rgba(0,0,0,0.1)]`}>
             <div className="flex xl:mb-4 justify-start space-x-1 xl:space-x-6 xl:p-2">
                 {
-                    tabs.map((tab: any, index: number) => {
+                    filteredTabs.map((tab: any, index: number) => {
                         const color = index === selectedTab ? "bg-gray-300" : "bg-gray-200";
 
                         return (
@@ -26,14 +29,14 @@ export default function TextTabs({ tabs, height = "h-[400px]", icon = false }: a
                 }
             </div>
             {
-                isArray(tabs[selectedTab].content) ? (<div className={`${height} overflow-y-scroll`}> {
-                    tabs[selectedTab].content.map((elem: any, index: number) =>
+                isArray(filteredTabs[selectedTab].content) ? (<div className={`${height} overflow-y-scroll`}> {
+                    filteredTabs[selectedTab].content.map((elem: any, index: number) =>
                         <div className={`flex`} key={index}>
                             {
                                 icon && <Image alt={'calendar icon'} src={'/calendar.webp'} className="object-contain ml-6 w-[30px]" width={50} height={50}></Image>
                             }
                             <p className="text-black text-xl p-6">
-                                {`${tabs[selectedTab].content[index]}`}
+                                {`${filteredTabs[selectedTab].content[index]}`}
                             </p>
                         </div>
                     )}
@@ -41,7 +44,7 @@ export default function TextTabs({ tabs, height = "h-[400px]", icon = false }: a
                 )
                     :
                     <p className={`text-black text-base md:text-xl xl:text-xl 2xl:text-2xl ${height} p-6 overflow-y-scroll`} style={{ whiteSpace: 'pre-line' }}>
-                        {tabs[selectedTab].content}
+                        {filteredTabs[selectedTab].content}
                     </p>
             }
         </div>

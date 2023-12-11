@@ -30,6 +30,8 @@ export default function NewsSlider({ item, currentSlide }: any) {
                 <Image
                     src={'https://studiofact.group/image/' + item.coverFilename}
                     alt={item.title}
+                    width={1920}
+                    height={600}
                     layout="fill"
                     className="object-cover"
                 />

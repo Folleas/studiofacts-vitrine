@@ -65,12 +65,11 @@ export default function RightsProject({
       </button>
     )
 
-  if (moreDetails)
-    buttons.push(
-      <button key='Plus de détail' onClick={openModal} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded self-start">
-        Plus de détail
-      </button>
-    )
+  buttons.push(
+    <button key='Plus de détail' onClick={openModal} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded self-start">
+      Plus de détail
+    </button>
+  )
   return (
     <motion.div ref={ref} initial='hidden' variants={imageVariants} animate={controls} className="p-4">
       <div
