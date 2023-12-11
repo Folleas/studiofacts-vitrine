@@ -8,12 +8,12 @@ import { SocialIcon } from 'react-social-icons'
 const links = [
     {
         url: '/',
-        label: 'Accueil',
+        label: 'Qui sommes-nous',
         subLinks: undefined
     },
     {
-        url: '/apropos',
-        label: 'À propos',
+        url: '/organigramme',
+        label: 'Organigramme',
         subLinks: undefined
     },
     {

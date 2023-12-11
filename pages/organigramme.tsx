@@ -5,7 +5,7 @@ import VideoTextSection from 'components/Accueil/VideoTextSection';
 import { Talents } from 'components/Accueil/Talents';
 
 
-export default function AboutUs() {
+export default function Organigramme() {
     
     return (
         <motion.div id='top' className="flex flex-col mt-[8vh] xl:mt-[0px] justify-center items-center h-full space-y-10">
