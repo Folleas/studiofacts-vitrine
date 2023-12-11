@@ -8,7 +8,7 @@ import { SocialIcon } from 'react-social-icons'
 const links = [
     {
         url: '/',
-        label: 'Qui sommes-nous',
+        label: 'Accueil',
         subLinks: undefined
     },
     {

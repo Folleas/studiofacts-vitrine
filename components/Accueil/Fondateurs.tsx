@@ -19,7 +19,7 @@ export const PersonCard = ({ name, occupation, bio, imageSrc }: any) => {
                 <div className="p-4 h-[550px] text-center">
                     <h2 className="text-3xl font-semibold text-black">{name}</h2>
                     <p className="text-[#1e2428] text-lg 2xl:text-xl">{occupation}</p>
-                    <p className="text-[#1e2428] text-xl 2xl:text-2xl mt-2 h-[500px] overflow-y-scroll">{bio}</p>
+                    <p className="text-[#1e2428] text-xl 2xl:text-2xl mt-2 overflow-y-auto">{bio}</p>
                 </div>
             </div>
         </div>

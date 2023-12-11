@@ -32,7 +32,7 @@ export function ProjectModal({
           onClick={onClose} // Close the modal when clicking outside
         >
           <div className="fixed inset-0 flex items-center justify-center z-50" >
-            <div onClick={stopPropagation} className="bg-[#ededed] p-6 overflow-y-scroll xl:overflow-y-hidden flex-col xl:flex-row rounded-lg shadow-md w-full xl:w-5/6 h-[100%] xl:h-[95%] relative flex ">
+            <div onClick={stopPropagation} className="bg-[#ededed] p-6 overflow-y-auto xl:overflow-y-hidden flex-col xl:flex-row rounded-lg shadow-md w-full xl:w-5/6 h-[100%] xl:h-[95%] relative flex ">
               {/* Left side content */}
               <div className="w-full xl:w-7/12 p-10 h-full">
                 <button
@@ -42,10 +42,10 @@ export function ProjectModal({
                   {/* You can use an 'x' icon from a library like FontAwesome */}
                   <FaTimes size={20} />
                 </button>
-                <h2 className="text-xl md:text-5xl xl:text-5xl 2xl:text-6xl overflow-y-scroll min-h-[50px] max-h-[200px] text-[#1e2428] font-bold">{title}</h2>
+                <h2 className="text-xl md:text-5xl xl:text-5xl 2xl:text-6xl overflow-y-auto min-h-[50px] max-h-[200px] text-[#1e2428] font-bold">{title}</h2>
 
                 {/* Display tags under the title */}
-                <div className="my-6 overflow-x-scroll">
+                <div className="my-6 overflow-x-auto">
                   {type && (
                     <span
                       className={`${type === 'Stories' ? 'bg-[#FF3133]' :
@@ -85,7 +85,7 @@ export function ProjectModal({
                 {resourcesFilenames.length > 0 && (
                   <div>
                     <h2 className="text-2xl font-semibold text-[#1e2428] mt-4">Galerie</h2>
-                    <div className="flex py-6 overflow-x-scroll w-[825px] space-x-4 ">
+                    <div className="flex py-6 overflow-x-auto w-[825px] space-x-4 ">
                       {resourcesFilenames.map((resource: string, index: number) => (
                         <div
                           key={index}
@@ -103,11 +103,11 @@ export function ProjectModal({
                     </div>
                   </div>
                 )}
-                {/* <p className="text-[#1e2428] text-3xl overflow-y-scroll h-[43vh] max-h-[45vh]">{content}</p>
+                {/* <p className="text-[#1e2428] text-3xl overflow-y-auto h-[43vh] max-h-[45vh]">{content}</p>
             {moreDetails && (
               <div>
               <h2 className="text-2xl text-[#1e2428] font-bold mb-2">Plus de détails</h2>
-              <p className="text-[#1e2428] text-lg overflow-y-scroll h-[32vh] max-h-[35vh]">{moreDetails}</p>
+              <p className="text-[#1e2428] text-lg overflow-y-auto h-[32vh] max-h-[35vh]">{moreDetails}</p>
               </div>
             )} */}
               </div>
@@ -254,7 +254,7 @@ export default function VideoTextCard({
           } md:flex-row`}
       >
         <div
-          className={`relative w-full h-full xl:w-[1000px] rounded-xl overflow-hidden ${swapContent ? "md:order-2" : ""
+          className={`relative bg-black w-full h-full xl:w-[1000px] rounded-xl overflow-hidden ${swapContent ? "md:order-2" : ""
             }`}
         >
           {coverFilename ? (
@@ -287,7 +287,7 @@ export default function VideoTextCard({
         <div className={`${swapContent ? "mr-10" : ""} p-4 md:py-32 md:pl-12 md:pr-4 w-full h-full flex flex-col justify-between`}>
           <div className="flex flex-col h-full">
             <div className="flex flex-col max-h-[100px] xl:max-h-[180px]">
-              <h2 className={`${swapContent ? "text-end" : ""} text-xl md:text-2xl xl:text-3xl 2xl:text-4xl overflow-y-scroll min-h-[50px] max-h-[1200px] xl:max-h-[180px] font-bold text-white`}>
+              <h2 className={`${swapContent ? "text-end" : ""} text-xl md:text-2xl xl:text-3xl 2xl:text-4xl overflow-y-auto min-h-[50px] max-h-[1200px] xl:max-h-[180px] font-bold text-white`}>
                 {title}
               </h2>
               {
@@ -305,7 +305,7 @@ export default function VideoTextCard({
                 </div>
               }
             </div>
-            <div className={`${swapContent ? "text-end" : ""} h-[500px]  md:h-fit overflow-y-scroll ${swapContent ? "" : "pr-10"} mt-3 mb-6`}>
+            <div className={`${swapContent ? "text-end" : ""} h-[500px]  md:h-fit overflow-y-auto ${swapContent ? "" : "pr-10"} mt-3 mb-6`}>
               {renderContentWithLineBreaks(content)}
             </div>
           </div>

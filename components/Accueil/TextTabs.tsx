@@ -29,7 +29,7 @@ export default function TextTabs({ tabs, height = "h-[400px]", icon = false }: a
                 }
             </div>
             {
-                isArray(filteredTabs[selectedTab].content) ? (<div className={`${height} overflow-y-scroll`}> {
+                isArray(filteredTabs[selectedTab].content) ? (<div className={`${height} overflow-y-auto`}> {
                     filteredTabs[selectedTab].content.map((elem: any, index: number) =>
                         <div className={`flex`} key={index}>
                             {
@@ -43,7 +43,7 @@ export default function TextTabs({ tabs, height = "h-[400px]", icon = false }: a
                 </div>
                 )
                     :
-                    <p className={`text-black text-base md:text-xl xl:text-xl 2xl:text-2xl ${height} p-6 overflow-y-scroll`} style={{ whiteSpace: 'pre-line' }}>
+                    <p className={`text-black text-base md:text-xl xl:text-xl 2xl:text-2xl ${height} p-6 overflow-y-auto`} style={{ whiteSpace: 'pre-line' }}>
                         {filteredTabs[selectedTab].content}
                     </p>
             }
