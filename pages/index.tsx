@@ -66,6 +66,7 @@ export default function Web() {
               imageAlt={derniereRealisations[0].coverFilename}
               title={derniereRealisations[0].title}
               content={derniereRealisations[0].description}
+              aPropos={derniereRealisations[0].aPropos}
               moreDetails={derniereRealisations[0].enSavoirPlus}
               type={derniereRealisations[0].type}
               tags={derniereRealisations[0].tags}
@@ -80,6 +81,7 @@ export default function Web() {
               imageAlt={derniereRealisations[1].coverFilename}
               title={derniereRealisations[1].title}
               content={derniereRealisations[1].description}
+              aPropos={derniereRealisations[1].aPropos}
               moreDetails={derniereRealisations[1].enSavoirPlus}
               type={derniereRealisations[1].type}
               tags={derniereRealisations[1].tags}
