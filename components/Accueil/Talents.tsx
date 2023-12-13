@@ -111,6 +111,12 @@ const imageSources = [
       occupation: "Responsable Ventes et Marketing",
       bio: "Daniel Meneses excels in strategic sales and marketing initiatives with a goal-oriented approach...",
       imageSrc: "daniel-meneses_site.webp"
+    },
+    {
+      name: "Tony Liégois",
+      occupation: "Rédacteur en chef",
+      bio: "",
+      imageSrc: "tony.jpg"
     }
   ];
 
