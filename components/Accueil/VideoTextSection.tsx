@@ -113,7 +113,7 @@ export default function VideoTextSection({ displayButton, title1, title2, paragr
         <div className="w-1/2 justify-between flex flex-col content-end">
           {
             displayButton ?
-              <Link href="/apropos" className="bg-[#46fd9e] h-fit p-1 xl:h-[75px] text-[#1e2428] text-base xl:text-4xl 2xl:text-5xl hover:bg-[#84f588] font-semibold md:py-2 md:px-4 rounded self-end">
+              <Link href="/organigramme" className="bg-[#46fd9e] h-fit p-1 xl:h-[75px] text-[#1e2428] text-base xl:text-4xl 2xl:text-5xl hover:bg-[#84f588] font-semibold md:py-2 md:px-4 rounded self-end">
                 En Savoir Plus
               </Link> : <div></div>
           }
