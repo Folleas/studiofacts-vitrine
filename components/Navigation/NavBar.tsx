@@ -11,11 +11,11 @@ const links = [
         label: 'Accueil',
         subLinks: undefined
     },
-    {
-        url: '/organigramme',
-        label: 'Organigramme',
-        subLinks: undefined
-    },
+    // {
+    //     url: '/organigramme',
+    //     label: 'Organigramme',
+    //     subLinks: undefined
+    // },
     {
         url: '/realisations',
         label: 'Réalisations',
