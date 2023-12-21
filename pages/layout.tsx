@@ -12,7 +12,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {// 
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                <title>Studio Facts</title>
+                <title>Studio Fact</title>
                 <meta name="description" content="Site vitrine de Studiofact MediaGroup" />
             </Head>
             <div className="flex flex-col relative bg-[#1e2428]">
