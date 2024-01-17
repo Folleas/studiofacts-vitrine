@@ -30,7 +30,7 @@ export default function Web() {
         // Filter the responseData based on the desired types
         const filteredData = responseData?.projectData?.filter(
           (project: any) => project.type === 'Presse' || project.type === 'Doc'
-        );
+        ).filter((project: any) => project.rights === 'Non');
         if (filteredData) {
           filteredData.sort((a: any, b: any) => {
             const dateA = new Date(a.releaseDate).getTime();
@@ -65,6 +65,7 @@ export default function Web() {
             imageAlt={item.coverFilename}
             title={item.title}
             content={item.description}
+            vimeo={item.vimeo}
             moreDetails={item.enSavoirPlus}
             aPropos={item.aPropos}
             type={item.type}

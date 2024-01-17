@@ -61,6 +61,7 @@ export default function Web() {
         <div className='h-[1900px] md:h-[1500px]'>
           {derniereRealisations && derniereRealisations.length > 0 &&
             <VideoTextCard
+              vimeo={derniereRealisations[0].vimeo}
               imageSrc={"/" + derniereRealisations[0].coverFilename}
               videoSrc={derniereRealisations[0].videoTrailer}
               imageAlt={derniereRealisations[0].coverFilename}
@@ -76,6 +77,7 @@ export default function Web() {
           }
           {derniereRealisations && derniereRealisations.length > 1 &&
             <VideoTextCard
+              vimeo={derniereRealisations[1].vimeo}
               imageSrc={"/" + derniereRealisations[1].coverFilename}
               videoSrc={derniereRealisations[1].videoTrailer}
               imageAlt={derniereRealisations[1].coverFilename}

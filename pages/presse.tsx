@@ -57,6 +57,7 @@ export default function PressePage() {
                             key={index}
                             imageSrc={"/" + item.coverFilename}
                             videoSrc={item.videoTrailer}
+                            vimeo={item.vimeo}
                             imageAlt={item.coverFilename}
                             title={item.title}
                             content={item.description}

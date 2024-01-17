@@ -183,6 +183,7 @@ export default function DocPage() {
                             aPropos={item.aPropos}
                             type={item.type}
                             tags={item.tags}
+                            vimeo={item.vimeo}
                             resourcesFilenames={item.resourcesFilenames}
                             coverFilename={item.coverFilename}
                         />

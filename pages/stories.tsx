@@ -132,6 +132,7 @@ export default function StoriesPage() {
                             imageSrc={"/" + item.coverFilename}
                             videoSrc={item.videoTrailer}
                             imageAlt={item.coverFilename}
+                            vimeo={item.vimeo}
                             title={item.title}
                             content={item.description}
                             moreDetails={item.enSavoirPlus}

@@ -129,6 +129,7 @@ export default function StoriesPage() {
                     {data.map((item, index) => (
                         <VideoTextCard
                             key={index}
+                            vimeo={item.vimeo}
                             imageSrc={"/" + item.coverFilename}
                             videoSrc={item.videoTrailer}
                             imageAlt={item.coverFilename}

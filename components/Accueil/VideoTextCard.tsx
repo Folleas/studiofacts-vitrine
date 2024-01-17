@@ -3,6 +3,41 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import TextTabs from "./TextTabs";
+import ReactHtmlParser from 'react-html-parser';
+
+export function VimeoModal({
+  isOpen,
+  onClose,
+  vimeo = '',
+}: any) {
+  const stopPropagation = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  }
+  console.log(isOpen)
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          className="fixed inset-0 flex items-center w-screen h-screen bg-[rgba(0,0,0,0.9)] justify-center z-[60]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose} // Close the modsal when clicking outside
+        >
+          {vimeo !== '' && (
+            <motion.div
+              className="w-1/2 h-1/2 relative"
+              onClick={stopPropagation}
+            >
+              {ReactHtmlParser(vimeo)}
+            </motion.div>
+          )}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 
 export function ProjectModal({
   isOpen,
@@ -16,147 +51,169 @@ export function ProjectModal({
   coverFilename,
   resourcesFilenames,
   videoSrc,
+  vimeo = '',
 }: any) {
+  const [isVimeoModalOpen, setVimeoModalOpen] = useState(false);
 
+  const openVimeoModal = () => {
+    console.log('openVimeoModal')
+    setVimeoModalOpen(true);
+  };
+
+  const closeVimeoModal = () => {
+    setVimeoModalOpen(false);
+  };
   const stopPropagation = (e: React.MouseEvent) => {
     e.stopPropagation();
   }
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          className="fixed inset-0 flex items-center justify-center z-50"
-          initial={{ opacity: 0, y: -100 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -100 }}
-          onClick={onClose} // Close the modal when clicking outside
-        >
-          <div className="fixed inset-0 flex items-center justify-center z-50" >
-            <div onClick={stopPropagation} className="bg-[#ededed] p-6 overflow-y-auto xl:overflow-y-hidden flex-col xl:flex-row rounded-lg shadow-md w-full xl:w-5/6 h-[100%] xl:h-[95%] relative flex ">
-              {/* Left side content */}
-              <div className="w-full xl:w-7/12 p-10 h-full">
-                <button
-                  onClick={onClose}
-                  className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-                >
-                  {/* You can use an 'x' icon from a library like FontAwesome */}
-                  <FaTimes size={20} />
-                </button>
-                <h2 className="text-xl md:text-5xl xl:text-5xl 2xl:text-6xl overflow-y-auto min-h-[50px] max-h-[200px] text-[#1e2428] font-bold">{title}</h2>
+    <>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 flex items-center justify-center z-50"
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -100 }}
+            onClick={onClose} // Close the modal when clicking outside
+          >
+            <div className="fixed inset-0 flex items-center justify-center z-50" >
+              <div onClick={stopPropagation} className="bg-[#ededed] p-6 overflow-y-auto xl:overflow-y-hidden flex-col xl:flex-row rounded-lg shadow-md w-full xl:w-5/6 h-[100%] xl:h-[95%] relative flex ">
+                {/* Left side content */}
+                <div className="w-full xl:w-7/12 p-10 h-full">
+                  <button
+                    onClick={onClose}
+                    className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+                  >
+                    {/* You can use an 'x' icon from a library like FontAwesome */}
+                    <FaTimes size={20} />
+                  </button>
+                  <h2 className="text-xl md:text-5xl xl:text-5xl 2xl:text-6xl overflow-y-auto min-h-[50px] max-h-[200px] text-[#1e2428] font-bold">{title}</h2>
 
-                {/* Display tags under the title */}
-                <div className="my-6 overflow-x-auto">
-                  {type && (
-                    <span
-                      className={`${type === 'Stories' ? 'bg-[#FF3133]' :
-                        type === 'Presse' ? 'bg-[#8063EE]' :
-                          type === 'Audio' ? 'bg-[#FFC300]' :
-                            type === 'Doc' ? 'bg-[#00D779]' :
-                              type === 'Editions' ? 'bg-[#0099FF]' :
-                                type === 'Lab' ? 'bg-[#05E2DC]' : 'bg-gray-300'} text-[#1e2428] px-2 xl:py-1 text-lg rounded mr-2`}
-                    >
-                      <strong>{type}</strong>
-                    </span>
-                  )}
-                  {tags.map((tag: string, index: number) => (
-                    <span
-                      key={index}
-                      className="bg-gray-300 text-[#1e2428] px-2 xl:py-1 text-lg rounded mr-2"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <TextTabs tabs={[
-                  {
-                    title: 'Description',
-                    content: content,
-                  },
-                  {
-                    title: 'Plus de détails',
-                    content: moreDetails,
-                  },
-                  {
-                    title: 'A propos',
-                    content: aPropos,
-                  },
-                ]} />
-                {resourcesFilenames.length > 0 && (
-                  <div>
-                    <h2 className="text-2xl font-semibold text-[#1e2428] mt-4">Galerie</h2>
-                    <div className="flex py-6 overflow-x-auto w-[825px] space-x-4 ">
-                      {resourcesFilenames.map((resource: string, index: number) => (
-                        <div
-                          key={index}
-                          className={`relative min-w-[200px] min-h-[200px] rounded-xl overflow-hidden`}
-                        >
-                          <Image
-                            src={'https://studiofact.group/image/' + resource}
-                            alt={`Resource Image ${index}`}
-                            fill
-                            sizes={"(max-width: 640px) 100vw, (max-width: 768px) 90vw, 40vw"}
-                            className="rounded-md object-contain"
-                          />
-                        </div>
-                      ))}
-                    </div>
+                  {/* Display tags under the title */}
+                  <div className="my-6 overflow-x-auto">
+                    {type && (
+                      <span
+                        className={`${type === 'Stories' ? 'bg-[#FF3133]' :
+                          type === 'Presse' ? 'bg-[#8063EE]' :
+                            type === 'Audio' ? 'bg-[#FFC300]' :
+                              type === 'Doc' ? 'bg-[#00D779]' :
+                                type === 'Editions' ? 'bg-[#0099FF]' :
+                                  type === 'Lab' ? 'bg-[#05E2DC]' : 'bg-gray-300'} text-[#1e2428] px-2 xl:py-1 text-lg rounded mr-2`}
+                      >
+                        <strong>{type}</strong>
+                      </span>
+                    )}
+                    {tags.map((tag: string, index: number) => (
+                      <span
+                        key={index}
+                        className="bg-gray-300 text-[#1e2428] px-2 xl:py-1 text-lg rounded mr-2"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
-                )}
-                {/* <p className="text-[#1e2428] text-3xl overflow-y-auto h-[43vh] max-h-[45vh]">{content}</p>
+                  {vimeo !== '' && (
+                    <button onClick={() => openVimeoModal()} className="bg-[rgba(0,0,0,0.1)] border border-gray-300 hover:bg-[rgba(255,255,255,0.8)] text-gray-700 font-bold pt-2 px-4 rounded">
+                      <h3 className="text-base md:text-xl xl:text-xl 2xl:text-2xl overflow-y-auto min-h-[50px] max-h-[200px] text-[#1e2428]">
+                        Visionner le film avec un code
+                      </h3>
+                    </button>
+                  )}
+                  <TextTabs tabs={[
+                    {
+                      title: 'Description',
+                      content: content,
+                    },
+                    {
+                      title: 'Plus de détails',
+                      content: moreDetails,
+                    },
+                    {
+                      title: 'A propos',
+                      content: aPropos,
+                    },
+                  ]} />
+                  {resourcesFilenames.length > 0 && (
+                    <div>
+                      <h2 className="text-2xl font-semibold text-[#1e2428] mt-4">Galerie</h2>
+                      <div className="flex py-6 overflow-x-auto w-[825px] space-x-4 ">
+                        {resourcesFilenames.map((resource: string, index: number) => (
+                          <div
+                            key={index}
+                            className={`relative min-w-[200px] min-h-[200px] rounded-xl overflow-hidden`}
+                          >
+                            <Image
+                              src={'https://studiofact.group/image/' + resource}
+                              alt={`Resource Image ${index}`}
+                              fill
+                              sizes={"(max-width: 640px) 100vw, (max-width: 768px) 90vw, 40vw"}
+                              className="rounded-md object-contain"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {/* <p className="text-[#1e2428] text-3xl overflow-y-auto h-[43vh] max-h-[45vh]">{content}</p>
             {moreDetails && (
               <div>
               <h2 className="text-2xl text-[#1e2428] font-bold mb-2">Plus de détails</h2>
               <p className="text-[#1e2428] text-lg overflow-y-auto h-[32vh] max-h-[35vh]">{moreDetails}</p>
               </div>
             )} */}
-              </div>
-              <div className="w-full xl:w-5/12 p-10 h-full">
-                {coverFilename && coverFilename !== '' && !(coverFilename.includes('.mp4')) &&
-                  <div className="mb-4">
-                    <h2 className="text-xl md:text-3xl xl:text-3xl 2xl:text-4xl font-bold text-[#1e2428] mt-2 mb-6">Couverture</h2>
-                    {/* Display cover image */}
-                    {
-                      coverFilename &&
-                      <Image
-                        src={'https://studiofact.group/image/' + coverFilename}
-                        alt={`Cover Image for ${title}`}
-                        width={567}
-                        height={400}
-                        className="rounded-lg object-contain"
-                      />
-                    }
-                    {/* Title for the cover */}
-                  </div>
-                }
-
-
-                {/* Video */}
-                {videoSrc && (
-                  <div className="mt-4 w-full h-full">
-                    <h3 className="text-xl md:text-3xl xl:text-3xl 2xl:text-4xl font-bold text-[#1e2428]">Video</h3>
-                    <div className="w-[300px] h-[200px] xl:w-[600px] xl:h-[500px]">
-                      <video
-                        width="100%"
-                        height="100%"
-                        controls // Add controls for playback
-                      >
-                        <source
-                          src={'https://studiofact.group/image/' + videoSrc}
-                          type="video/mp4" // Update with the appropriate video format/type
+                </div>
+                <div className="w-full xl:w-5/12 p-10 h-full">
+                  {coverFilename && coverFilename !== '' && !(coverFilename.includes('.mp4')) &&
+                    <div className="mb-4">
+                      <h2 className="text-xl md:text-3xl xl:text-3xl 2xl:text-4xl font-bold text-[#1e2428] mt-2 mb-6">Couverture</h2>
+                      {/* Display cover image */}
+                      {
+                        coverFilename &&
+                        <Image
+                          src={'https://studiofact.group/image/' + coverFilename}
+                          alt={`Cover Image for ${title}`}
+                          width={567}
+                          height={400}
+                          className="rounded-lg object-contain"
                         />
-                        Your browser does not support the video tag.
-                      </video>
+                      }
+                      {/* Title for the cover */}
                     </div>
-                  </div>
-                )}
+                  }
 
+
+                  {/* Video */}
+                  {videoSrc && (
+                    <div className="mt-4 w-full h-full">
+                      <h3 className="text-xl md:text-3xl xl:text-3xl 2xl:text-4xl font-bold text-[#1e2428]">Video</h3>
+                      <div className="w-[300px] h-[200px] xl:w-[600px] xl:h-[500px]">
+                        <video
+                          width="100%"
+                          height="100%"
+                          controls // Add controls for playback
+                        >
+                          <source
+                            src={'https://studiofact.group/image/' + videoSrc}
+                            type="video/mp4" // Update with the appropriate video format/type
+                          />
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    </div>
+                  )}
+
+                </div>
               </div>
             </div>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <VimeoModal
+        isOpen={isVimeoModalOpen}
+        onClose={closeVimeoModal}
+        vimeo={vimeo} />
+    </>
   );
 }
 
@@ -186,6 +243,7 @@ export default function VideoTextCard({
   swapContent = false,
   moreDetails,
   tags,
+  vimeo = '',
   coverFilename,
   resourcesFilenames,
 }: any) {
@@ -330,6 +388,7 @@ export default function VideoTextCard({
         coverFilename={coverFilename}
         resourcesFilenames={resourcesFilenames}
         videoSrc={videoSrc}
+        vimeo={vimeo}
       />
     </motion.div>
   );
