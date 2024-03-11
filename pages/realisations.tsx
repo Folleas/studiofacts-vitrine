@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import VideoTextCard from 'components/Accueil/VideoTextCard';
+import RightsProject from 'components/Accueil/RightsProject';
 
 
 const useWidth = () => {
   const [width, setWidth] = useState(0)
   const handleResize = () => setWidth(window.innerWidth)
   useEffect(() => {
-      handleResize()
-      window.addEventListener('resize', handleResize)
-      return () => window.removeEventListener('resize', handleResize)
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return width
 }
@@ -56,31 +57,30 @@ export default function Web() {
       <div className='flex w-full mt-[5vh]'>
         <h1 className="text-4xl md:text-4xl xl:text-5xl 2xl:text-6xl font-semibold mt-10">Réalisations</h1>
       </div>
-      <div className='flex flex-col h-full justify-center  w-full items-center'>
+      <div className='flex flex-wrap h-full justify-center w-full items-center'>
         {data.slice(0, loadedCount).map((item, index) => (
-          <VideoTextCard
+          <RightsProject
             key={index}
             imageSrc={"/" + item.coverFilename}
             videoSrc={item.videoTrailer}
             imageAlt={item.coverFilename}
             title={item.title}
             content={item.description}
-            vimeo={item.vimeo}
             moreDetails={item.enSavoirPlus}
             aPropos={item.aPropos}
             type={item.type}
             tags={item.tags}
             resourcesFilenames={item.resourcesFilenames}
             coverFilename={item.coverFilename}
-            swapContent={width > 712 ? index % 2 !== 0 : false}
+          // swapContent={width > 712 ? index % 2 !== 0 : false}
           />
         ))}
-        {loadedCount < data.length && (
-          <button onClick={loadMoreItems} className="mt-4 bg-blue-500 text-white px-4 py-2 mb-16 rounded">
-            Voir Plus
-          </button>
-        )}
       </div>
+      {loadedCount < data.length && (
+        <button onClick={loadMoreItems} className="mt-4 bg-blue-500 text-white px-4 py-2 mb-16 rounded">
+          Voir Plus
+        </button>
+      )}
     </div>
   );
 }

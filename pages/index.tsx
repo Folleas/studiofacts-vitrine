@@ -46,7 +46,7 @@ export default function Web() {
   return (
     <div className='flex scroll-smooth flex-col h-full overflow-hidden justify-center items-center'>
       <FullScreenVideoTextOverlay />
-      <VideoTextSection displayButton={true} top1={0} left1={900} x1={-100} y1={300} top2={-200} left2={1200} x2={200} y2={-200} title1="Raconter le reel" paragraph1="STUDIOFACT est le premier groupe audiovisuel français à produire du contenu original exclusivement issu dhistoires vraies : Documentaire, Fiction, Podcast, Édition, Spectacle vivant." title2="Qui sommes-nous ?" paragraph2="« Nos contenus racontent le monde.Tendez loreille, ouvrez les yeux. La réalité dépasse toutes les fictions »" />
+      <VideoTextSection displayButton={true} top1={0} left1={900} x1={-100} y1={300} top2={-200} left2={1200} x2={200} y2={-200} title1="Raconter le reel" paragraph1="STUDIOFACT est le premier groupe audiovisuel français à produire du contenu original exclusivement issu dhistoires vraies : Documentaire, Fiction, Podcast, Édition, Spectacle vivant." title2="Qui sommes-nous ?" paragraph2="« Nos contenus racontent le monde. Tendez loreille, ouvrez les yeux. La réalité dépasse toutes les fictions »" />
       <div className="w-full">{/*bg-gradient-to-b from-[#1e2428] via-gray-600 to-[#1e2428]*/}
         <ImageRows />
         <h1 className="text-4xl p-6 xl:p-10 md:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white">A la une</h1>

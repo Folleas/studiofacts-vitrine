@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {// 
                 <meta property="og:url" content="https://studiofact.fr/" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
-                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <title>Studio Fact</title>
                 <meta name="description" content="Catalogue de Studiofact MediaGroup" />
             </Head>
@@ -29,17 +29,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {// 
                     >
                         {children}
                     </motion.div>
-                </main>
-                <div className="z-10 fixed bottom-0 left-0 w-full">
-                    <div className="h-[5vh] w-full flex items-center justify-between p-4 px-10 backdrop-blur-lg">
-                        <p className="text-white text-[0.5rem] lg:text-2xl">
-                            Copyright © 2023 StudioFact Media Group, tous droits réservés.
-                        </p>
-                        <Link href={'/mentionslegales'} className="text-white text-[0.5rem] lg:text-2xl">
-                            Mentions Légales
-                        </Link>
+                    <div className="w-full">
+                        <div className="h-[5vh] w-full flex items-center justify-between p-4 px-10 backdrop-blur-lg">
+                            <p className="text-white text-[0.5rem] lg:text-2xl">
+                                Copyright © 2023 StudioFact Media Group, tous droits réservés.
+                            </p>
+                            <Link href={'/mentionslegales'} className="text-white text-[0.5rem] lg:text-2xl">
+                                Mentions Légales
+                            </Link>
+                        </div>
                     </div>
-                </div>
+                </main>
             </div>
         </>
     );

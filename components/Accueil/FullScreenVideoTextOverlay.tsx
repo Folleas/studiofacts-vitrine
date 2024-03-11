@@ -27,11 +27,11 @@ export default function FullScreenVideoTextOverlay() {
           Your browser does not support the video tag or the file format of this video.
         </video>
         {/* Conditionally render the gradients based on screen size */}
-        <div className="absolute inset-y-0 left-0 w-full lg:bg-gradient-to-b from-transparent from-60% to-[#1e2428] to-90%"></div>
+        <div className="absolute inset-y-0 left-0 w-full lg:bg-gradient-to-b from-transparent from-50% via-[rgba(30,36,40,0.5)] via-85% to-[rgba(30,36,40,1)] to-100%"></div>
         {/* <div className="absolute inset-y-0 right-0 w-1/4 lg:bg-gradient-to-l from-[#1e2428] via-black to-transparent"></div> */}
 
         {/* New centered instruction */}
-        <div className="absolute bottom-[10%] text-white text-center w-full pb-4">
+        <div className="absolute bottom-[5%] text-white text-center w-full pb-4">
           <Link href='#VideoTextSection' className="text-xs underline md:text-xl xl:text-xl 2xl:text-2xl">
             Nous découvrir
           </Link>

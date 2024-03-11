@@ -108,9 +108,9 @@ export default function NavBar() {
 
                 {/* Desktop Menu */}
                 <nav className="hidden xl:flex lg:flex w-full">
-                    <ul className="flex w-full justify-end space-x-2 md:space-x-8 2xl:space-x-20">
+                    <ul className="flex w-full justify-end space-x-2 md:space-x-8 2xl:space-x-2">
                         {links.map((link, index) => (
-                            <li key={link.url} className="relative group">
+                            <li key={link.url} className="self-center relative group">
                                 {link.subLinks ? (
                                     <div
                                         className="relative group"
@@ -120,7 +120,7 @@ export default function NavBar() {
                                         <Link
                                             href={link.url + ''}
                                             scroll={true}
-                                            className={`mr-10 outline-black outline-8 text-xs xl:text-xl 2xl:text-2xl ${link.url === path ? 'font-bold' : ''}`}
+                                            className={`mr-10 outline-black outline-8 text-xs xl:text-lg 2xl:text-xl ${link.url === path ? 'font-bold' : ''}`}
                                         >
                                             {link.label}
                                         </Link>
@@ -143,7 +143,7 @@ export default function NavBar() {
                                     <Link
                                         href={link.url + ''}
                                         scroll={true}
-                                        className={`mr-10 outline-black outline-8 text-xs xl:text-xl 2xl:text-2xl ${link.url === path ? 'font-bold' : ''}`}
+                                        className={`mr-10 outline-black outline-8 text-xs xl:text-lg 2xl:text-xl ${link.url === path ? 'font-bold' : ''}`}
                                     >
                                         {link.label}
                                     </Link>
@@ -151,6 +151,18 @@ export default function NavBar() {
                             </li>
                         ))}
                     </ul>
+                    <li className="flex items-center justify-center">
+                        <Link
+                            href={'/screeningroom'}
+                            scroll={true}
+                            className="flex items-center space-x-2 text-white text-xs xl:text-lg 2xl:text-xl"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-2a6 6 0 100-12 6 6 0 000 12zm0-10a2 2 0 100-4 2 2 0 000 4zm0-2a4 4 0 110 8 4 4 0 010-8zm0-2a6 6 0 110 12 6 6 0 010-12zm0 2a4 4 0 100 8 4 4 0 000-8z" clipRule="evenodd" />
+                            </svg>
+                            Screening Room
+                        </Link>
+                    </li>
                     <div className="flex items-center justify-end space-x-4">
                         <SocialIcon style={{ height: 32, width: 32 }} url="https://www.instagram.com/studiofact.officiel/" />
                         <SocialIcon style={{ height: 32, width: 32 }} url="https://www.facebook.com/studiofact.officiel" />

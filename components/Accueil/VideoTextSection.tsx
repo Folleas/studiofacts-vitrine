@@ -97,7 +97,7 @@ export default function VideoTextSection({ displayButton, title1, title2, paragr
   const isTextTooLong = paragraph2.length > 400;
 
   // Define CSS classes based on the condition
-  const textClass = isTextTooLong ? "xl:text-2xl 2xl:text-3xl" : "xl:text-4xl 2xl:text-5xl";
+  const textClass = isTextTooLong ? "xl:text-xl 2xl:text-xl" : "xl:text-3xl 2xl:text-3xl";
 
   return (
     <section id="VideoTextSection" className="xl:pt-[8vh] relative h-[95vh] w-full">
@@ -107,19 +107,19 @@ export default function VideoTextSection({ displayButton, title1, title2, paragr
       </div>
       <motion.div initial="hidden" animate={controls} ref={ref} className="flex w-full h-full p-10">
         <div className="w-1/2 pr-10 md:pr-0">
-          <motion.h2 variants={variantsLeft} className="text-3xl xl:text-6xl 2xl:text-7xl font-bold">{title1}</motion.h2>
-          <motion.p variants={variantsLeft} className={`text-base ${textClass} mt-10`}>{paragraph1}</motion.p>
+          <motion.h2 variants={variantsLeft} className="text-3xl xl:text-5xl 2xl:text-5xl font-bold">{title1}</motion.h2>
+          <motion.p variants={variantsLeft} className={`text-base ${textClass} mt-4`}>{paragraph1}</motion.p>
         </div>
         <div className="w-1/2 justify-between flex flex-col content-end">
           {
             displayButton ?
-              <Link href="/organigramme" className="bg-[#46fd9e] h-fit p-1 xl:h-[75px] text-[#1e2428] text-base xl:text-4xl 2xl:text-5xl hover:bg-[#84f588] font-semibold md:py-2 md:px-4 rounded self-end">
+              <Link href="/organigramme" className="bg-[#46fd9e] p-1 text-[#1e2428] text-base xl:text-3xl 2xl:text-3xl hover:bg-[#84f588] font-semibold md:py-2 md:px-4 rounded self-end">
                 En Savoir Plus
               </Link> : <div></div>
           }
-          <div className="self-end">
-            <motion.h2 variants={variantsRight} className="text-3xl xl:text-6xl 2xl:text-7xl font-bold text-[#46fd9e]">{title2}</motion.h2>
-            <motion.p variants={variantsRight} className={`text-base ${textClass} overflow-y-scroll mt-10 min-h-[160px] max-h-[350px]`}>{paragraph2}</motion.p>
+          <div className="self-end text-end">
+            <motion.h2 variants={variantsRight} className="text-3xl xl:text-5xl 2xl:text-5xl font-bold text-[#46fd9e]">{title2}</motion.h2>
+            <motion.p variants={variantsRight} className={`text-base ${textClass} overflow-y-scroll mt-4 min-h-[160px] max-h-[350px]`}>{paragraph2}</motion.p>
           </div>
         </div>
       </motion.div>

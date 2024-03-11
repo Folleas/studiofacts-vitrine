@@ -3,17 +3,17 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import TextTabs from "./TextTabs";
-import ReactHtmlParser from 'react-html-parser';
 
 export function VimeoModal({
   isOpen,
   onClose,
-  vimeo = '',
+  vimeoId = '',
 }: any) {
   const stopPropagation = (e: React.MouseEvent) => {
     e.stopPropagation();
   }
   console.log(isOpen)
+  console.log(vimeoId);
   return (
     <AnimatePresence>
       {isOpen && (
@@ -24,12 +24,12 @@ export function VimeoModal({
           exit={{ opacity: 0 }}
           onClick={onClose} // Close the modsal when clicking outside
         >
-          {vimeo !== '' && (
+          {vimeoId !== '' && (
             <motion.div
-              className="w-1/2 h-1/2 relative"
+              className="w-3/4 h-3/4 relative"
               onClick={stopPropagation}
             >
-              {ReactHtmlParser(vimeo)}
+                <iframe src={`https://player.vimeo.com/video/${vimeoId}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479`} allow="autoplay; fullscreen; picture-in-picture" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} title="20240109-1850-50.5775584"></iframe>
             </motion.div>
           )}
         </motion.div>
