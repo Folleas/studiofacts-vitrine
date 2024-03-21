@@ -26,7 +26,7 @@ function ProjectModal({
 
     const stopPropagation = (e: React.MouseEvent) => {
         e.stopPropagation();
-      }
+    }
     return (
         <AnimatePresence>
             {isOpen && (
@@ -211,7 +211,7 @@ function BookCard({ item }: any) {
     const closeModal = () => setIsModalOpen(false);
 
     return (
-        <div className="p-4 w-[350px] md:w-[360px]">
+        <div className="p-4 w-[350px] flex flex-col md:w-[360px]">
             <div className="relative w-[300px] h-[400px] md:w-[325px] md:h-[450px]">
                 {
                     item?.coverFilename &&
@@ -223,8 +223,10 @@ function BookCard({ item }: any) {
                     />
                 }
             </div>
-            <h2 className="text-2xl font-bold mt-2">{item.title}</h2>
-            <p className="text-lg mt-1 max-h-[200px] overflow-y-hidden ">{item.enSavoirPlus}</p>
+            <div className="mt-2 h-[60px] flex flex-col justify-center">
+                <h2 className="text-2xl font-bold">{item.title}</h2>
+            </div>
+            <p className="text-lg mt-1 max-h-[200px] overflow-y-hidden">{item.enSavoirPlus}</p>
             <button onClick={openModal} className="mt-4 px-4 py-2 bg-[rgba(237,237,237,1)] hover:bg-[#ffffff] text-[#1e2428] rounded">
                 En Savoir Plus
             </button>

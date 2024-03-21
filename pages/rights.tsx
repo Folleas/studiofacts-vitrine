@@ -5,6 +5,7 @@ import TitleParagraph from 'components/Accueil/TitleParagraph';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
+
 const partnerImages = [
     "publicsenat_1.webp",
     "M6_1.webp",
@@ -50,7 +51,7 @@ const ImageList = ({ images }: any) => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 1.5 + index / 2, delay: 0.35 * index}}
+                        transition={{ duration: 1.5 + index / 2, delay: 0.35 * index }}
                         className=''
                     >
                         <Image
@@ -73,26 +74,25 @@ const ImageList = ({ images }: any) => {
             </div>
         </div>
     );
-};
-export default function RightsPage() {
-    const [data, setData] = useState<any[]>([]);
-    const [selectedProjects, setSelectedProjects] = useState<{ accueil: [], live: [], _id: string }>({
+}
+export default function RightsPage({ data }: any) {
+    const [selectedProjects, setSelectedProjects] = useState<{ accueil: []; live: []; _id: string }>({
         accueil: [],
         live: [],
-        _id: "",
+        _id: '',
     });
     const ref = useRef(null);
     const isInView = useInView(ref);
     const controls = useAnimation();
     const [selectedTags, setSelectedTags] = useState<{ [key: string]: string[] }>({});
-    const rightsValues = Array.from(new Set(data.map((elem) => elem.rights !== 'Non' && elem.rights !== undefined && elem.rights)));
+    const rightsValues = Array.from(new Set(data.map((elem: any) => elem.rights !== 'Non' && elem.rights !== undefined && elem.rights)));
 
     // Extract unique tags for each right
     const tagsForRights: { [key: string]: string[] } = {};
-    rightsValues.forEach((right) => {
+    rightsValues.forEach((right: any) => {
         const projectsForRight = data.filter((elem: any) => elem.rights === right);
         let tags: string[] = [];
-        projectsForRight.forEach((project) => {
+        projectsForRight.forEach((project: any) => {
             tags = tags.concat(project.tags.filter((tag: any) => !tags.includes(tag)));
         });
         tagsForRights[right] = tags;
@@ -100,7 +100,7 @@ export default function RightsPage() {
     const desiredOrder = ['En Production', 'Factual', 'Fiction', 'Podcast', 'Productions externes'];
 
     // Sort the rightsValues array based on the desiredOrder
-    const sortedRightsValues = rightsValues.sort((a, b) => {
+    const sortedRightsValues = rightsValues.sort((a: any, b: any) => {
         const indexA = desiredOrder.indexOf(a);
         const indexB = desiredOrder.indexOf(b);
 
@@ -121,15 +121,14 @@ export default function RightsPage() {
     });
 
     // Filter projects based on selected tags for a specific right
-
     const filteredProjects = (right: string) => {
         if (!selectedTags[right] || selectedTags[right].length === 0) {
             // If no tags are selected, return all projects for this right
-            return data.filter((elem) => elem.rights === right);
+            return data.filter((elem: any) => elem.rights === right);
         } else {
             // If tags are selected, filter projects based on selected tags
-            return data.filter((elem) => {
-                return elem.rights === right && selectedTags[right].some(tag => elem.tags.includes(tag));
+            return data.filter((elem: any) => {
+                return elem.rights === right && selectedTags[right].some((tag) => elem.tags.includes(tag));
             });
         }
     };
@@ -170,45 +169,49 @@ export default function RightsPage() {
         }
     }, [controls, isInView]);
 
-    useEffect(() => {
-        fetch('https://studiofact.group/project/rights')
-            .then((response) => response.json() as any)
-            .then((responseData) => { setData(responseData.rightsProjects.sort((a: any, b: any) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())) })
-            .catch((error) => console.error('Error fetching data:', error));
-        fetch("https://studiofact.group/alaune")
-            .then((response) => response.json())
-            .then((responseData: any) => {
-                setSelectedProjects(responseData.aLaUneData[0]);
-            })
-            .catch((error) => console.error("Error fetching data:", error));
-    }, []);
     return (
         <div className="flex flex-col justify-center items-center h-full w-full md:p-10 mt-[8vh] overflow-x-hidden">
-            <TitleParagraph color1={'bg-[#59AA6F]'} color2={'bg-[#FF3133]'} top1={150} top2={50} left1={600} left2={400} x1={500} x2={400} y1={100} y2={-200} title="Rights : Des histoires qui voyagent" paragraph="StudioFact Rights est le distributeur en France et à l’international de l'ensemble des productions du groupe ainsi que de productions externes, tous genres confondus." ></TitleParagraph>
+            {/* TitleParagraph component */}
+            <TitleParagraph
+                color1={'bg-[#59AA6F]'}
+                color2={'bg-[#FF3133]'}
+                top1={150}
+                top2={50}
+                left1={600}
+                left2={400}
+                x1={500}
+                x2={400}
+                y1={100}
+                y2={-200}
+                title="Rights : Des histoires qui voyagent"
+                paragraph="StudioFact Rights est le distributeur en France et à l’international de l'ensemble des productions du groupe ainsi que de productions externes, tous genres confondus."
+            ></TitleParagraph>
 
-            <ALaUne data={data} selectedProjects={sortedRightsValues.flatMap(right => filteredProjects(right).map(project => project._id))}></ALaUne>
+            {/* ALaUne component */}
+            <ALaUne data={data} selectedProjects={sortedRightsValues.flatMap((right: any) => filteredProjects(right).map((project: any) => project._id))}></ALaUne>
 
-            <div className='bg-[#ededed] w-[100vw] mt-10 h-fit py-10 px-6 md:p-16'>
+            <div className="bg-[#ededed] w-[100vw] mt-10 h-fit py-10 px-6 md:p-16">
                 <h2 className="text-2xl xl:text-4xl 2xl:text-5xl text-left mb-4 text-black font-bold">Nos Partenaires</h2>
+                {/* ImageList component */}
                 <ImageList images={partnerImages}></ImageList>
             </div>
 
-            <div className='w-full h-full pl-6'>
+            <div className="w-full h-full pl-6">
                 {/* Display titles and corresponding projects */}
-                {sortedRightsValues.map((right, index) => right !== '' && (
-                    <div key={index} className="w-full">
-                        <div className='flex flex-col mt-10 mb-6'>
-                            <h2 className="text-2xl xl:text-4xl 2xl:text-5xl text-left mb-4 font-bold">{right}</h2>
-                            <div className="flex flex-wrap w-fit h-fit justify-start mb-4">{renderTagsForRight(right)}</div>
-                        </div>
+                {sortedRightsValues.map((right: any, index: any) =>
+                    right !== '' && (
+                        <div key={index} className="w-full">
+                            <div className="flex flex-col mt-10 mb-6">
+                                <h2 className="text-2xl xl:text-4xl 2xl:text-5xl text-left mb-4 font-bold">{right}</h2>
+                                <div className="flex flex-wrap w-fit h-fit justify-start mb-4">{renderTagsForRight(right)}</div>
+                            </div>
 
-                        <ul className='flex flex-wrap'>
-                            {filteredProjects(right)
-                                .map((project, projIndex) => {
+                            <ul className="flex flex-wrap">
+                                {filteredProjects(right).map((project: any, projIndex: any) => {
                                     return (
                                         <RightsProject
                                             key={projIndex}
-                                            imageSrc={"/" + project.coverFilename}
+                                            imageSrc={'/' + project.coverFilename}
                                             videoSrc={project.videoTrailer}
                                             imageAlt={project.coverFilename}
                                             title={project.title}
@@ -219,13 +222,12 @@ export default function RightsPage() {
                                             resourcesFilenames={project.resourcesFilenames}
                                             coverFilename={project.coverFilename}
                                         />
-                                    )
-                                })
-                            }
-                        </ul>
-                    </div>
-                ))}
-
+                                    );
+                                })}
+                            </ul>
+                        </div>
+                    )
+                )}
 
                 {/* <Team isPerson={false} talents={[
                     {
@@ -244,4 +246,17 @@ export default function RightsPage() {
             </div>
         </div>
     );
+}
+
+
+export async function getStaticProps() {
+    const response = await fetch('https://studiofact.group/project/rights');
+    const responseData: any = await response.json();
+    const data = responseData.rightsProjects.sort((a: any, b: any) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime());
+
+    return {
+        props: {
+            data,
+        },
+    };
 }

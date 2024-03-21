@@ -100,8 +100,8 @@ export default function Section() {
     return (
         <section className="relative h-full w-full">
             <div className="blur-xl absolute w-full overflow-x-hidden pointer-events-none">
-                <MovingCircle top={-100} size={'w-[500px] h-[500px]'} left={550} color="bg-[#eb5959]" x={100} y={250} />
-                <MovingCircle top={20} size={'w-[600px] h-[600px]'} left={800} color="bg-[#26ff7d]" x={200} y={-250} />
+                <MovingCircle top={width > 700 ? -100 : -20} size={'w-[500px] h-[500px]'} left={550} color="bg-[#eb5959]" x={width > 700 ? 100 : 20} y={width > 700 ? 250 : 50} />
+                <MovingCircle top={width > 700 ? 20 : 0} size={'w-[600px] h-[600px]'} left={800} color="bg-[#26ff7d]" x={width > 700 ? 200 : 30} y={width > 700 ? -250 : -40} />
             </div>
             <div className="flex flex-col w-full h-full p-10 xl:mb-[2vh]">
                 <h3 className="text-xl md:text-4xl xl:text-4xl 2xl:text-5xl text-[red] font-bold mb-3">Nos spécificités</h3>
@@ -109,7 +109,7 @@ export default function Section() {
                 <motion.div ref={ref} initial='hidden' animate={controls} variants={imageVariants} className='flex w-full'>
                     {width < 768 ?
                         <div className='flex flex-col w-full'>
-                            <p className="text-2xl md:text-4xl xl:text-4xl 2xl:text-5xl w-full max-h-[650px] overflow-y-scroll mt-10">
+                            <p className="text-2xl md:text-4xl xl:text-4xl 2xl:text-5xl w-full h-fit mt-10">
                                 StudioFact media group se différencie avant tout par la nature de ses contenus :<br /><br />
                                 Nous sommes le seul groupe de production spécialisé dans les histoires vraies et l’écriture du réel.<br /><br />
                                 StudioFact est le premier acteur de la production audiovisuelle française à présenter cette particularité : chacune des entités du groupe raconte le réel.<br /><br />

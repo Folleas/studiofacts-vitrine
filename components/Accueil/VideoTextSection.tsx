@@ -1,7 +1,7 @@
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from "framer-motion"
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const MovingCircle = ({ top, left, color, x, y, size }: any) => {
   const ref = useRef(null);
@@ -50,10 +50,10 @@ export const MovingCircle = ({ top, left, color, x, y, size }: any) => {
       {color && (
         <>
           <motion.span
-            className={`animate-[ping_5s_ease-out_infinite] absolute inline-flex h-full w-full rounded-full ${color} opacity-10`}
+            className={`animate-[ping_5s_ease-out_infinite] absolute inline-flex h-full z-40 w-full rounded-full ${color} opacity-10`}
           ></motion.span>
           <motion.span
-            className={`relative inline-flex rounded-full ${size} ${color} opacity-20`}
+            className={`relative inline-flex rounded-full ${size} ${color} opacity-20 z-40`}
           ></motion.span>
         </>
       )}
@@ -67,6 +67,21 @@ export default function VideoTextSection({ displayButton, title1, title2, paragr
   const ref = useRef(null);
   const isInView = useInView(ref);
   const controls = useAnimation();
+  const [width, setWidth] = useState<number>();
+
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWidth(window.innerWidth)
+    }
+
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
+    }
+  }, []);
 
   useEffect(() => {
     if (isInView) {
@@ -100,29 +115,50 @@ export default function VideoTextSection({ displayButton, title1, title2, paragr
   const textClass = isTextTooLong ? "xl:text-xl 2xl:text-xl" : "xl:text-3xl 2xl:text-3xl";
 
   return (
-    <section id="VideoTextSection" className="xl:pt-[8vh] relative h-[95vh] w-full">
-      <div className="blur-xl absolute w-full overflow-x-hidden pointer-events-none">
-        <MovingCircle top={top1} left={left1} size={'w-[500px] h-[500px]'} color="bg-[#46fd9e]" x={x1} y={y1} />
-        <MovingCircle top={top2} left={left2} size={'w-[500px] h-[500px]'} color="bg-[#ff3333]" x={x2} y={y2} />
+    <section id="VideoTextSection" className="xl:pt-[8vh] relative h-fit md:h-[70vh] w-full">
+      <div className="blur-xl absolute w-full z-40 overflow-x-hidden pointer-events-none">
+        <MovingCircle top={top1} left={left1} size={'w-[200px] h-[200px] md:w-[500px] md:h-[500px]'} color="bg-[#46fd9e]" x={x1} y={y1} />
+        <MovingCircle top={top2} left={left2} size={'w-[200px] h-[200px] md:w-[500px] md:h-[500px]'} color="bg-[#ff3333]" x={x2} y={y2} />
       </div>
-      <motion.div initial="hidden" animate={controls} ref={ref} className="flex w-full h-full p-10">
-        <div className="w-1/2 pr-10 md:pr-0">
-          <motion.h2 variants={variantsLeft} className="text-3xl xl:text-5xl 2xl:text-5xl font-bold">{title1}</motion.h2>
-          <motion.p variants={variantsLeft} className={`text-base ${textClass} mt-4`}>{paragraph1}</motion.p>
-        </div>
-        <div className="w-1/2 justify-between flex flex-col content-end">
-          {
-            displayButton ?
-              <Link href="/organigramme" className="bg-[#46fd9e] p-1 text-[#1e2428] text-base xl:text-3xl 2xl:text-3xl hover:bg-[#84f588] font-semibold md:py-2 md:px-4 rounded self-end">
-                En Savoir Plus
-              </Link> : <div></div>
-          }
-          <div className="self-end text-end">
-            <motion.h2 variants={variantsRight} className="text-3xl xl:text-5xl 2xl:text-5xl font-bold text-[#46fd9e]">{title2}</motion.h2>
-            <motion.p variants={variantsRight} className={`text-base ${textClass} overflow-y-scroll mt-4 min-h-[160px] max-h-[350px]`}>{paragraph2}</motion.p>
+      {width && width > 768 ?
+        <motion.div initial="hidden" animate={controls} ref={ref} className="flex w-full h-full p-10">
+          <div className="w-1/2 pr-10 md:pr-0">
+            <motion.h2 variants={variantsLeft} className="text-3xl xl:text-5xl 2xl:text-5xl font-bold">{title1}</motion.h2>
+            <motion.p variants={variantsLeft} className={`text-base ${textClass} mt-4`}>{paragraph1}</motion.p>
           </div>
-        </div>
-      </motion.div>
+          <div className="w-1/2 justify-between flex flex-col content-end">
+            {
+              displayButton ?
+                <Link href="/organigramme" className="bg-[#46fd9e] p-1 text-[#1e2428] text-base xl:text-3xl 2xl:text-3xl hover:bg-[#84f588] font-semibold md:py-2 md:px-4 rounded self-end">
+                  En Savoir Plus
+                </Link> : <div></div>
+            }
+            <div className="self-end text-end">
+              <motion.h2 variants={variantsRight} className="text-3xl xl:text-5xl 2xl:text-5xl font-bold text-[#46fd9e]">{title2}</motion.h2>
+              <motion.p variants={variantsRight} className={`text-base ${textClass} mt-4 min-h-[160px] max-h-[350px]`}>{paragraph2}</motion.p>
+            </div>
+          </div>
+        </motion.div>
+        :
+        <motion.div initial="hidden" animate={controls} ref={ref} className="flex flex-col p-5">
+          <div className="mb-5">
+            <div className="flex justify-between">
+              <motion.h2 variants={variantsLeft} className="text-2xl font-bold">{title1}</motion.h2>
+              {
+                displayButton ?
+                  <Link href="/organigramme" className="self-center bg-[#46fd9e] p-1 text-[#1e2428] text-sm hover:bg-[#84f588] font-semibold rounded">
+                    En Savoir Plus
+                  </Link> : <div></div>
+              }
+            </div>
+            <motion.p variants={variantsLeft} className={`text-base ${textClass} mt-2`}>{paragraph1}</motion.p>
+          </div>
+          <div className="self-end text-end mt-6">
+            <motion.h2 variants={variantsRight} className="text-3xl xl:text-5xl 2xl:text-5xl font-bold text-[#46fd9e]">{title2}</motion.h2>
+            <motion.p variants={variantsRight} className={`text-base ${textClass} overflow-y-scroll mt-4 h-fit md:min-h-[160px] max-h-[350px]`}>{paragraph2}</motion.p>
+          </div>
+        </motion.div>
+      }
     </section>
     // <div className="flex w-full bg-gradient-to-r from-black via-black to-[#1e2428]">
     //   <div className="w-1/2 flex justify-center h-[1000px]">

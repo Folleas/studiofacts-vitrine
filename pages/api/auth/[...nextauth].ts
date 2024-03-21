@@ -6,7 +6,7 @@ import axios from "axios";
 async function refreshAccessToken(tokenObject: any) {
   try {
     // Get a new set of tokens with a refreshToken
-    const tokenResponse = await axios.post('http://localhost:3000/auth/refresh', {
+    const tokenResponse = await axios.post('https://studiofact.group/auth/refresh', {
       token: tokenObject.refreshToken
     });
 
@@ -45,19 +45,19 @@ export const authOptions = {
         try {
           console.log('here')
           console.log(credentials)
-          const res = await fetch("http://localhost:3000/auth/signin", {
+          const res = await fetch("https://studiofact.group/auth/signin", {
             method: 'POST',
             body: JSON.stringify(credentials),
             headers: { "Content-Type": "application/json" }
           })
           console.log('res')
-          const user = await res.json()
+          const user:any = await res.json()
           console.log(res)
           console.log(user)
 
           // If no error and we have user data, return it
-          if (res.ok && user) {
-            return user
+          if (res.ok && user && user.tokens) {
+            return user.tokens
           }
           // Return null if user data could not be retrieved
           return null

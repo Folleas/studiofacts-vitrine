@@ -107,14 +107,14 @@ const Filiale = ({ title, text, imageSrc, isEven, href }: any) => {
   );
 };
 
-export default function Web() {
+export default function Web({ filialesData }: any) {
   return (
     <div className='flex flex-col w-full h-full justify-center space-y-16 mt-[8vh] items-start p-10'>
       <div className='flex'>
         <h1 className="text-4xl md:text-4xl xl:text-5xl 2xl:text-6xl font-semibold mt-10">Filiales</h1>
       </div>
       <div className='flex w-full flex-col space-y-10'>
-        {filialesData.map((filiale, index) => (
+        {filialesData.map((filiale: any, index: number) => (
           <Filiale
             href={filiale.href}
             key={index}
@@ -127,4 +127,12 @@ export default function Web() {
       </div>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      filialesData,
+    },
+  };
 }

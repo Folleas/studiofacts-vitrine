@@ -1,13 +1,15 @@
 import { AnimatePresence, motion, useAnimation, useInView } from "framer-motion";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
-import { FaTimes } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp, FaTimes } from "react-icons/fa";
 import TextTabs from "./TextTabs";
+import Link from "next/link";
 
 export function VimeoModal({
   isOpen,
   onClose,
   vimeoId = '',
+  vimeoPassword = '',
 }: any) {
   const stopPropagation = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -18,20 +20,36 @@ export function VimeoModal({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 flex items-center w-screen h-screen bg-[rgba(0,0,0,0.9)] justify-center z-[60]"
+          className="fixed inset-0 flex flex-col items-center w-screen h-screen bg-[rgba(0,0,0,0.9)] justify-center z-[60]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose} // Close the modsal when clicking outside
         >
+          <button
+            onClick={onClose}
+            className="absolute bg-white rounded-3xl p-1 top-4 right-4 text-gray-500 hover:text-gray-700"
+          >
+            <FaTimes size={25} />
+          </button>
           {vimeoId !== '' && (
-            <motion.div
-              className="w-3/4 h-3/4 relative"
-              onClick={stopPropagation}
-            >
-                <iframe src={`https://player.vimeo.com/video/${vimeoId}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479`} allow="autoplay; fullscreen; picture-in-picture" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} title="20240109-1850-50.5775584"></iframe>
-            </motion.div>
+            <>
+              <motion.div
+                className="w-3/4 h-3/4 relative"
+                onClick={stopPropagation}
+              >
+                <iframe src={`https://player.vimeo.com/video/909118958?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479`} allow="autoplay; fullscreen; picture-in-picture" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} title="20240109-1850-50.5775584"></iframe>
+              </motion.div>
+            </>
           )}
+          <motion.div
+            className=""
+            onClick={stopPropagation}
+          >
+            <div>
+              Mot de passe : {vimeoPassword}
+            </div>
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
@@ -88,10 +106,10 @@ export function ProjectModal({
                     {/* You can use an 'x' icon from a library like FontAwesome */}
                     <FaTimes size={20} />
                   </button>
-                  <h2 className="text-xl md:text-5xl xl:text-5xl 2xl:text-6xl overflow-y-auto min-h-[50px] max-h-[200px] text-[#1e2428] font-bold">{title}</h2>
+                  <h2 className="text-xl md:text-5xl xl:text-5xl 2xl:text-6xl min-h-[50px] max-h-[200px] text-[#1e2428] font-bold">{title}</h2>
 
                   {/* Display tags under the title */}
-                  <div className="my-6 overflow-x-auto">
+                  <div className="my-6">
                     {type && (
                       <span
                         className={`${type === 'Stories' ? 'bg-[#FF3133]' :
@@ -113,35 +131,28 @@ export function ProjectModal({
                       </span>
                     ))}
                   </div>
-                  {vimeo !== '' && (
-                    <button onClick={() => openVimeoModal()} className="bg-[rgba(0,0,0,0.1)] border border-gray-300 hover:bg-[rgba(255,255,255,0.8)] text-gray-700 font-bold pt-2 px-4 rounded">
-                      <h3 className="text-base md:text-xl xl:text-xl 2xl:text-2xl overflow-y-auto min-h-[50px] max-h-[200px] text-[#1e2428]">
-                        Visionner le film avec un code
-                      </h3>
-                    </button>
-                  )}
-                  <TextTabs tabs={[
-                    {
-                      title: 'Description',
-                      content: content,
-                    },
-                    {
-                      title: 'Plus de détails',
-                      content: moreDetails,
-                    },
-                    {
-                      title: 'A propos',
-                      content: aPropos,
-                    },
-                  ]} />
+                  <div className="flex flex-col overflow-y-auto h-full p-2">
+                    <p className={`text-black text-base md:text-xl text-justify xl:text-xl 2xl:text-2xl`} style={{ whiteSpace: 'pre-line' }}>
+                      {content}
+                    </p>
+                    {moreDetails &&
+                      <p className={`text-black text-base md:text-xl text-justify xl:text-xl 2xl:text-xl font-thin`} style={{ whiteSpace: 'pre-line' }}>
+                        {moreDetails}
+                      </p>
+                    }
+                    {aPropos &&
+                      <p className={`text-black text-base md:text-xl text-justify xl:text-xl 2xl:text-xl font-thin`} style={{ whiteSpace: 'pre-line' }}>
+                        {aPropos}
+                      </p>
+                    }
+                  </div>
                   {resourcesFilenames.length > 0 && (
-                    <div>
-                      <h2 className="text-2xl font-semibold text-[#1e2428] mt-4">Galerie</h2>
-                      <div className="flex py-6 overflow-x-auto w-[825px] space-x-4 ">
+                    <div className="flex flex-col h-[25%] p-2">
+                      <div className="flex py-6 overflow-x-auto w-[825px] space-x-4">
                         {resourcesFilenames.map((resource: string, index: number) => (
                           <div
                             key={index}
-                            className={`relative min-w-[200px] min-h-[200px] rounded-xl overflow-hidden`}
+                            className={`relative min-w-[200px] h-[100%] rounded-xl overflow-hidden`}
                           >
                             <Image
                               src={'https://studiofact.group/image/' + resource}
@@ -166,7 +177,6 @@ export function ProjectModal({
                 <div className="w-full xl:w-5/12 p-10 h-full">
                   {coverFilename && coverFilename !== '' && !(coverFilename.includes('.mp4')) &&
                     <div className="mb-4">
-                      <h2 className="text-xl md:text-3xl xl:text-3xl 2xl:text-4xl font-bold text-[#1e2428] mt-2 mb-6">Couverture</h2>
                       {/* Display cover image */}
                       {
                         coverFilename &&
@@ -186,7 +196,6 @@ export function ProjectModal({
                   {/* Video */}
                   {videoSrc && (
                     <div className="mt-4 w-full h-full">
-                      <h3 className="text-xl md:text-3xl xl:text-3xl 2xl:text-4xl font-bold text-[#1e2428]">Video</h3>
                       <div className="w-[300px] h-[200px] xl:w-[600px] xl:h-[500px]">
                         <video
                           width="100%"
@@ -209,10 +218,6 @@ export function ProjectModal({
           </motion.div>
         )}
       </AnimatePresence>
-      <VimeoModal
-        isOpen={isVimeoModalOpen}
-        onClose={closeVimeoModal}
-        vimeo={vimeo} />
     </>
   );
 }
@@ -248,13 +253,29 @@ export default function VideoTextCard({
   resourcesFilenames,
 }: any) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false); // State to track if card is expanded
   const ref = useRef(null);
   const isInView = useInView(ref);
   const controls = useAnimation();
   const [isVideoLoaded, setIsVideoLoaded] = useState(false); // State to track video loading
   const refVideo: any = useRef(null);
+  const [width, setWidth] = useState<number>(0);
 
-  // Existing code...
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWidth(window.innerWidth)
+    }
+
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
+    }
+  }, []);
+  const truncate = (input: string, characterCount: number) => width < 760 && input?.length > characterCount ? `${input.substring(0, characterCount - 1)}...` : input;
+  const truncateFlat = (input: string, characterCount: number) => input?.length > characterCount ? `${input.substring(0, characterCount - 1)}...` : input;
 
   useEffect(() => {
     if (isInView) {
@@ -285,6 +306,7 @@ export default function VideoTextCard({
   };
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+  const toggleExpand = () => setIsExpanded(!isExpanded); // Toggle card expansion
 
   const buttons = [];
   if (buttonCTA !== '')
@@ -296,24 +318,24 @@ export default function VideoTextCard({
 
   if (moreDetails || aPropos !== '')
     buttons.push(
-      <button key='Plus de détailx' onClick={openModal} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded self-start">
+      <Link key='Plus de détail' className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded self-start" href={"/" + title}>
         Plus de détail
-      </button>
+      </Link>
     )
   files.map((file: any, index: number) => buttons.push(
     <a target="_blank" rel="noopener noreferrer" href={'https://studiofact.group/image/' + file.file} key={index} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 mb-4 px-4 rounded self-start">
       {file.label}
     </a>
   ));
+
   return (
     <motion.div ref={ref} initial='hidden' variants={imageVariants} animate={controls} className="p-4 w-full">
       <div
-        className={`w-full h-[900px] md:h-[700px] rounded-lg shadow-xl flex ${swapContent ? "flex-col-reverse" : "flex-col"
+        className={`w-full relative h-fit ${isExpanded ? 'xl:h-fit' : 'xl:h-[425px]'} rounded-lg shadow-xl flex ${swapContent ? "flex-col-reverse" : "flex-col"
           } md:flex-row`}
       >
         <div
-          className={`relative bg-black w-full h-full xl:w-[1000px] rounded-xl overflow-hidden ${swapContent ? "md:order-2" : ""
-            }`}
+          className={`relative xl:w-fit mr-2 ${swapContent ? "md:order-2" : ""}`}
         >
           {coverFilename ? (
             coverFilename.endsWith('.mp4') ? (
@@ -321,32 +343,32 @@ export default function VideoTextCard({
                 ref={refVideo}
                 loop
                 muted
-                className="w-full h-full absolute inset-0 object-contain"
+                className="w-full h-full absolute inset-0 object-contain self-start"
                 onCanPlayThrough={handleVideoLoad} // Event listener for video load
               >
                 <source src={'https://studiofact.group/image/' + videoSrc} type="video/mp4" />
               </video>
             ) : (
-              <div className="relative w-full h-full">
+              <div className="relative w-[427px] lg:w-[704px] rounded-xl overflow-hidden h-[240px] lg:h-[396px] mt-4">
                 {
                   coverFilename &&
                   <Image
                     src={'https://studiofact.group/image/' + coverFilename}
                     fill
-                    sizes={"(max-width: 640px) 100vw, (max-width: 768px) 90vw, 40vw"}
+                    sizes="(max-width: 640px) 640px, 360px"
                     alt={imageAlt}
-                    className="object-contain"
+                    className="object-cover"
                   />
                 }
               </div>
             )
           ) : null}
         </div>
-        <div className={`${swapContent ? "mr-10" : ""} p-4 md:py-32 md:pl-12 md:pr-4 w-full h-full flex flex-col justify-between`}>
+        <div className={`${swapContent ? "mr-10" : ""} relative px-4 pt-2 xl:p-4 md:pl-12 md:pr-4 w-full h-full flex flex-col justify-between`}>
           <div className="flex flex-col h-full">
             <div className="flex flex-col max-h-[100px] xl:max-h-[180px]">
-              <h2 className={`${swapContent ? "text-end" : ""} text-xl md:text-2xl xl:text-3xl 2xl:text-4xl overflow-y-auto min-h-[50px] max-h-[1200px] xl:max-h-[180px] font-bold text-white`}>
-                {title}
+              <h2 className={`${swapContent ? "text-end" : ""} text-xl md:text-2xl xl:text-3xl 2xl:text-4xl overflow-y-hidden min-h-[30px] xl:min-h-[50px] max-h-[1200px] xl:max-h-[180px] font-bold text-white`}>
+                {truncate(title, 60)}
               </h2>
               {
                 tags &&
@@ -354,7 +376,7 @@ export default function VideoTextCard({
                   {tags && tags.map((tag: string, index: number) => (
                     <span
                       key={index}
-                      className="bg-gray-300 text-[#1e2428] self-start px-2 py-1 text-xs rounded"
+                      className="bg-gray-300 text-[#1e2428] self-start px-2 py-1 my-2 text-base rounded"
                     >
                       {tag}
                     </span>
@@ -363,11 +385,31 @@ export default function VideoTextCard({
                 </div>
               }
             </div>
-            <div className={`${swapContent ? "text-end" : ""} h-[500px]  md:h-fit overflow-y-auto ${swapContent ? "" : "pr-10"} mt-3 mb-6`}>
-              {renderContentWithLineBreaks(content)}
+            <div className={`${swapContent ? "text-end" : ""} min-h-[180px] ${isExpanded && 'pb-20'} h-fit overflow-y-hidden ${swapContent ? "" : "pr-10"} mb-3 xl:my-3`}>
+              {isExpanded ? (
+                <p className="text-gray-300 text-xl md:text-lg xl:text-lg 2xl:text-xl">
+                  {truncateFlat(content, 2000)}
+                </p>
+              ) : (
+                <p className="text-gray-300 text-xl md:text-lg xl:text-lg 2xl:text-xl">
+                  {truncateFlat(content, 800)}
+                </p>
+              )}
+              {content.length > 1000 && (
+                <button
+                  onClick={toggleExpand}
+                  className={`text-gray-300 absolute bottom-0 w-full ${isExpanded ? '' : 'bg-gradient-to-b backdrop-blur from-transparent'} flex justify-center hover:text-gray-500`}
+                >
+                  {isExpanded ?
+                    <FaChevronUp size={60} />
+                    :
+                    <FaChevronDown size={60} />
+                  }
+                </button>
+              )}
             </div>
           </div>
-          <div className={`${swapContent ? "self-end" : ""}  flex flex-col`}>
+          <div className={`${swapContent ? "self-end" : ""}  flex flex-col ${buttons.length > 2 ? "flex-wrap overflow-x-auto max-h-[200px]" : ""}`}>
             {buttons.map(
               (button: any) => button
             )}

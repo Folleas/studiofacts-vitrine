@@ -6,13 +6,7 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react';
 import Image from "next/legacy/image";
 
-export default function EditionsPage() {
-    const [data, setData] = useState<any[]>([]);
-    const [selectedProjects, setSelectedProjects] = useState<{ accueil: [], editions: [], _id: string }>({
-        accueil: [],
-        editions: [],
-        _id: "",
-    });
+export default function EditionsPage({ data, selectedProjects }: any) {
     const ref = useRef(null);
     const isInView = useInView(ref);
     const controls = useAnimation();
@@ -35,21 +29,6 @@ export default function EditionsPage() {
             delay: 2,
         }),
     };
-
-    useEffect(() => {
-        // Make the API request to localhost:3000/project/ with Realisation as a parameter
-        // Replace with your actual API endpoint and parameters
-        fetch('https://studiofact.group/project/type/Editions')
-            .then((response) => response.json() as any) // Type assertion here
-            .then((responseData) => { setData(responseData.realisationProjects.sort((a: any, b: any) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())) })
-            .catch((error) => console.error('Error fetching data:', error));
-        fetch("https://studiofact.group/alaune")
-            .then((response) => response.json())
-            .then((responseData: any) => {
-                setSelectedProjects(responseData.aLaUneData[0]); // Assuming the API returns an array of project objects
-            })
-            .catch((error) => console.error("Error fetching data:", error));
-    }, []);
 
     return (
         <div className="flex flex-col justify-center items-center h-full w-full md:p-10 mt-[8vh] overflow-x-hidden">
@@ -107,4 +86,19 @@ export default function EditionsPage() {
             </div>
         </div>
     );
+}
+
+export async function getStaticProps() {
+    const dataResponse = await fetch('https://studiofact.group/project/type/Editions');
+    const data: any = await dataResponse.json();
+
+    const selectedProjectsResponse = await fetch("https://studiofact.group/alaune");
+    const selectedProjectsData: any = await selectedProjectsResponse.json();
+
+    return {
+        props: {
+            data: data.realisationProjects.sort((a: any, b: any) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()),
+            selectedProjects: selectedProjectsData.aLaUneData[0]
+        }
+    };
 }

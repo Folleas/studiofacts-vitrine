@@ -32,13 +32,17 @@ export default function ImageRows() {
     '/STUDIOFACT_PRESSE_BLEULAVANDE.png',
     '/STUDIOFACT_DOC_VERT.png',
     '/STUDIOFACT_AUDIO_JAUNE.png',
+    '/01_STUDIOFACT_RIGHT.png',
+    '/STUDIOFACT_EDITION_BLEU.png',
+    '/STUDIOFACT_LAB_BLEUTURQUOISE.png',
+    '/01_STUDIOFACT_LIVE.png',
   ];
 
   const renderImages = (imageList: any[]) => {
     return imageList.map((src, index: number) => (
       <motion.div
         key={index}
-        className="min-w-[30vw] md:min-w-[45vw] lg:min-w-[25vw] xl:min-w-[25vw] h-[150px] md:h-[300px] lg:h-[300px] xl:h-[300px] p-4 sm:p-8 relative"
+        className="w-[400px] h-[400px] md:w-[650px] md:h-[400px] p-4 sm:p-8 relative"
         variants={imageVariants}
         initial="hidden"
         animate={controls}
@@ -59,28 +63,18 @@ export default function ImageRows() {
 
   return (
     <div className="p-6 md:p-10 my-8 sm:my-16 md:w-3/4 xl:w-2/3 2xl:w-full h-fit mx-auto">
-      <h1 className="text-4xl md:text-5xl xl:text-5xl 2xl:text-6xl font-bold text-white">
+      {/* <h1 className="text-4xl md:text-5xl xl:text-5xl 2xl:text-6xl font-bold text-white">
         LA GALAXIE STUDIOFACT
-      </h1>
+      </h1> */}
       <div className="flex flex-col xl:items-center h-fit">
         <motion.div
           ref={ref}
-          className="flex mb-6 sm:mb-10 grow overflow-x-auto h-[150px] md:h-[300px] lg:h-[300px] xl:h-[300px] md:justify-center space-x-4 md:space-x-6 lg:space-x-8 xl:space-x-10"
+          className="flex mb-6 sm:mb-10 grow overflow-x-auto h-full md:justify-center space-x-4 md:space-x-6 lg:space-x-8 xl:space-x-10"
         >
-          <div className="flex whitespace-nowrap">
+          <div className="flex space-x-10 justify-around whitespace-nowrap">
             {renderImages(imageArray)}
           </div>
         </motion.div>
-        <div className="flex overflow-x-auto grow xl:overflow-x-hidden h-[150px] md:h-[300px] lg:h-[300px] xl:h-[300px] md:justify-center space-x-4 md:space-x-6 lg:space-x-8 xl:space-x-10">
-          <div className="flex whitespace-nowrap">
-            {renderImages([
-              '/01_STUDIOFACT_RIGHT.png',
-              '/STUDIOFACT_EDITION_BLEU.png',
-              '/STUDIOFACT_LAB_BLEUTURQUOISE.png',
-              '/01_STUDIOFACT_LIVE.png',
-            ])}
-          </div>
-        </div>
       </div>
     </div>
   );

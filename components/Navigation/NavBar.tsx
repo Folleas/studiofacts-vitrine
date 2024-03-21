@@ -108,7 +108,7 @@ export default function NavBar() {
 
                 {/* Desktop Menu */}
                 <nav className="hidden xl:flex lg:flex w-full">
-                    <ul className="flex w-full justify-end space-x-2 md:space-x-8 2xl:space-x-2">
+                    <ul className="flex w-full justify-end xl:space-x-8 2xl:space-x-2">
                         {links.map((link, index) => (
                             <li key={link.url} className="self-center relative group">
                                 {link.subLinks ? (

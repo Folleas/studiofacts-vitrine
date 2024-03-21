@@ -127,7 +127,7 @@ export default function ScreeningRoom() {
             // If no tags are selected, return all projects for this right
             console.log("data")
             console.log(data)
-            return data.filter((elem) => elem.rights === right && elem.vimeo && elem.vimeo !== "");
+            return data.filter((elem) => elem.rights === right && elem.vimeo && elem.vimeo && elem.vimeoPassword && elem.vimeoPassword !== "");
         } else {
             // If tags are selected, filter projects based on selected tags
             return data.filter((elem) => {
@@ -187,7 +187,7 @@ export default function ScreeningRoom() {
             .catch((error) => console.error("Error fetching data:", error));
     }, []);
     return (
-        <div className="flex flex-col justify-center items-center h-full w-full md:p-10 mt-[8vh] overflow-x-hidden">
+        <div className="flex flex-col justify-center items-center h-fit w-full md:p-10 mt-[8vh]">
             <TitleParagraph color1={'bg-[#59AA6F]'} color2={'bg-[#FF3133]'} top1={150} top2={50} left1={600} left2={400} x1={500} x2={400} y1={100} y2={-200} title="Screening Room" paragraph="" ></TitleParagraph>
 
             <div className='w-full h-full pl-6'>
@@ -199,7 +199,7 @@ export default function ScreeningRoom() {
                             //check if contains an object with vimeo !== ''
                             console.log("filteredProjectsTemp")
                             console.log(filteredProjectsTemp)
-                            if (!filteredProjectsTemp.find((elem) => elem.vimeo && elem.vimeo !== "")) {
+                            if (!filteredProjectsTemp.find((elem) => elem.vimeo && elem.vimeo !== "" && elem.vimeoPassword && elem.vimeoPassword !== "")) {
                                 return null;
                             }
                             return (
@@ -221,6 +221,7 @@ export default function ScreeningRoom() {
                                                         title={project.title}
                                                         content={project.description}
                                                         vimeoId={project.vimeo}
+                                                        vimeoPassword={project.vimeoPassword ? project.vimeoPassword : null}
                                                         moreDetails={project.enSavoirPlus}
                                                         type={project.type}
                                                         tags={project.tags}
@@ -233,6 +234,9 @@ export default function ScreeningRoom() {
                                     </ul>
                                 </div>
                             )
+                        }
+                        else {
+                            return null;
                         }
                     })}
             </div>

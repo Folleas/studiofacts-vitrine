@@ -1,24 +1,22 @@
 import FullScreenVideoTextOverlay from 'components/Accueil/FullScreenVideoTextOverlay';
 import ImageRows from 'components/Accueil/ImageRows';
-import Section from 'components/Accueil/Section';
+import Section from 'components/Section';
 import VideoTextCard from 'components/Accueil/VideoTextCard';
 import VideoTextSection from 'components/Accueil/VideoTextSection';
+import Probleme from 'components/Probleme';
+import Splash from 'components/Splash';
+import { GetServerSideProps } from 'next';
 import { useEffect, useState } from 'react';
 
-export default function Web() {
-  const [derniereRealisations, setDerniereRealisations] = useState<any>(null);
-  const [dernierPosts, setDernierPosts] = useState<any>(null);
-  // Scroll to top when path changes
+export default function Web({ derniereRealisations, dernierPosts }: any) {
+  const [derniereRealisationsState, setDerniereRealisations] = useState<any>(derniereRealisations);
+  const [dernierPostsState, setDernierPosts] = useState<any>(dernierPosts);
+  const isBrowser = typeof window !== 'undefined';
+  const width = isBrowser ? window.innerWidth : 0;
 
+  console.log('dernierpostsstate')
+  console.log(dernierPostsState)
   useEffect(() => {
-    // Make the API request to localhost:3000/project/ with Realisation as a parameter
-    // Replace with your actual API endpoint and parameters
-
-
-    // fetch('https://studiofact.group/post/latest-release-dates/2')
-    //   .then((response) => response.json() as any) // Type assertion here
-    //   .then((responseData) => { responseData?.posts && setDernierPosts(responseData.posts) })
-    //   .catch((error) => console.error('Error fetching data:', error));
     const fetchPost = async () => {
       let posts: any = [];
       await fetch('https://studiofact.group/post')
@@ -37,65 +35,77 @@ export default function Web() {
         .catch((error) => console.error('Error fetching data:', error));
     }
     fetchPost();
-    fetch('https://studiofact.group/project/latest-release-dates/2')
-      .then((response) => response.json() as any) // Type assertion here
-      .then((responseData) => { responseData?.projects && setDerniereRealisations(responseData.projects) })
-      .catch((error) => console.error('Error fetching data:', error));
-
   }, []);
+
   return (
-    <div className='flex scroll-smooth flex-col h-full overflow-hidden justify-center items-center'>
-      <FullScreenVideoTextOverlay />
-      <VideoTextSection displayButton={true} top1={0} left1={900} x1={-100} y1={300} top2={-200} left2={1200} x2={200} y2={-200} title1="Raconter le reel" paragraph1="STUDIOFACT est le premier groupe audiovisuel français à produire du contenu original exclusivement issu dhistoires vraies : Documentaire, Fiction, Podcast, Édition, Spectacle vivant." title2="Qui sommes-nous ?" paragraph2="« Nos contenus racontent le monde. Tendez loreille, ouvrez les yeux. La réalité dépasse toutes les fictions »" />
-      <div className="w-full">{/*bg-gradient-to-b from-[#1e2428] via-gray-600 to-[#1e2428]*/}
-        <ImageRows />
-        <h1 className="text-4xl p-6 xl:p-10 md:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white">A la une</h1>
-        <div className='h-[1900px] md:h-[1500px]'>
-          {
-            dernierPosts && dernierPosts.map((dernierPost: any, index: number) =>
-              <VideoTextCard key={index} files={dernierPost.files} coverFilename={dernierPost.coverFilename} imageSrc={dernierPost.cover} imageAlt={dernierPost.title} title={dernierPost.title} content={dernierPost.content} />
-            )
-          }
-        </div>
-        <h1 className="text-4xl md:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white p-6 xl:p-10">Nos dernières réalisations</h1>
-        <div className='h-[1900px] md:h-[1500px]'>
-          {derniereRealisations && derniereRealisations.length > 0 &&
-            <VideoTextCard
-              vimeo={derniereRealisations[0].vimeo}
-              imageSrc={"/" + derniereRealisations[0].coverFilename}
-              videoSrc={derniereRealisations[0].videoTrailer}
-              imageAlt={derniereRealisations[0].coverFilename}
-              title={derniereRealisations[0].title}
-              content={derniereRealisations[0].description}
-              aPropos={derniereRealisations[0].aPropos}
-              moreDetails={derniereRealisations[0].enSavoirPlus}
-              type={derniereRealisations[0].type}
-              tags={derniereRealisations[0].tags}
-              resourcesFilenames={derniereRealisations[0].resourcesFilenames}
-              coverFilename={derniereRealisations[0].coverFilename}
-            />
-          }
-          {derniereRealisations && derniereRealisations.length > 1 &&
-            <VideoTextCard
-              vimeo={derniereRealisations[1].vimeo}
-              imageSrc={"/" + derniereRealisations[1].coverFilename}
-              videoSrc={derniereRealisations[1].videoTrailer}
-              imageAlt={derniereRealisations[1].coverFilename}
-              title={derniereRealisations[1].title}
-              content={derniereRealisations[1].description}
-              aPropos={derniereRealisations[1].aPropos}
-              moreDetails={derniereRealisations[1].enSavoirPlus}
-              type={derniereRealisations[1].type}
-              tags={derniereRealisations[1].tags}
-              resourcesFilenames={derniereRealisations[1].resourcesFilenames}
-              coverFilename={derniereRealisations[1].coverFilename}
-            />
-          }
+    <div id={'index'} className='flex scroll-smooth flex-col h-full justify-center items-center'>
+      <Splash />
+      <VideoTextSection
+        displayButton={true}
+        top1={width > 700 ? 0 : 30}
+        left1={width > 700 ? 200 : -20}
+        x1={width > 700 ? -70 : 20}
+        y1={width > 700 ? 100 : 20}
+        top2={width > 700 ? -200 : 50}
+        left2={width > 700 ? 600 : 250}
+        x2={width > 700 ? 0 : 60}
+        y2={width > 700 ? -200 : 30}
+        title1="Raconter le reel"
+        paragraph1="STUDIOFACT est le premier groupe audiovisuel français à produire du contenu original exclusivement issu dhistoires vraies : Documentaire, Fiction, Podcast, Édition, Spectacle vivant."
+        title2="Qui sommes-nous ?"
+        paragraph2="« Nos contenus racontent le monde. Tendez loreille, ouvrez les yeux. La réalité dépasse toutes les fictions »"
+      />
+      <div className="w-full h-full">
+        <Probleme />
+        <div className='w-full h-full bg-gradient-to-b from-[rgba(134,124,145,0.5)] z-20 from-0% via-[rgba(92,94,110,0.5)] via-20% to-[#1e2428] to-60%'>
+          <h1 className="text-4xl p-6 xl:p-10 md:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white ">À la une</h1>
+          <div className='h-fit'>
+            {
+              dernierPostsState && dernierPostsState.map((dernierPost: any, index: number) =>
+                <VideoTextCard key={index} files={dernierPost.files} coverFilename={dernierPost.coverFilename} imageSrc={dernierPost.cover} imageAlt={dernierPost.title} title={dernierPost.title} content={dernierPost.content} />
+              )
+            }
+          </div>
+          <h1 className="text-4xl md:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white p-6 xl:p-10">Nos dernières réalisations</h1>
+          <div className='h-fit'>
+            {derniereRealisationsState && derniereRealisationsState.length > 0 &&
+              <VideoTextCard
+                vimeo={derniereRealisationsState[0].vimeo}
+                imageSrc={"/" + derniereRealisationsState[0].coverFilename}
+                videoSrc={derniereRealisationsState[0].videoTrailer}
+                imageAlt={derniereRealisationsState[0].coverFilename}
+                title={derniereRealisationsState[0].title}
+                content={derniereRealisationsState[0].description}
+                aPropos={derniereRealisationsState[0].aPropos}
+                moreDetails={derniereRealisationsState[0].enSavoirPlus}
+                type={derniereRealisationsState[0].type}
+                tags={derniereRealisationsState[0].tags}
+                resourcesFilenames={derniereRealisationsState[0].resourcesFilenames}
+                coverFilename={derniereRealisationsState[0].coverFilename}
+              />
+            }
+            {derniereRealisationsState && derniereRealisationsState.length > 1 &&
+              <VideoTextCard
+                vimeo={derniereRealisationsState[1].vimeo}
+                imageSrc={"/" + derniereRealisationsState[1].coverFilename}
+                videoSrc={derniereRealisationsState[1].videoTrailer}
+                imageAlt={derniereRealisationsState[1].coverFilename}
+                title={derniereRealisationsState[1].title}
+                content={derniereRealisationsState[1].description}
+                aPropos={derniereRealisationsState[1].aPropos}
+                moreDetails={derniereRealisationsState[1].enSavoirPlus}
+                type={derniereRealisationsState[1].type}
+                tags={derniereRealisationsState[1].tags}
+                resourcesFilenames={derniereRealisationsState[1].resourcesFilenames}
+                coverFilename={derniereRealisationsState[1].coverFilename}
+              />
+            }
+          </div>
         </div>
         <Section></Section>
-        <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
+        <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh] bg-gradient-to-b from-[rgba(134,124,145,0.5)] z-20 from-0% via-[rgba(92,94,110,0.5)] via-20% to-[#1e2428] to-80%">
           <div className="mb-4">
-            <h1 className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-white mb-8">Suivez-nous sur Instagram</h1>
+            <h1 className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-bold mb-8">Suivez-nous sur Instagram</h1>
           </div>
           <div className='flex justify-center my-10'>
             <iframe title="oui" className="w-[1000px] h-[400px] md:h-[900px]" id="instagram-embed-1" src="https://www.instagram.com/studiofact.officiel/embed/" allowFullScreen={true} frameBorder="0" height="560" data-instgrm-payload-id="instagram-media-payload-1"></iframe>
@@ -105,3 +115,26 @@ export default function Web() {
     </div>
   )
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const derniereRealisations = await fetch('https://studiofact.group/project/latest-release-dates/2')
+    .then((response) => response.json() as any)
+    .catch((error) => {
+      console.error('Error fetching derniereRealisations:', error);
+      return null;
+    });
+
+  const dernierPosts = await fetch('https://studiofact.group/post/latest-release-dates/2')
+    .then((response) => response.json() as any)
+    .catch((error) => {
+      console.error('Error fetching dernierPosts:', error);
+      return null;
+    });
+
+  return {
+    props: {
+      derniereRealisations: derniereRealisations?.projects ? derniereRealisations.projects : [],
+      dernierPosts: dernierPosts?.posts ? dernierPosts.posts : []
+    }
+  };
+};
