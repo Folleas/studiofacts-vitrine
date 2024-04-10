@@ -112,10 +112,10 @@ export default function VideoTextSection({ displayButton, title1, title2, paragr
   const isTextTooLong = paragraph2.length > 400;
 
   // Define CSS classes based on the condition
-  const textClass = isTextTooLong ? "xl:text-xl 2xl:text-xl" : "xl:text-3xl 2xl:text-3xl";
+  const textClass = isTextTooLong ? "xl:text-xl 2xl:text-xl" : "xl:text-2xl 2xl:text-2xl";
 
   return (
-    <section id="VideoTextSection" className="xl:pt-[8vh] relative h-fit md:h-[70vh] w-full">
+    <section id="VideoTextSection" className="xl:pt-[8vh] relative h-fit md:h-[60vh] w-full">
       <div className="blur-xl absolute w-full z-40 overflow-x-hidden pointer-events-none">
         <MovingCircle top={top1} left={left1} size={'w-[200px] h-[200px] md:w-[500px] md:h-[500px]'} color="bg-[#46fd9e]" x={x1} y={y1} />
         <MovingCircle top={top2} left={left2} size={'w-[200px] h-[200px] md:w-[500px] md:h-[500px]'} color="bg-[#ff3333]" x={x2} y={y2} />
@@ -123,7 +123,7 @@ export default function VideoTextSection({ displayButton, title1, title2, paragr
       {width && width > 768 ?
         <motion.div initial="hidden" animate={controls} ref={ref} className="flex w-full h-full p-10">
           <div className="w-1/2 pr-10 md:pr-0">
-            <motion.h2 variants={variantsLeft} className="text-3xl xl:text-5xl 2xl:text-5xl font-bold">{title1}</motion.h2>
+            <motion.h2 variants={variantsLeft} className="text-3xl font-bold">{title1}</motion.h2>
             <motion.p variants={variantsLeft} className={`text-base ${textClass} mt-4`}>{paragraph1}</motion.p>
           </div>
           <div className="w-1/2 justify-between flex flex-col content-end">
@@ -134,7 +134,7 @@ export default function VideoTextSection({ displayButton, title1, title2, paragr
                 </Link> : <div></div>
             }
             <div className="self-end text-end">
-              <motion.h2 variants={variantsRight} className="text-3xl xl:text-5xl 2xl:text-5xl font-bold text-[#46fd9e]">{title2}</motion.h2>
+              <motion.h2 variants={variantsRight} className="text-3xl font-bold text-[#46fd9e]">{title2}</motion.h2>
               <motion.p variants={variantsRight} className={`text-base ${textClass} mt-4 min-h-[160px] max-h-[350px]`}>{paragraph2}</motion.p>
             </div>
           </div>

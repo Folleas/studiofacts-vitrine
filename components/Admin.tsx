@@ -22,9 +22,21 @@ const Admin = () => {
             <ScreeningRoom></ScreeningRoom>
         )
     }
+
     return (
-        <div className="w-[100vw] pt-[8vh] h-[80vh] flex justify-center">
-            <button onClick={() => signIn()}>Se connecter</button>
+        <div className="w-[100vw] pt-[8vh] h-[80vh] flex justify-center mt-[8vh] text-center content-center items-center">
+
+            <div className="bg-blue-500 hover:bg-blue-700 h-[60px] text-white justify-center flex font-bold py-2 px-4 rounded ml-4">
+                <button onClick={() => signIn()} className="">
+                    Se connecter
+                </button>
+            </div>
+
+            <div unselectable='on' className="bg-gray-400 h-[60px] text-white items-center flex font-bold py-2 px-4 rounded ml-4">
+                {/* <a href="mailto:" className="h-full flex items-center"> */}
+                    Envoyer un mail pour obtenir un accès
+                {/* </a> */}
+            </div>
         </div>
     )
 };

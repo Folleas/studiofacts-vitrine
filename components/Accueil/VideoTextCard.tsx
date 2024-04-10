@@ -318,7 +318,7 @@ export default function VideoTextCard({
 
   if (moreDetails || aPropos !== '')
     buttons.push(
-      <Link key='Plus de détail' className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded self-start" href={"/" + title}>
+      <Link key='Plus de détail' className="bg-blue-500 hover:bg-blue-600 text-white text-xs xl:text-base font-semibold py-2 px-4 rounded self-start" href={"/" + title}>
         Plus de détail
       </Link>
     )
@@ -331,8 +331,8 @@ export default function VideoTextCard({
   return (
     <motion.div ref={ref} initial='hidden' variants={imageVariants} animate={controls} className="p-4 w-full">
       <div
-        className={`w-full relative h-fit ${isExpanded ? 'xl:h-fit' : 'xl:h-[425px]'} rounded-lg shadow-xl flex ${swapContent ? "flex-col-reverse" : "flex-col"
-          } md:flex-row`}
+        className={`w-[450px] xl:w-full relative h-fit ${isExpanded ? 'xl:h-fit' : 'xl:h-[425px]'} rounded-lg shadow-xl flex ${swapContent ? "flex-col-reverse" : "flex-col"
+          } xl:flex-row`}
       >
         <div
           className={`relative xl:w-fit mr-2 ${swapContent ? "md:order-2" : ""}`}
@@ -349,7 +349,7 @@ export default function VideoTextCard({
                 <source src={'https://studiofact.group/image/' + videoSrc} type="video/mp4" />
               </video>
             ) : (
-              <div className="relative w-[427px] lg:w-[704px] rounded-xl overflow-hidden h-[240px] lg:h-[396px] mt-4">
+              <div className="relative w-[427px] xl:w-[704px] rounded-xl overflow-hidden h-[240px] xl:h-[396px] mt-4">
                 {
                   coverFilename &&
                   <Image
@@ -364,10 +364,10 @@ export default function VideoTextCard({
             )
           ) : null}
         </div>
-        <div className={`${swapContent ? "mr-10" : ""} relative px-4 pt-2 xl:p-4 md:pl-12 md:pr-4 w-full h-full flex flex-col justify-between`}>
+        <div className={`${swapContent ? "mr-10" : ""} relative px-2 pt-2 xl:p-4 xl:pl-12 md:pr-4 w-full h-full flex flex-col justify-between`}>
           <div className="flex flex-col h-full">
             <div className="flex flex-col max-h-[100px] xl:max-h-[180px]">
-              <h2 className={`${swapContent ? "text-end" : ""} text-xl md:text-2xl xl:text-3xl 2xl:text-4xl overflow-y-hidden min-h-[30px] xl:min-h-[50px] max-h-[1200px] xl:max-h-[180px] font-bold text-white`}>
+              <h2 className={`${swapContent ? "text-end" : ""} text-xl md:text-2xl xl:text-3xl 2xl:text-3xl overflow-y-hidden min-h-[30px] xl:min-h-[50px] max-h-[1200px] xl:max-h-[180px] font-bold text-white`}>
                 {truncate(title, 60)}
               </h2>
               {
@@ -385,29 +385,37 @@ export default function VideoTextCard({
                 </div>
               }
             </div>
-            <div className={`${swapContent ? "text-end" : ""} min-h-[180px] ${isExpanded && 'pb-20'} h-fit overflow-y-hidden ${swapContent ? "" : "pr-10"} mb-3 xl:my-3`}>
-              {isExpanded ? (
-                <p className="text-gray-300 text-xl md:text-lg xl:text-lg 2xl:text-xl">
-                  {truncateFlat(content, 2000)}
-                </p>
-              ) : (
-                <p className="text-gray-300 text-xl md:text-lg xl:text-lg 2xl:text-xl">
-                  {truncateFlat(content, 800)}
-                </p>
-              )}
-              {content.length > 1000 && (
-                <button
-                  onClick={toggleExpand}
-                  className={`text-gray-300 absolute bottom-0 w-full ${isExpanded ? '' : 'bg-gradient-to-b backdrop-blur from-transparent'} flex justify-center hover:text-gray-500`}
-                >
-                  {isExpanded ?
-                    <FaChevronUp size={60} />
-                    :
-                    <FaChevronDown size={60} />
+            {
+              width > 1280 ?
+                <div className={`${swapContent ? "text-end" : ""} min-h-[180px] ${content.length < 1000 ? 'max-h-[200px]' : ''} ${isExpanded && 'pb-20'} overflow-y-hidden ${swapContent ? "" : "pr-10"} mb-3 xl:my-3`}>
+                  {isExpanded ? (
+                    <p className="text-gray-300 text-xl md:text-lg xl:text-lg 2xl:text-xl">
+                      {truncateFlat(content, 2000)}
+                    </p>
+                  ) : (
+                    <p className="text-gray-300 text-xl md:text-lg xl:text-lg 2xl:text-xl">
+                      {truncateFlat(content, 1000)}
+                    </p>
+                  )}{
+                    content.length > 1000 && (
+                      <button
+                        onClick={toggleExpand}
+                        className={`text-gray-300 absolute bottom-0 w-full ${isExpanded ? '' : 'bg-gradient-to-b backdrop-blur from-transparent'} flex justify-center hover:text-gray-500`}
+                      >
+                        {isExpanded ?
+                          <FaChevronUp size={60} />
+                          :
+                          <FaChevronDown size={60} />
+                        }
+                      </button>
+                    )
                   }
-                </button>
-              )}
-            </div>
+                </div>
+                :
+                <div className="pb-2">
+                  {content}
+                </div>
+            }
           </div>
           <div className={`${swapContent ? "self-end" : ""}  flex flex-col ${buttons.length > 2 ? "flex-wrap overflow-x-auto max-h-[200px]" : ""}`}>
             {buttons.map(

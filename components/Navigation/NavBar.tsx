@@ -155,11 +155,11 @@ export default function NavBar() {
                         <Link
                             href={'/screeningroom'}
                             scroll={true}
-                            className="flex items-center space-x-2 text-white text-xs xl:text-lg 2xl:text-xl"
+                            className="flex items-center space-x-4 text-white text-xs xl:text-lg 2xl:text-xl"
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
-                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-2a6 6 0 100-12 6 6 0 000 12zm0-10a2 2 0 100-4 2 2 0 000 4zm0-2a4 4 0 110 8 4 4 0 010-8zm0-2a6 6 0 110 12 6 6 0 010-12zm0 2a4 4 0 100 8 4 4 0 000-8z" clipRule="evenodd" />
-                            </svg>
+                            <div className='pr-2'>
+                            <Image src='/clapper.png' alt='clapper' width={35} height={35} />
+                            </div>
                             Screening Room
                         </Link>
                     </li>

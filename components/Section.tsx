@@ -34,10 +34,10 @@ const useWidth = () => {
   const [width, setWidth] = useState(0)
   const handleResize = () => setWidth(window.innerWidth)
   useEffect(() => {
-      handleResize()
-      window.addEventListener('resize', handleResize)
-      return () => window.removeEventListener('resize', handleResize)
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return width
 }
@@ -176,23 +176,38 @@ export default function Section() {
   const card = width > 800 ? cardData : cardDataMobile;
   return (
     <div className="h-full w-full">
-      <div ref={container} className="relative h-[300vh] w-full bg-gradient-to-b from-[#1e2428] z-20 from-20% via-[rgba(92,94,110,0.5)] via-80% to-[rgba(134,124,145,0.5)] to-100%">
+      <div ref={container} className="relative h-fit w-full bg-gradient-to-b from-[#1e2428] z-20 from-20% via-[rgba(92,94,110,0.5)] via-80% to-[rgba(134,124,145,0.5)] to-100%">
         <div
           ref={stickyMask}
           className="flex items-center justify-center overflow-hidden sticky top-0 h-[100vh]"
         >
           <div className='h-[100vh] relative w-screen'>
-            <div className='absolute z-20 w-full h-full flex flex-col justify-center'>
-              <div className='relative flex w-full px-16 self-center flex-col justify-center h-1/2'>
+            <div className='absolute z-20 w-full h-full px-16 flex flex-col justify-center'>
+              <div className='relative flex w-full self-center flex-col justify-center h-fit py-24'>
                 <FramerAppear>
                   <h3 className="text-xl lg:text-4xl xl:text-4xl 2xl:text-5xl text-[red] font-bold mb-3">Nos spécificités</h3>
                   <h2 className="text-2xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold max-w-[1000px]">Le réel au coeur de notre ADN</h2>
                 </FramerAppear>
               </div>
-              <div ref={horizontalScroll} className="overflow-x-auto left-0 h-[75vh] relative" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-                <div className="w-[1450px] lg:w-[2250px] xl:w-[3500px] flex flex-row gap-x-6 h-[500px] px-16">
-                  {card.map((card: any, index: number) => { return card.description })}
-                </div>
+              <div className="h-full rounded-lg gap-y-4 flex flex-col w-[80vw]">
+                <h2 className="text-xl lg:text-2xl xl:text-2xl 2xl:text-2xl text-[#46fd9e] font-bold">
+                  StudioFact media group se différencie avant tout par la nature de ses contenus :
+                </h2>
+                <p className="text-sm lg:text-lg xl:text-lg 2xl:text-xl text-white">
+                  Nous sommes le seul groupe de production spécialisé dans les histoires vraies et l’écriture du réel.
+                </p>
+                <p className="text-sm lg:text-lg xl:text-lg 2xl:text-xl text-white">
+                  StudioFact est le premier acteur de la production audiovisuelle française à présenter cette particularité : chacune des entités du groupe raconte le réel.
+                </p>
+                <h2 className="text-xl lg:text-2xl xl:text-2xl mt-[6%] 2xl:text-2xl text-[#46fd9e] font-bold">
+                  Autour du groupe, nous développons des projets en partenariat avec des acteurs du secteur dont nous partageons l’exigence et la vision du métier.
+                </h2>
+                <p className="text-sm lg:text-lg xl:text-lg 2xl:text-xl text-white">
+                  Les six branches de production de StudioFact (Presse, Documentaires, Fictions, Édition, Podcasts, Lab, et Live) permettent une circulation fluide des sujets et des histoires vraies à travers différents modes narratifs possibles. Le regroupement stratégique de ces métiers et des talents qui y collaborent permet également de créer des synergies économiques.
+                </p>
+                <p className="text-sm lg:text-lg xl:text-lg 2xl:text-xl text-white">
+                  Notre groupe est également unique en son genre par ses modes de distribution. Nous enquêtons, créons et produisons pour la télévision, les plateformes de streaming, les salles de cinéma, les plateformes de podcast ou encore les librairies.
+                </p>
               </div>
             </div>
           </div>

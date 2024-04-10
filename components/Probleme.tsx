@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from 'next/image'
 import { FramerAppear } from "./FramerAppear";
 import ImageRows from "./Accueil/ImageRows";
+import { motion, useAnimation, useInView } from 'framer-motion';
 
 interface CardData {
   title: string;
@@ -31,59 +32,28 @@ const CardComponent: React.FC<CardData> = ({ title, description, imageSrc }) => 
 };
 
 export default function Probleme() {
-  const [scrollPercentage, setScrollPercentage]: any = useState(0);
-  const container: any = useRef(null);
-  const stickyMask: any = useRef(null);
-  const horizontalScroll: any = useRef(null); // Add a ref for the horizontal scroll div
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+  const controls = useAnimation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      const scrollY = window.scrollY;
-
-      const scrollPercent = (scrollY / (documentHeight - windowHeight)) * 100
-
-      // console.log('scrollYProgress:')
-      // console.log(scrollPercent)
-      setScrollPercentage(scrollPercent)
-
+    if (isInView) {
+      controls.start('visible');
     }
+  }, [controls, isInView]);
 
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
-
-  const easing = 0.15;
-  let easedScrollProgress = 0;
-
-  useEffect(() => {
-    requestAnimationFrame(animate)
-  }, [])
-
-  const getScrollProgress = () => {
-    const scrollProgress = stickyMask.current?.offsetTop / (container.current?.getBoundingClientRect().height - window.innerHeight)
-    const delta = scrollProgress - easedScrollProgress;
-    easedScrollProgress += delta * easing;
-    return easedScrollProgress
-  }
-  const animate = () => {
-
-    // Scroll the horizontal scroll div based on the scroll progress
-    const scrollProgress = getScrollProgress();
-    const scrollWidth = horizontalScroll.current?.scrollWidth;
-    const maxScrollLeft = scrollWidth - horizontalScroll.current?.clientWidth;
-    const scrollLeft = scrollProgress * maxScrollLeft;
-    if (horizontalScroll.current)
-      horizontalScroll.current.scrollLeft = scrollLeft;
-    requestAnimationFrame(animate)
-  }
-
-
+  const imageVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: (custom: number) => ({
+      opacity: 1,
+      transition: {
+        duration: custom * 0.75,
+      },
+      delay: custom * 0.5,
+    }),
+  };
   const cardData: CardData[] = [
     {
       title: "Probleme n1",
@@ -112,17 +82,49 @@ export default function Probleme() {
     },
     // Add more card data objects here
   ];
+  const imageArray = [
+    '/STUDIOFACT_STORIES_ROUGEVERMEIL.png',
+    '/STUDIOFACT_PRESSE_BLEULAVANDE.png',
+    '/STUDIOFACT_DOC_VERT.png',
+    '/STUDIOFACT_AUDIO_JAUNE.png',
+    '/01_STUDIOFACT_RIGHT.png',
+    '/STUDIOFACT_EDITION_BLEU.png',
+    '/STUDIOFACT_LAB_BLEUTURQUOISE.png',
+    '/01_STUDIOFACT_LIVE.png',
+  ];
+
+  const renderImages = (imageList: any[]) => {
+    return imageList.map((src, index: number) => (
+      <motion.div
+        key={index}
+        className="w-[300px] h-[300px] md:w-[550px] md:h-[300px] p-4 sm:p-8 relative"
+        variants={imageVariants}
+        initial="hidden"
+        animate={controls}
+        custom={index}
+      >
+        <div className="relative w-full h-full">
+          <Image
+            src={src}
+            alt={`${index + 1}`}
+            className="object-contain rounded-lg"
+            sizes={"(max-width: 540px) 100vw, (max-width: 668px) 90vw, 40vw"}
+            fill
+          />
+        </div>
+      </motion.div>
+    ));
+  };
 
   return (
     <div className="h-full w-full">
-      <div ref={container} className="relative h-[300vh] w-full bg-gradient-to-b from-[#1e2428] z-20 from-20% via-[rgba(92,94,110,0.5)] via-80% to-[rgba(134,124,145,0.5)] to-100%">
+      <div className="relative h-fit w-full bg-gradient-to-t from-[#1e2428] z-20 from-20% via-[rgba(92,94,110,0.5)] via-80% to-[rgba(134,124,145,0.5)] to-100%">
         <div
-          ref={stickyMask}
-          className="flex items-center justify-center overflow-hidden sticky z-20 top-0 h-[100vh]"
+          className="flex items-center justify-center overflow-hidden sticky z-20 top-0 h-fit"
         >
-          <div className='h-[100vh] relative w-screen'>
-            <div className='absolute z-20 w-full h-full flex flex-col justify-center'>
-              <div className='relative flex w-2/3 self-center flex-col justify-center h-1/2'>
+          <div className='h-fit w-screen'>
+            <div className='z-20 w-full h-full flex flex-col justify-center'>
+              <div className=' flex w-2/3 self-center flex-col justify-center h-1/2'>
                 <FramerAppear>
                   <h2 className='text-xl md:text-2xl font-thin mt-[10vh]'>La Galaxie Studiofact</h2>
                   <h1 className='text-2xl md:text-5xl p-4'>
@@ -130,10 +132,8 @@ export default function Probleme() {
                   </h1>
                 </FramerAppear>
               </div>
-              <div ref={horizontalScroll} className="overflow-x-auto overflow-y-hidden left-0 h-[90vh] relative" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-                <div className="w-[4500px] md:w-[6000px] flex flex-row gap-x-6 h-full">
-                  <ImageRows />
-                </div>
+              <div className="w-full justify-center h-full flex flex-row flex-wrap gap-x-6">
+                {renderImages(imageArray)}
               </div>
             </div>
           </div>

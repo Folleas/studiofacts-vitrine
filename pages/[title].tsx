@@ -41,6 +41,7 @@ const Home = ({ data }: any) => {
     const stopPropagation = (e: React.MouseEvent) => {
         e.stopPropagation();
     }
+    const mainWindowSize = videoSrc ? "xl:w-5/6" : "xl:w-full"
     return (
         <div>
             <div className='h-[30vh] md:h-screen flex w-screen relative overflow-hidden'>
@@ -121,12 +122,10 @@ const Home = ({ data }: any) => {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col-reverse xl:flex-row items-start justify-center py-8 xl:py-16">
-                <div className="w-full xl:w-5/12 pl-10 h-full">
-
-
-                    {/* Video */}
-                    {videoSrc && (
+            <div className="flex flex-col-reverse 2xl:flex-row items-start justify-center py-8 xl:py-16">
+                {videoSrc && (
+                    <div className="w-full xl:w-5/12 pl-10 h-full">
+                        {/* Video */}
                         <div className="mt-4 w-full h-fit">
                             <div className="w-[300px] h-[200px] xl:w-[600px] xl:h-[350px]">
                                 <video
@@ -142,12 +141,12 @@ const Home = ({ data }: any) => {
                                 </video>
                             </div>
                         </div>
-                    )}
-                </div>
-                <div onClick={stopPropagation} className="pr-6 overflow-y-auto xl:overflow-y-hidden flex-col xl:flex-row rounded-lg shadow-md w-full xl:w-5/6 h-[100%] xl:h-[95%] flex ">
+                    </div>
+                )}
+                <div onClick={stopPropagation} className={`pr-6 overflow-y-auto xl:overflow-y-hidden flex-col xl:flex-row rounded-lg shadow-md w-full ${mainWindowSize} h-[100%] xl:h-[95%] flex`}>
                     {/* Left side content */}
                     <div className="w-full px-10 h-full">
-                        <h2 className="text-xl md:text-5xl xl:text-5xl 2xl:text-6xl min-h-[50px] max-h-[200px] font-bold">{title}</h2>
+                        <h2 className="text-xl md:text-5xl xl:text-5xl 2xl:text-6xl min-h-[20px] max-h-[200px] font-bold">{title}</h2>
                         <div className="my-3 xl:my-6 flex pb-1 overflow-x-auto">
                             <div>
                                 {type && (

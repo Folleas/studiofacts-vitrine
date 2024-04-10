@@ -62,7 +62,7 @@ export default function ImageRows() {
   };
 
   return (
-    <div className="p-6 md:p-10 my-8 sm:my-16 md:w-3/4 xl:w-2/3 2xl:w-full h-fit mx-auto">
+    <div className="p-6 md:p-10 my-8 sm:my-16 w-[200px]">
       {/* <h1 className="text-4xl md:text-5xl xl:text-5xl 2xl:text-6xl font-bold text-white">
         LA GALAXIE STUDIOFACT
       </h1> */}
