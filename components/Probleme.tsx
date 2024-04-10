@@ -49,9 +49,9 @@ export default function Probleme() {
     visible: (custom: number) => ({
       opacity: 1,
       transition: {
-        duration: custom * 0.75,
+        duration: custom * 0.6,
       },
-      delay: custom * 0.5,
+      delay: custom * 0.3,
     }),
   };
   const cardData: CardData[] = [
@@ -132,7 +132,7 @@ export default function Probleme() {
                   </h1>
                 </FramerAppear>
               </div>
-              <div className="w-full justify-center h-full flex flex-row flex-wrap gap-x-6">
+              <div ref={ref} className="w-full justify-center h-full flex flex-row flex-wrap gap-x-6">
                 {renderImages(imageArray)}
               </div>
             </div>
