@@ -46,7 +46,7 @@ const Home = ({ data }: any) => {
             <div className='h-[30vh] md:h-screen flex w-screen relative overflow-hidden'>
                 <div ref={parallaxRef} className='absolute w-full h-full top-0'>
                     <div id={"splash"} className="h-[30vh] md:h-screen relative w-screen">
-                        <div className="h-[30vh] md:h-screen relative w-full">
+                        <div className="h-[25vh] md:h-screen relative w-full">
                             {coverFilename && coverFilename !== '' && coverFilename.includes('.mp4') ?
                                 <video
                                     id="background-video"

@@ -23,7 +23,8 @@ const config = withPlugins([[withBundleAnalyzer({ enabled: env.ANALYZE })]], {
         pathname: '/image/**',
       }
     ]
-  }
+  },
+  staticPageGenerationTimeout: 1000,
 })
 
 export default config
