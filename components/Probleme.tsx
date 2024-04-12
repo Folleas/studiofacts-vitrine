@@ -127,9 +127,6 @@ export default function Probleme() {
               <div className=' flex w-2/3 self-center flex-col justify-center h-1/2'>
                 <FramerAppear>
                   <h2 className='text-xl md:text-2xl font-thin mt-[10vh]'>La Galaxie Studiofact</h2>
-                  <h1 className='text-2xl md:text-5xl p-4'>
-                    Nous avons plusieurs filiales...
-                  </h1>
                 </FramerAppear>
               </div>
               <div ref={ref} className="w-full justify-center h-full flex flex-row flex-wrap gap-x-6">

@@ -83,13 +83,13 @@ export default function NavBar() {
                 <div className="lg:hidden flex-none w-1/6">
                 </div>
                 {/* Logo */}
-                <div className="flex items-center justify-center h-[100px] w-[300px]">
+                <div className="flex items-center justify-center h-[100px] w-[200px]">
                     <a href='/'>
                         <Image
                             src="/logo_blanc.png"
                             alt="Logo"
                             className='mr-2 object-contain p-10'
-                            width={250}
+                            width={200}
                             height={100}
                             layout='fixed'
                         />
