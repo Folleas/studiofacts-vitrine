@@ -311,19 +311,21 @@ export default function VideoTextCard({
   const buttons = [];
   if (buttonCTA !== '')
     buttons.push(
-      <a href={buttonCTA} key={buttonCTA} target="_blank" rel="noopener noreferrer" className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded self-start">
+      <a href={buttonCTA} key={buttonCTA} target="_blank" rel="noopener noreferrer" className="bg-blue-500 hover:bg-blue-600 text-white font-semibold text-xs py-2 px-4 rounded self-start">
         En savoir plus
       </a>
     )
 
   if (moreDetails || aPropos !== '')
     buttons.push(
-      <Link key='Plus de détail' className="bg-blue-500 hover:bg-blue-600 text-white text-xs xl:text-base font-semibold py-2 px-4 rounded self-start" href={"/" + title}>
-        Plus de détail
+      <Link key='Plus de détail' className="bg-blue-500 hover:bg-blue-600 text-white xl:text-base font-semibold py-2 px-4 rounded self-start" href={"/" + title}>
+        <p className="text-xs">
+          Plus de détail
+        </p>
       </Link>
     )
   files.map((file: any, index: number) => buttons.push(
-    <a target="_blank" rel="noopener noreferrer" href={'https://studiofact.group/image/' + file.file} key={index} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 mb-4 px-4 rounded self-start">
+    <a target="_blank" rel="noopener noreferrer" href={'https://studiofact.group/image/' + file.file} key={index} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 text-xs rounded self-start">
       {file.label}
     </a>
   ));
@@ -331,7 +333,7 @@ export default function VideoTextCard({
   return (
     <motion.div ref={ref} initial='hidden' variants={imageVariants} animate={controls} className="p-4 w-full">
       <div
-        className={`w-[450px] xl:w-full relative h-fit ${isExpanded ? 'xl:h-fit' : 'xl:h-[425px]'} rounded-lg shadow-xl flex ${swapContent ? "flex-col-reverse" : "flex-col"
+        className={`w-full xl:w-full relative h-fit overflow-hidden ${isExpanded ? 'xl:h-fit' : 'xl:h-[350px]'} rounded-lg shadow-xl flex ${swapContent ? "flex-col-reverse" : "flex-col"
           } xl:flex-row`}
       >
         <div
@@ -349,7 +351,7 @@ export default function VideoTextCard({
                 <source src={'https://studiofact.group/image/' + videoSrc} type="video/mp4" />
               </video>
             ) : (
-              <div className="relative w-[427px] xl:w-[704px] rounded-xl overflow-hidden h-[240px] xl:h-[396px] mt-4">
+              <div className="relative w-[320px] xl:w-[563px] rounded-xl overflow-hidden h-[180px] xl:h-[317px] mt-4">
                 {
                   coverFilename &&
                   <Image
@@ -367,7 +369,7 @@ export default function VideoTextCard({
         <div className={`${swapContent ? "mr-10" : ""} relative px-2 pt-2 xl:p-4 xl:pl-12 md:pr-4 w-full h-full flex flex-col justify-between`}>
           <div className="flex flex-col h-full">
             <div className="flex flex-col max-h-[100px] xl:max-h-[180px]">
-              <h2 className={`${swapContent ? "text-end" : ""} text-xl md:text-2xl xl:text-3xl 2xl:text-3xl overflow-y-hidden min-h-[30px] xl:min-h-[50px] max-h-[1200px] xl:max-h-[180px] font-bold text-white`}>
+              <h2 className={`${swapContent ? "text-end" : ""} text-xl md:text-xl xl:text-2xl 2xl:text-2xl overflow-y-hidden min-h-[30px] xl:min-h-[50px] max-h-[1200px] xl:max-h-[180px] font-bold text-white`}>
                 {truncate(title, 60)}
               </h2>
               {
@@ -387,20 +389,20 @@ export default function VideoTextCard({
             </div>
             {
               width > 1280 ?
-                <div className={`${swapContent ? "text-end" : ""} min-h-[180px] ${content.length < 1000 ? 'max-h-[200px]' : ''} ${isExpanded && 'pb-20'} overflow-y-hidden ${swapContent ? "" : "pr-10"} mb-3 xl:my-3`}>
+                <div className={`${swapContent ? "text-end" : ""} h-fit ${isExpanded && 'pb-20'} overflow-y-hidden ${swapContent ? "" : "pr-10"} mb-3 xl:my-3`}>
                   {isExpanded ? (
-                    <p className="text-gray-300 text-xl md:text-lg xl:text-lg 2xl:text-xl">
+                    <p className="text-gray-300 text-xl md:text-base">
                       {truncateFlat(content, 2000)}
                     </p>
                   ) : (
-                    <p className="text-gray-300 text-xl md:text-lg xl:text-lg 2xl:text-xl">
-                      {truncateFlat(content, 1000)}
+                    <p className="text-gray-300 text-xl md:text-base">
+                      {truncateFlat(content, 800)}
                     </p>
                   )}{
                     content.length > 1000 && (
                       <button
                         onClick={toggleExpand}
-                        className={`text-gray-300 absolute bottom-0 w-full ${isExpanded ? '' : 'bg-gradient-to-b backdrop-blur from-transparent'} flex justify-center hover:text-gray-500`}
+                        className={`text-gray-300 absolute bottom-0 w-full flex justify-center hover:text-gray-500`}
                       >
                         {isExpanded ?
                           <FaChevronUp size={60} />
@@ -417,7 +419,7 @@ export default function VideoTextCard({
                 </div>
             }
           </div>
-          <div className={`${swapContent ? "self-end" : ""}  flex flex-col ${buttons.length > 2 ? "flex-wrap overflow-x-auto max-h-[200px]" : ""}`}>
+          <div className={`${swapContent ? "self-end" : ""} gap-y-2 flex flex-col`}>
             {buttons.map(
               (button: any) => button
             )}

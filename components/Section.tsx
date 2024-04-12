@@ -179,33 +179,33 @@ export default function Section() {
       <div ref={container} className="relative h-fit w-full bg-gradient-to-b from-[#1e2428] z-20 from-20% via-[rgba(92,94,110,0.5)] via-80% to-[rgba(134,124,145,0.5)] to-100%">
         <div
           ref={stickyMask}
-          className="flex items-center justify-center overflow-hidden sticky top-0 h-[100vh]"
+          className="flex items-start justify-center overflow-hidden sticky top-0 h-fit"
         >
-          <div className='h-[100vh] relative w-screen'>
-            <div className='absolute z-20 w-full h-full px-16 flex flex-col justify-center'>
-              <div className='relative flex w-full self-center flex-col justify-center h-fit py-24'>
+          <div className='h-[65vh] relative w-screen'>
+            <div className='absolute z-20 w-full h-full px-16 flex flex-col justify-start pt-4 '>
+              <div className='relative flex w-full self-center flex-col justify-center h-fit pb-24'>
                 <FramerAppear>
-                  <h3 className="text-xl lg:text-4xl xl:text-4xl 2xl:text-5xl text-[red] font-bold mb-3">Nos spécificités</h3>
-                  <h2 className="text-2xl lg:text-5xl xl:text-5xl 2xl:text-6xl font-bold max-w-[1000px]">Le réel au coeur de notre ADN</h2>
+                  <h3 className="text-xl lg:text-2xl xl:text-2xl 2xl:text-2xl text-[red] font-bold mb-3">Nos spécificités</h3>
+                  <h2 className="text-2xl lg:text-3xl xl:text-3xl 2xl:text-3xl font-bold max-w-[1000px]">Le réel au coeur de notre ADN</h2>
                 </FramerAppear>
               </div>
-              <div className="h-full rounded-lg gap-y-4 flex flex-col w-[80vw]">
-                <h2 className="text-xl lg:text-2xl xl:text-2xl 2xl:text-2xl text-[#46fd9e] font-bold">
+              <div className="h-fit rounded-lg gap-y-4 flex flex-col w-[80vw]">
+                <h2 className="text-xl lg:text-xl xl:text-xl 2xl:text-xl text-[#46fd9e] font-bold">
                   StudioFact media group se différencie avant tout par la nature de ses contenus :
                 </h2>
-                <p className="text-sm lg:text-lg xl:text-lg 2xl:text-xl text-white">
+                <p className="text-sm lg:text-lg xl:text-lg 2xl:text-lg text-white">
                   Nous sommes le seul groupe de production spécialisé dans les histoires vraies et l’écriture du réel.
                 </p>
-                <p className="text-sm lg:text-lg xl:text-lg 2xl:text-xl text-white">
+                <p className="text-sm lg:text-lg xl:text-lg 2xl:text-lg text-white">
                   StudioFact est le premier acteur de la production audiovisuelle française à présenter cette particularité : chacune des entités du groupe raconte le réel.
                 </p>
-                <h2 className="text-xl lg:text-2xl xl:text-2xl mt-[6%] 2xl:text-2xl text-[#46fd9e] font-bold">
+                <h2 className="text-xl lg:text-xl xl:text-xl 2xl:text-xl mt-[3%] text-[#46fd9e] font-bold">
                   Autour du groupe, nous développons des projets en partenariat avec des acteurs du secteur dont nous partageons l’exigence et la vision du métier.
                 </h2>
-                <p className="text-sm lg:text-lg xl:text-lg 2xl:text-xl text-white">
+                <p className="text-sm lg:text-lg xl:text-lg 2xl:text-lg text-white">
                   Les six branches de production de StudioFact (Presse, Documentaires, Fictions, Édition, Podcasts, Lab, et Live) permettent une circulation fluide des sujets et des histoires vraies à travers différents modes narratifs possibles. Le regroupement stratégique de ces métiers et des talents qui y collaborent permet également de créer des synergies économiques.
                 </p>
-                <p className="text-sm lg:text-lg xl:text-lg 2xl:text-xl text-white">
+                <p className="text-sm lg:text-lg xl:text-lg 2xl:text-lg text-white">
                   Notre groupe est également unique en son genre par ses modes de distribution. Nous enquêtons, créons et produisons pour la télévision, les plateformes de streaming, les salles de cinéma, les plateformes de podcast ou encore les librairies.
                 </p>
               </div>

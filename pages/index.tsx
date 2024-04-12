@@ -7,6 +7,7 @@ import Probleme from 'components/Probleme';
 import Splash from 'components/Splash';
 import { GetServerSideProps } from 'next';
 import { useEffect, useState } from 'react';
+import RightsProject from 'components/Accueil/RightsProject';
 
 export default function Web({ derniereRealisations, dernierPosts }: any) {
   const [derniereRealisationsState, setDerniereRealisations] = useState<any>(derniereRealisations);
@@ -56,8 +57,8 @@ export default function Web({ derniereRealisations, dernierPosts }: any) {
         paragraph2="« Nos contenus racontent le monde. Tendez loreille, ouvrez les yeux. La réalité dépasse toutes les fictions »"
       />
       <div className="w-full h-full">
-        <div className='w-full h-full p-6 xl:p-10 bg-gradient-to-t from-[rgba(134,124,145,0.5)] z-20 from-0% via-[rgba(92,94,110,0.5)] via-20% to-[#1e2428] to-60%'>
-          <h1 className="text-3xl  md:text-3xl xl:text-4xl 2xl:text-4xl font-bold text-white ">À la une</h1>
+        <div className='w-full h-full p-6 xl:p-16 bg-gradient-to-t from-[rgba(134,124,145,0.5)] z-20 from-0% via-[rgba(92,94,110,0.5)] via-20% to-[#1e2428] to-60%'>
+          <h1 className="text-2xl md:text-2xl xl:text-3xl 2xl:text-3xl font-bold text-white ">À la une</h1>
           <div className='h-fit'>
             {
               dernierPostsState && dernierPostsState.map((dernierPost: any, index: number) =>
@@ -66,46 +67,46 @@ export default function Web({ derniereRealisations, dernierPosts }: any) {
             }
           </div>
         </div>
-        <div className='h-fit flex p-6 xl:p-10 flex-col w-full  bg-gradient-to-b from-[rgba(134,124,145,0.5)] z-20 from-0% via-[rgba(92,94,110,0.5)] via-20% to-[#1e2428] to-60%'>
-          <h1 className="text-3xl md:text-3xl xl:text-4xl 2xl:text-4xl font-bold text-white ">Nos dernières réalisations</h1>
-          {derniereRealisationsState && derniereRealisationsState.length > 0 &&
-            <VideoTextCard
-              vimeo={derniereRealisationsState[0].vimeo}
-              imageSrc={"/" + derniereRealisationsState[0].coverFilename}
-              videoSrc={derniereRealisationsState[0].videoTrailer}
-              imageAlt={derniereRealisationsState[0].coverFilename}
-              title={derniereRealisationsState[0].title}
-              content={derniereRealisationsState[0].description}
-              aPropos={derniereRealisationsState[0].aPropos}
-              moreDetails={derniereRealisationsState[0].enSavoirPlus}
-              type={derniereRealisationsState[0].type}
-              tags={derniereRealisationsState[0].tags}
-              resourcesFilenames={derniereRealisationsState[0].resourcesFilenames}
-              coverFilename={derniereRealisationsState[0].coverFilename}
-            />
-          }
-          {derniereRealisationsState && derniereRealisationsState.length > 1 &&
-            <VideoTextCard
-              vimeo={derniereRealisationsState[1].vimeo}
-              imageSrc={"/" + derniereRealisationsState[1].coverFilename}
-              videoSrc={derniereRealisationsState[1].videoTrailer}
-              imageAlt={derniereRealisationsState[1].coverFilename}
-              title={derniereRealisationsState[1].title}
-              content={derniereRealisationsState[1].description}
-              aPropos={derniereRealisationsState[1].aPropos}
-              moreDetails={derniereRealisationsState[1].enSavoirPlus}
-              type={derniereRealisationsState[1].type}
-              tags={derniereRealisationsState[1].tags}
-              resourcesFilenames={derniereRealisationsState[1].resourcesFilenames}
-              coverFilename={derniereRealisationsState[1].coverFilename}
-            />
-          }
+        <div className='h-fit flex p-6 xl:p-16 flex-col w-full bg-gradient-to-b from-[rgba(134,124,145,0.5)] z-20 from-0% via-[rgba(92,94,110,0.5)] via-20% to-[#1e2428] to-60%'>
+          <h1 className="text-2xl md:text-2xl xl:text-3xl 2xl:text-3xl font-bold text-white">Nos dernières réalisations</h1>
+          <div className='flex mt-[1vh]'>
+            {derniereRealisationsState && derniereRealisationsState.length > 0 &&
+              <RightsProject
+                key={0}
+                imageSrc={"/" + derniereRealisationsState[0].coverFilename}
+                videoSrc={derniereRealisationsState[0].videoTrailer}
+                imageAlt={derniereRealisationsState[0].coverFilename}
+                title={derniereRealisationsState[0].title}
+                content={derniereRealisationsState[0].description}
+                moreDetails={derniereRealisationsState[0].enSavoirPlus}
+                type={derniereRealisationsState[0].type}
+                tags={derniereRealisationsState[0].tags}
+                resourcesFilenames={derniereRealisationsState[0].resourcesFilenames}
+                coverFilename={derniereRealisationsState[0].coverFilename}
+              />
+            }
+            {derniereRealisationsState && derniereRealisationsState.length > 1 &&
+              <RightsProject
+                key={1}
+                imageSrc={"/" + derniereRealisationsState[1].coverFilename}
+                videoSrc={derniereRealisationsState[1].videoTrailer}
+                imageAlt={derniereRealisationsState[1].coverFilename}
+                title={derniereRealisationsState[1].title}
+                content={derniereRealisationsState[1].description}
+                moreDetails={derniereRealisationsState[1].enSavoirPlus}
+                type={derniereRealisationsState[1].type}
+                tags={derniereRealisationsState[1].tags}
+                resourcesFilenames={derniereRealisationsState[1].resourcesFilenames}
+                coverFilename={derniereRealisationsState[1].coverFilename}
+              />
+            }
+          </div>
         </div>
         <Section></Section>
         <Probleme />
-        <div className="w-full p-6 shadow-md rounded-lg min-h-[45vh]">
+        <div className="w-full p-6 xl:p-16 shadow-md rounded-lg min-h-[45vh]">
           <div className="mb-4">
-            <h1 className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-bold mb-8">Suivez-nous sur Instagram</h1>
+            <h1 className="text-2xl md:text-2xl xl:text-3xl 2xl:text-3xl font-bold mb-8">Suivez-nous sur Instagram</h1>
           </div>
           <div className='flex justify-center my-10'>
             <iframe title="oui" className="w-[1000px] h-[400px] md:h-[900px]" id="instagram-embed-1" src="https://www.instagram.com/studiofact.officiel/embed/" allowFullScreen={true} frameBorder="0" height="560" data-instgrm-payload-id="instagram-media-payload-1"></iframe>
