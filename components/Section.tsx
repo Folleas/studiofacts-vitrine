@@ -182,7 +182,7 @@ export default function Section() {
           className="flex items-start justify-center overflow-hidden sticky top-0 h-fit"
         >
           <div className='h-[65vh] relative w-screen'>
-            <div className='absolute z-20 w-full h-full px-16 flex flex-col justify-start pt-4 '>
+            <div className='absolute z-20 w-full h-full px-6 xl:px-16 flex flex-col justify-start pt-4 '>
               <div className='relative flex w-full self-center flex-col justify-center h-fit pb-24'>
                 <FramerAppear>
                   <h3 className="text-xl lg:text-2xl xl:text-2xl 2xl:text-2xl text-[red] font-bold mb-3">Nos spécificités</h3>

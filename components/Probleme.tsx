@@ -126,7 +126,7 @@ export default function Probleme() {
             <div className='z-20 w-full h-full flex flex-col justify-center'>
               <div className=' flex w-2/3 self-center flex-col justify-center h-1/2'>
                 <FramerAppear>
-                  <h1 className='text-2xl md:text-5xl p-4'>
+                  <h1 className='text-2xl xl:text-5xl xl:p-4'>
                   La Galaxie Studiofact
                   </h1>
                 </FramerAppear>
