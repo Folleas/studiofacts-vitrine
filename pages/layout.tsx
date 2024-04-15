@@ -26,17 +26,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {// 
                     >
                         {children}
                     </div>
-                    <div className="w-full">
-                        <div className="h-[3vh] w-full flex items-center justify-between p-4 px-10 backdrop-blur-lg">
-                            <p className="text-white text-[0.5rem] lg:text-2xl">
-                                Copyright © 2023 StudioFact Media Group, tous droits réservés.
-                            </p>
-                            <Link href={'/mentionslegales'} className="text-white text-[0.5rem] lg:text-2xl">
-                                Mentions Légales
-                            </Link>
-                        </div>
-                    </div>
                 </main>
+                <div className="w-full absolute bottom-0">
+                    <div className="h-[3vh] w-full flex items-center justify-between p-4 px-10 backdrop-blur-lg">
+                        <p className="text-white text-[0.5rem] lg:text-2xl">
+                            Copyright © 2023 StudioFact Media Group, tous droits réservés.
+                        </p>
+                        <Link href={'/mentionslegales'} className="text-white text-[0.5rem] lg:text-2xl">
+                            Mentions Légales
+                        </Link>
+                    </div>
+                </div>
             </div>
         </>
     );
