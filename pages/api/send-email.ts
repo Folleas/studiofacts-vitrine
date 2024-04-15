@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import nodemailer from 'nodemailer'
+import nodemailer from "nodemailer";
 
 type Data = {
     message: string
@@ -11,7 +11,7 @@ export default async function handler(
 ) {
     if (req.method === 'POST') {
         // Create a transporter using your email provider's SMTP settings
-        const transporter = nodemailer.createTransport({
+        const params: any = {
             host: process.env.SMTP_HOST,
             port: process.env.SMTP_PORT,
             secure: false,
@@ -19,7 +19,8 @@ export default async function handler(
                 user: process.env.SENDER_EMAIL,
                 pass: process.env.SENDER_PASSWORD,
             },
-        });
+        }
+        const transporter = nodemailer.createTransport(params);
 
 
         try {

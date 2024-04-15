@@ -135,13 +135,13 @@ const Admin = () => {
                     <div className="flex flex-col justify-between">
                         <div className="flex items-center">
                             <input type="checkbox" name="communications" className="mr-1" />
-                            <label htmlFor="communications">J'accepte de recevoir les communications de Studiofact Rights</label>
+                            <label htmlFor="communications">J{`'`}accepte de recevoir les communications de Studiofact Rights</label>
                         </div>
                         <div className="flex items-center">
                             <input type="checkbox" name="conditions" className="mr-1" />
                             <label htmlFor="conditions">
-                                J'accepte les conditions générales d'utilisation
-                                <a href="/mentionslegales" className="ml-1 text-blue-500 underline">Conditions générales d'utilisation</a>
+                                J{`'`}accepte les conditions générales d{`'`}utilisation
+                                <a href="/mentionslegales" className="ml-1 text-blue-500 underline">Conditions générales d{`'`}utilisation</a>
                             </label>
                         </div>
                         <button type='submit' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
