@@ -117,7 +117,7 @@ const Admin = () => {
                 </div>
             </div>
             {showForm && ( // Render the form if showForm is true
-                <form onSubmit={onSubmit} className="flex  flex-col mb-12">
+                <form onSubmit={onSubmit} className="flex p-12 flex-col mb-12">
                     <div className="flex mb-4">
                         <input type="text" name="firstName" placeholder="Prénom" className="text-black border w-full border-gray-300 rounded px-3 py-2 mt-1 focus:outline-none focus:ring-1 focus:ring-blue-500" required />
                         <input type="text" name="lastName" placeholder="Nom" className="text-black border w-full mx-6 border-gray-300 rounded px-3 py-2 mt-1 focus:outline-none focus:ring-1 focus:ring-blue-500" required />
