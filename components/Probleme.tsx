@@ -118,7 +118,7 @@ export default function Probleme() {
 
   return (
     <div className="h-full w-full">
-      <div className="relative h-fit w-full bg-gradient-to-t from-[#1e2428] z-20 from-20% via-[rgba(92,94,110,0.5)] via-80% to-[rgba(134,124,145,0.5)] to-100%">
+      <div className="relative h-fit w-full">
         <div
           className="flex items-center justify-center overflow-hidden sticky z-20 top-0 h-fit"
         >

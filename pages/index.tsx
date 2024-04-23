@@ -101,8 +101,8 @@ export default function Web({ derniereRealisations, dernierPosts }: any) {
               />
             }
           </div>
-        </div>
         <Section></Section>
+        </div>
         <Probleme />
         <div className="w-full p-6 xl:p-16 shadow-md rounded-lg min-h-[45vh]">
           <div className="mb-4">
