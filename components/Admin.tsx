@@ -8,9 +8,23 @@ const Admin = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [selectedTags, setSelectedTags]: any = useState({});
     const [showForm, setShowForm] = useState(false); // Add state variable for form visibility
-    const tags = ['tiretezit aozeetjn oezijntr iozejtr ', 'taazerjazepiorjg4', 'tag1', 'tag2', 'arzeuiprjuaziep', 'tag3', 'tag4'];
     // const formData = new FormData(event.currentTarget)
+    const [dernierProjects, setDernierProjects] = useState<any>();
+    useEffect(() => {
+        const fetchPost = async () => {
+            await fetch('https://studiofact.group/project')
+                .then((response) => response.json())
+                .then((responseData: any) => {
+                    setDernierProjects(responseData.projectData); // Assuming the API returns an array of post objects
+                })
+                .catch((error) => console.error('Error fetching data:', error));
 
+        }
+        fetchPost();
+    }, []);
+    const tags = Array.from(
+        new Set(dernierProjects?.flatMap((project: any) => project.tags))
+    );
     useEffect(() => {
         if (session === null) {
             setIsAuthenticated(false);
