@@ -46,27 +46,9 @@ const Admin = () => {
     const handleFormButtonClick = () => {
         setShowForm(!showForm);
     };
-    const handleSendButtonClick = () => {
-        fetch('/api/send-email', {
-            method: 'POST',
-            body: undefined
-        })
-            .then(response => {
-                if (response.ok) {
-                    // Email sent successfully
-                    console.log('Email sent!');
-                } else {
-                    // Error sending email
-                    console.error('Error sending email');
-                }
-            })
-            .catch(error => {
-                console.error('Error sending email:', error);
-            });
-    };
     async function onSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
-
+        
         const formData = new FormData(event.currentTarget)
         let isFormValid = true;
         console.log(formData)
@@ -140,10 +122,11 @@ const Admin = () => {
                     </div>
                     <label htmlFor="tag" className="mb-3">Préférence</label>
                     <div className="flex w-3/4 mb-3 flex-wrap space-x-3 gap-y-3">
-                        {tags.map((tag, index) => (
-                            <button key={index} onClick={() => handleTagClick(tag)} className={`border w-fit border-gray-300 rounded px-3 py-2 ${selectedTags[tag] ? 'bg-white text-black' : 'text-white'}`}>
+                        {tags.map((tag: any, index) => (
+                            // make it look like button on hover mouse
+                            <div key={index} onClick={() => handleTagClick(tag)} className={`border cursor-pointer w-fit border-gray-300 rounded px-3 py-2 ${selectedTags[tag] ? 'bg-white text-black' : 'text-white'}`}>
                                 {tag}
-                            </button>
+                            </div>
                         ))}
                     </div>
                     <div className="flex flex-col justify-between">

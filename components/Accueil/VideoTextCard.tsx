@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { FaChevronDown, FaChevronUp, FaTimes } from "react-icons/fa";
 import TextTabs from "./TextTabs";
 import Link from "next/link";
+import { dynamicBlurDataUrl } from "components/blurData";
 
 export function VimeoModal({
   isOpen,
@@ -260,6 +261,14 @@ export default function VideoTextCard({
   const [isVideoLoaded, setIsVideoLoaded] = useState(false); // State to track video loading
   const refVideo: any = useRef(null);
   const [width, setWidth] = useState<number>(0);
+  const [imageBlured, setImageBlured] = useState<any>(undefined);
+
+  useEffect(() => {
+    const fetchBlurredImage = async () => {
+      setImageBlured(await dynamicBlurDataUrl(coverFilename));
+    }
+    fetchBlurredImage();
+  });
 
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
@@ -353,10 +362,13 @@ export default function VideoTextCard({
             ) : (
               <div className="relative w-[320px] xl:w-[563px] rounded-xl overflow-hidden h-[180px] xl:h-[317px] mt-4">
                 {
-                  coverFilename &&
+                  coverFilename && imageBlured &&
                   <Image
                     src={'https://studiofact.group/image/' + coverFilename}
                     fill
+                    priority
+                    placeholder="blur"
+                    blurDataURL={imageBlured}
                     sizes="(max-width: 640px) 640px, 360px"
                     alt={imageAlt}
                     className="object-cover"

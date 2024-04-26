@@ -12,37 +12,41 @@ export default async function handler(
     if (req.method === 'POST') {
         // Create a transporter using your email provider's SMTP settings
         const params: any = {
+            service: 'ovh',
+            name: 'studiofact.fr',
             host: process.env.SMTP_HOST,
             port: process.env.SMTP_PORT,
-            secure: false,
+            secure: true,
             auth: {
                 user: process.env.SENDER_EMAIL,
                 pass: process.env.SENDER_PASSWORD,
             },
         }
+        console.log("params")        
+        console.log(params)        
         const transporter = nodemailer.createTransport(params);
-
+        const body: any = JSON.parse(req.body)
 
         try {
             // Send the email
             await transporter.sendMail({
-                from: process.env.SENDER_USER,
-                to: process.env.RECEIVER_EMAIL,
-                subject: 'New Contact Form Submission',
+                from: process.env.SENDER_EMAIL,
+                to: process.env.SENDER_EMAIL,
+                subject: 'Nouvelle tentative d\'inscription | Société : ' + body.company,
                 text: `
-                    Prénom: ${req.body.firstName}
-                    Nom: ${req.body.lastName}
-                    E-mail: ${req.body.email}
-                    Mot de passe: ${req.body.password}
-                    Confirmation du mot de passe: ${req.body.confirmPassword}
-                    Société: ${req.body.company}
-                    Département: ${req.body.department}
-                    Droits: ${req.body.rights}
-                    Adresse: ${req.body.address}
-                    Ville: ${req.body.city}
-                    Code postal: ${req.body.postalCode}
-                    Pays: ${req.body.country}
-                    Préférence: ${req.body.tags}
+                    Prénom: ${body.firstName}
+                    Nom: ${body.lastName}
+                    E-mail: ${body.email}
+                    Mot de passe: ${body.password}
+                    Confirmation du mot de passe: ${body.confirmPassword}
+                    Société: ${body.company}
+                    Département: ${body.department}
+                    Droits: ${body.rights}
+                    Adresse: ${body.address}
+                    Ville: ${body.city}
+                    Code postal: ${body.postalCode}
+                    Pays: ${body.country}
+                    Préférence: ${body.tags}
                 `,
             });
 
