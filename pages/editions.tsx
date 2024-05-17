@@ -88,7 +88,7 @@ export default function EditionsPage({ data, selectedProjects }: any) {
     );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const dataResponse = await fetch('https://studiofact.group/project/type/Editions');
     const data: any = await dataResponse.json();
 
