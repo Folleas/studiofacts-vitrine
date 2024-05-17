@@ -9,8 +9,7 @@ export default function ALaUne({ selectedProjects, data }: any) {
     const ref = useRef(null);
     const isInView = useInView(ref);
     const controls = useAnimation();
-    const temp = data.filter((elem: any) => selectedProjects.includes(elem._id));
-    const filteredPosts = posts.filter((elem: any) => temp.some((tempElem: any) => tempElem.title === elem.projectID));
+    const [filteredPosts, setFilteredPosts] = useState<any[]>([]);
 
     useEffect(() => {
         if (isInView) {
@@ -36,9 +35,22 @@ export default function ALaUne({ selectedProjects, data }: any) {
             .then((response) => response.json())
             .then((responseData: any) => {
                 setPosts(responseData.postData); // Assuming the API returns an array of post objects
+                //make a single line to find in dataelem._id === project
+                const filteredPostsTemp: any[] = [];
+                selectedProjects?.forEach((project: any) => {
+                    console.log();
+                    if (!project) return;
+                    console.log("project")
+                    console.log(project)
+                    console.log(responseData.postData)
+                    const post = responseData.postData.filter((post: any) => post.projectID === data.find((elem: any) => elem._id === project).title);
+                    if (post)
+                        post.map((elem: any) => filteredPostsTemp.push(elem));
+                });
+                setFilteredPosts(filteredPostsTemp);
             })
             .catch((error) => console.error('Error fetching data:', error));
-    }, [selectedProjects]);
+    }, [data]);
 
     useEffect(() => {
         const slideInterval = setInterval(() => {
@@ -54,7 +66,11 @@ export default function ALaUne({ selectedProjects, data }: any) {
     }, [filteredPosts.length, isAutoSlide]);
 
     const prevSlide = () => {
-        const prev = (currentSlide - 1 + selectedProjects?.length) % filteredPosts?.length;
+        let prev;
+        if (currentSlide === 0)
+            prev = filteredPosts?.length - 1;
+        else
+            prev = (currentSlide - 1) % filteredPosts?.length;
 
         setIsAutoSlide(false);
         setCurrentSlide(prev);
@@ -69,6 +85,8 @@ export default function ALaUne({ selectedProjects, data }: any) {
 
     if (!selectedProjects)
         return <></>
+    console.log("filteredPosts")
+    console.log(filteredPosts)
     return (
         <motion.div ref={ref} initial='hidden' animate={controls} variants={imageVariants} className="mt-8 w-full h-full relative">
             <div className="w-full bg-black h-[300px] xl:h-[600px] relative overflow-hidden">
