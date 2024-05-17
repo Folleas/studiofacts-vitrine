@@ -75,7 +75,7 @@ export default function Web({ data }: any) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try {
     const response = await fetch(`https://studiofact.group/project`);
     const responseData: any = await response.json();
