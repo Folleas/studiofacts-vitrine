@@ -223,7 +223,7 @@ function BookCard({ item }: any) {
                     />
                 }
             </div>
-            <div className="mt-2 h-[60px] flex flex-col justify-center">
+            <div className="mt-4 h-[80px] flex flex-col justify-center">
                 <h2 className="text-2xl font-bold">{item.title}</h2>
             </div>
             <p className="text-lg mt-1 max-h-[200px] overflow-y-hidden">{item.enSavoirPlus}</p>
