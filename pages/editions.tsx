@@ -48,12 +48,6 @@ export default function EditionsPage({ data, selectedProjects }: any) {
                         imageSrc: "clarisse.webp"
                     },
                     {
-                        name: "Jeanne Pois-Fournier",
-                        occupation: "Éditrice",
-                        bio: "Jeanne Pois-Fournier is an accomplished editor known for her dedication to quality content...",
-                        imageSrc: "jeanne-pf.webp"
-                    },
-                    {
                         name: "Gaëlle Job",
                         occupation: "Attachée de Presse",
                         bio: "Gaëlle Job excels in public relations with a keen understanding of media outreach strategies...",
