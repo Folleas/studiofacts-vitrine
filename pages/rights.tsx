@@ -249,7 +249,7 @@ export default function RightsPage({ data }: any) {
 }
 
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const response = await fetch('https://studiofact.group/project/rights');
     const responseData: any = await response.json();
     const data = responseData.rightsProjects.sort((a: any, b: any) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime());
