@@ -39,7 +39,7 @@ export default function Web({ derniereRealisations, dernierPosts }: any) {
   }, []);
 
   return (
-    <div id={'index'} className='flex scroll-smooth flex-col h-full justify-center items-center'>
+    <div id={'index'} className='flex scroll-smooth flex-col h-full w-screen overflow-hidden justify-center items-center'>
       <Splash />
       <VideoTextSection
         displayButton={true}
